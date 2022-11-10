@@ -1,0 +1,50 @@
+fragment ProjectFields on Project {
+  id
+  slug
+  title
+  abstract
+  gitHub
+  webSide
+  pictures {
+    id
+    url
+  }
+  skills {
+    id
+    name
+    icon
+  }
+}
+
+query getHomeData {
+  categories {
+    icon
+    id
+    name
+    detail
+    skills {
+      ... on Skill {
+        id
+        name
+        detail
+        icon
+      }
+    }
+  }
+  projects(first: 4, orderBy: publishedAt_DESC) {
+    ...ProjectFields
+  }
+}
+
+query getProjects {
+  projects(orderBy: publishedAt_DESC) {
+    ...ProjectFields
+  }
+}
+
+query getProject($slug: String!, $stage: Stage!) {
+  project(where: { slug: $slug }, stage: $stage) {
+    ...ProjectFields
+    detail
+  }
+}

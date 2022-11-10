@@ -1,0 +1,80 @@
+import { Accordion, AccordionDetails, AccordionSummary, Grid, Typography } from '@mui/material';
+import React from 'react';
+import { SectionLayout } from '../Layout';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Box } from '@mui/system';
+
+import Timeline from '@mui/lab/Timeline';
+import TimelineItem from '@mui/lab/TimelineItem';
+import TimelineSeparator from '@mui/lab/TimelineSeparator';
+import TimelineConnector from '@mui/lab/TimelineConnector';
+import TimelineContent from '@mui/lab/TimelineContent';
+import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
+import TimelineDot from '@mui/lab/TimelineDot';
+import { Category } from '../../graphql/generated/graphql';
+import { Icon } from '../icons';
+import { useTranslation } from 'react-i18next';
+
+export const SkillSection = ({ categories }: { categories: Category[] }) => {
+  const [expanded, setExpanded] = React.useState<string | false>(false);
+  const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
+    setExpanded(newExpanded ? panel : false);
+  };
+  const { t } = useTranslation('home');
+
+  return (
+    <SectionLayout id="skills-section" widh="md" title={t('skills.title')} detail={t('skills.description')}>
+      <Grid container spacing={2}>
+        {categories.map((category) => (
+          <Grid item key={category.id} xs={12} md={12}>
+            <Accordion expanded={expanded === category.id} onChange={handleChange(category.id)}>
+              <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+                  <Icon
+                    name={category.icon as any}
+                    sx={{
+                      fontSize: '3rem',
+                    }}
+                  />
+                  <Box>
+                    <Typography variant="h2">{category.name}</Typography>
+                    <Typography variant="body2"> {category.detail}</Typography>
+                  </Box>
+                </Box>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Timeline>
+                  {category.skills.map((skill, idx) => (
+                    <TimelineItem key={skill.id}>
+                      <TimelineOppositeContent
+                        sx={{ m: 'auto 0', flex: 'initial' }}
+                        align="right"
+                        variant="body2"
+                        color="text.secondary"
+                      >
+                        {/* {++idx} */}
+                      </TimelineOppositeContent>
+                      <TimelineSeparator>
+                        {idx !== 0 && <TimelineConnector />}
+                        <TimelineDot color="primary">
+                          <Icon name={skill.icon as any} />
+                        </TimelineDot>
+                        {idx !== category.skills.length - 1 && <TimelineConnector />}
+                      </TimelineSeparator>
+                      <TimelineContent sx={{ py: '12px', px: 2 }}>
+                        <Typography variant="h3" component="span">
+                          {skill.name}
+                        </Typography>
+                        <Typography variant="body2">{skill.detail} </Typography>
+                      </TimelineContent>
+                    </TimelineItem>
+                  ))}
+                </Timeline>
+              </AccordionDetails>
+            </Accordion>
+          </Grid>
+        ))}
+      </Grid>
+    </SectionLayout>
+  );
+};

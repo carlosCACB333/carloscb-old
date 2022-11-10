@@ -1,0 +1,50 @@
+{
+  "home": {
+    "btn-cv": "Download CV",
+    "btn-about": "About me"
+  },
+
+  "about": {
+    "title": "Who I am?",
+    "description": "",
+    "user": {
+      "name": "Name",
+      "email": "Email",
+      "age": "Age",
+      "phone": "Phone",
+      "profession": "Profession",
+      "cycle": "Cycle",
+      "university": "University"
+    }
+  },
+  "skills": {
+    "title": "My abilities",
+    "description": "These are some of the technologies I handle"
+  },
+
+  "projects": {
+    "title": "My projects",
+    "description": "These are some of the projects I have worked on",
+    "btn-show": "Show more",
+    "btn-show-All": "Show all projects"
+  },
+
+  "contact": {
+    "title": "Contact me",
+    "description": "If you have any questions or want to contact me, send me a message",
+    "form": {
+      "name": "Your name",
+      "email": "Your email",
+      "phone": "Your phone",
+      "affair": "Affair",
+      "message": "Message",
+      "btn-send": "Send message"
+    }
+  },
+
+  "footer": {
+    "made": "Made with",
+    "by": "by",
+    "rights": "All rights reserved"
+  }
+}

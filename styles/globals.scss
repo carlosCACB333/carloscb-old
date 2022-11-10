@@ -1,0 +1,43 @@
+.scroll,
+.remark-highlight > pre {
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+    &:vertical {
+      width: 6px;
+    }
+    &:horizontal {
+      height: 6px;
+    }
+  }
+
+  &::-webkit-scrollbar-button {
+    &,
+    &:increment {
+      display: none;
+    }
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #bdbdbd;
+    border-radius: 20px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+}
+
+.remark-highlight > pre {
+  background-color: #111936;
+}
+
+.gradient {
+  background: linear-gradient(180deg, #9fbefb 0%, rgb(23, 31, 86) 100%);
+}
+
+.gradient-light {
+  background: linear-gradient(180deg, #e2e9ff 0%, #89b4fa 100%);
+}
+
+a {
+  text-decoration: none;
+}

@@ -1,0 +1,24 @@
+query getAuthor($email: String!, $locales: [Locale!]!) {
+  author(where: { email: $email }, locales: $locales) {
+    bio
+    birth
+    email
+    firstName
+    lastName
+    phone
+    id
+    profession
+    university
+    cycle
+    detail
+    facebook
+    linkedin
+    github
+    cv {
+      url
+    }
+    photos {
+      url
+    }
+  }
+}
