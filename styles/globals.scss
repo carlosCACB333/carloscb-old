@@ -41,3 +41,25 @@
 a {
   text-decoration: none;
 }
+
+// totate
+
+.rotate-container {
+  animation: antiRotate 30s linear infinite;
+}
+
+.rotate-item {
+  animation: rotate 30s linear infinite;
+}
+
+@keyframes antiRotate {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}

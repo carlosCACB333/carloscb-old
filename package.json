@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "license": "MIT",
+  "engines": {
+    "node": ">= 18.0.0",
+    "npm": ">= 8.0.0",
+    "yarn": ">= 1.22.0"
+  },
   "author": {
     "name": "Carlos Castillo Blas",
     "email": "carloscb8080@gmail.com"

@@ -1,14 +1,12 @@
-import { Avatar, Box, Button, Link, Typography, useMediaQuery } from '@mui/material';
+import { Avatar, Box, Button, Typography, useMediaQuery } from '@mui/material';
 import Image from 'next/legacy/image';
 import React, { useContext } from 'react';
 import { SectionLayout } from '../Layout/';
 import circle from '../../assets/circle.png';
-import styles from '../../styles/home.module.css';
 import { AuthorContext, ThemeContext } from '../../context';
 import { Icon } from '../icons';
 import { getTheme } from '../../theme';
 import { useTranslation } from 'react-i18next';
-import { HygraphImg } from '../UI';
 
 export const HomeSection = () => {
   const { mode } = useContext(ThemeContext);
@@ -58,7 +56,7 @@ export const HomeSection = () => {
 
       <Box>
         <Box
-          className={styles.container}
+          className="rotate-container"
           sx={{
             position: 'relative',
             maxWidth: 700,
@@ -86,7 +84,7 @@ export const HomeSection = () => {
               transform: 'translate(-50%, -50%)',
             }}
           >
-            <Box className={styles.item}>
+            <Box className="rotate-item">
               <FrontItem isDark={mode === 'dark'} />
             </Box>
           </Box>
@@ -99,7 +97,7 @@ export const HomeSection = () => {
               transform: 'translate(-50%, -50%)',
             }}
           >
-            <Box className={styles.item}>
+            <Box className="rotate-item">
               <BacktItem isDark={mode === 'dark'} />
             </Box>
           </Box>
@@ -112,7 +110,7 @@ export const HomeSection = () => {
               transform: 'translate(-50%, -50%)',
             }}
           >
-            <Box className={styles.item}>
+            <Box className="rotate-item">
               <IaItem isDark={mode === 'dark'} />
             </Box>
           </Box>
@@ -125,7 +123,7 @@ export const HomeSection = () => {
               transform: 'translate(-50%, -50%)',
             }}
           >
-            <Box className={styles.item}>
+            <Box className="rotate-item">
               <DbItem isDark={mode === 'dark'} />
             </Box>
           </Box>
