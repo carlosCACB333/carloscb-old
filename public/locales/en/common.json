@@ -1,0 +1,18 @@
+{
+  "nav": {
+    "projects": "projects",
+    "blog": "Blog"
+  },
+  "side": {
+    "home": "Home",
+    "about": "Who I am?",
+    "skills": "My Skills",
+    "projects": "My Projects",
+    "contact": "Contact Me"
+  },
+
+  "btn": {
+    "show-all": "Show All",
+    "show-more": "Show More"
+  }
+}

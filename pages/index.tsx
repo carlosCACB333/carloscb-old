@@ -13,6 +13,7 @@ interface Props {
 }
 const HomePage: NextPage<Props> = ({ categories, projects }) => {
   const { author } = useContext(AuthorContext);
+
   return (
     <>
       <Head>
@@ -30,10 +31,10 @@ const HomePage: NextPage<Props> = ({ categories, projects }) => {
 export default HomePage;
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const i18n = await serverSideTranslations(locale || 'es');
+  const i18n = await serverSideTranslations(locale || 'es', ['common', 'home']);
   const { data } = await client.query({ query: GetHomeDataDocument });
   const categories = data.categories;
   const projects = data.projects;
 
-  return { props: { categories, projects, ...i18n }, revalidate: 3600 }; // 1 hour
+  return { props: { ...i18n, categories, projects }, revalidate: 3600 }; // 1 hour
 };

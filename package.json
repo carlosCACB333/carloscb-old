@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "license": "MIT",
-  "engines": {
-    "node": ">= 16.0.0"
-  },
   "author": {
     "name": "Carlos Castillo Blas",
     "email": "carloscb8080@gmail.com"
@@ -30,7 +27,6 @@
     "autoprefixer": "^10.4.13",
     "clean-css": "^5.3.1",
     "graphql": "^16.6.0",
-    "install": "^0.13.0",
     "joi": "^17.7.0",
     "js-cookie": "^3.0.1",
     "next": "13.0.1",

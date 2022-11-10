@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 export const AboutSection = () => {
   const { author } = useContext(AuthorContext);
   const isMd = useMediaQuery(getTheme('dark').breakpoints.up('md'));
-  const { t } = useTranslation(['home']);
+  const { t } = useTranslation('home');
 
   return (
     <SectionLayout id="about-section">

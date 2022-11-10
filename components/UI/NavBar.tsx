@@ -16,7 +16,7 @@ interface Props {
 export const NavBar = ({ handleDrawerToggle, drawerWidth }: Props) => {
   const { toggleMode } = useContext(ThemeContext);
   const { locale, asPath, replace } = useRouter();
-  const { t } = useTranslation('navbar');
+  const { t } = useTranslation('common');
 
   const onChangeLanguage = () => {
     const newLocale = locale === 'en' ? 'es' : 'en';
@@ -37,10 +37,10 @@ export const NavBar = ({ handleDrawerToggle, drawerWidth }: Props) => {
           <MenuIcon />
         </IconButton>
         <Link href="/project">
-          <Button variant="text">{t('projects')}</Button>
+          <Button variant="text">{t('nav.projects')}</Button>
         </Link>
         <Link href="/blog">
-          <Button variant="text">{t('blog')}</Button>
+          <Button variant="text">{t('nav.blog')}</Button>
         </Link>
         <Box flex={1}></Box>
         <IconButton onClick={toggleMode} sx={{ color: 'text.primary' }}>

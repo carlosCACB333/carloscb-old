@@ -13,7 +13,7 @@ interface Props {
 }
 
 export const ProjectCard = ({ project }: Props) => {
-  const { t } = useTranslation('home');
+  const { t } = useTranslation('common');
   return (
     <Card
       sx={{
@@ -70,7 +70,7 @@ export const ProjectCard = ({ project }: Props) => {
           }}
         >
           <Button size="small" variant="text" endIcon={<ArrowRight />}>
-            {t('projects.btn-show')}
+            {t('btn.show-more')}
           </Button>
         </Link>
       </CardActions>

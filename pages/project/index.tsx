@@ -34,7 +34,7 @@ const ProjectsPage = ({ projects }: Props) => {
 export default ProjectsPage;
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const i18n = await serverSideTranslations(locale || 'es');
+  const i18n = await serverSideTranslations(locale || 'es', ['common', 'project']);
   const { data } = await client.query({
     query: GetProjectsDocument,
   });

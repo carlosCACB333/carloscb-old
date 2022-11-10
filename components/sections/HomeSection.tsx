@@ -9,10 +9,10 @@ import { getTheme } from '../../theme';
 import { useTranslation } from 'react-i18next';
 
 export const HomeSection = () => {
+  const { t } = useTranslation('home');
   const { mode } = useContext(ThemeContext);
   const { author } = useContext(AuthorContext);
   const isMd = useMediaQuery(getTheme('dark').breakpoints.up('md'));
-  const { t } = useTranslation('home');
   return (
     <SectionLayout sx={{ position: 'relative', overflow: 'hidden' }} id="home-section">
       <Box

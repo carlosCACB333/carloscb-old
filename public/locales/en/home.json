@@ -24,9 +24,7 @@
 
   "projects": {
     "title": "My projects",
-    "description": "These are some of the projects I have worked on",
-    "btn-show": "Show more",
-    "btn-show-All": "Show all projects"
+    "description": "These are some of the projects I have worked on"
   },
 
   "contact": {

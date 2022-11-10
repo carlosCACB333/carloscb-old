@@ -1,0 +1,17 @@
+{
+  "nav": {
+    "projects": "Proyectos",
+    "blog": "Blog"
+  },
+  "side": {
+    "home": "Inicio",
+    "about": "¿Quién soy?",
+    "skills": "Mis habilidades",
+    "projects": "Mis proyectos",
+    "contact": "Contáctame"
+  },
+  "btn": {
+    "show-all": "Mostrar todo",
+    "show-more": "Mostrar más"
+  }
+}

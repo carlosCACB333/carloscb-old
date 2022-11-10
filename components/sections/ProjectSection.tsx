@@ -12,9 +12,15 @@ interface Props {
   projects: Project[];
 }
 export const ProjectSection = ({ projects }: Props) => {
-  const { t } = useTranslation('home');
+  const { t, ...rest } = useTranslation(['home', 'common']);
+
   return (
-    <SectionLayout id="projects-section" widh="xl" title={t('title')} detail={t('description')}>
+    <SectionLayout
+      id="projects-section"
+      widh="xl"
+      title={t('home:projects.title')}
+      detail={t('home:projects.description')}
+    >
       <Grid container spacing={2}>
         {projects.map((project) => (
           <Grid key={project.id} xs={12} md={6}>
@@ -36,7 +42,7 @@ export const ProjectSection = ({ projects }: Props) => {
           color="primary"
           endIcon={<ArrowRightAltOutlined />}
         >
-          {t('projects.btn-show-All')}
+          {t('common:btn.show-all')}
         </Button>
       </Link>
     </SectionLayout>

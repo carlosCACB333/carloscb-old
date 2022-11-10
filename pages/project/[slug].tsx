@@ -115,7 +115,7 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params, preview, locale }) => {
-  const i18n = await serverSideTranslations(locale || 'es');
+  const i18n = await serverSideTranslations(locale || 'es', ['common']);
   const slug = params?.slug as string;
   const { data } = await client.query({
     query: GetProjectDocument,

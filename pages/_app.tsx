@@ -33,16 +33,21 @@ const NextApp = (props: MyAppProps) => {
 
   return (
     <CacheProvider value={emotionCache}>
-      <Script async src="https://www.googletagmanager.com/gtag/js?id=G-G4RHYQYQ0F"></Script>
+      <Script async strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-YK8283Z1P5"></Script>
       <Script
-        id="nose__"
+        async
+        id="google-analytics"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
-          __html: `window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-G4RHYQYQ0F');`,
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-YK8283Z1P5');
+          `,
         }}
       />
+
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>

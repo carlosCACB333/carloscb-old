@@ -26,14 +26,14 @@ interface Props {}
 export const SideMenu = ({}: Props) => {
   const router = useRouter();
   const { author } = useContext(AuthorContext);
-  const { t } = useTranslation(['sideMenu']);
+  const { t } = useTranslation('common');
 
   const routes = [
-    { name: t('home'), Icon: Home, href: '/' },
-    { name: t('about'), Icon: Favorite, href: '/#about-section' },
-    { name: t('skills'), Icon: Code, href: '/#skills-section' },
-    { name: t('projects'), Icon: FolderSpecial, href: '/#projects-section' },
-    { name: t('contact'), Icon: ContactPhone, href: '/#contact-section' },
+    { name: t('side.home'), Icon: Home, href: '/' },
+    { name: t('side.about'), Icon: Favorite, href: '/#about-section' },
+    { name: t('side.skills'), Icon: Code, href: '/#skills-section' },
+    { name: t('side.projects'), Icon: FolderSpecial, href: '/#projects-section' },
+    { name: t('side.contact'), Icon: ContactPhone, href: '/#contact-section' },
   ];
 
   return (
