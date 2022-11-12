@@ -14,6 +14,9 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { appWithTranslation } from 'next-i18next';
 import Script from 'next/script';
+import aos from 'aos';
+import 'aos/dist/aos.css';
+
 const clientSideEmotionCache = createEmotionCache();
 
 interface MyAppProps extends AppProps {
@@ -29,6 +32,12 @@ const NextApp = (props: MyAppProps) => {
     if (jssStyles) {
       jssStyles?.parentElement?.removeChild(jssStyles);
     }
+  }, []);
+
+  React.useEffect(() => {
+    aos.init({
+      duration: 1000,
+    });
   }, []);
 
   return (

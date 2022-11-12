@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 export const Footer = () => {
   const { author } = useContext(AuthorContext);
-  const { t } = useTranslation('home');
+  const { t } = useTranslation('common');
   return (
     <Box
       sx={{

@@ -1,5 +1,37 @@
+fragment ProjectFields on Project {
+  id
+  slug
+  title
+  abstract
+  gitHub
+  webSide
+  pictures {
+    id
+    url
+  }
+  skills {
+    id
+    name
+    icon
+  }
+}
+
 query getProjectsSlug {
   projects {
     slug
+  }
+}
+
+# Paginate the projects
+query getProjects($first: Int!, $skip: Int!) {
+  projects(orderBy: publishedAt_DESC, first: $first, skip: $skip) {
+    ...ProjectFields
+  }
+}
+
+query getProject($slug: String!, $stage: Stage!) {
+  project(where: { slug: $slug }, stage: $stage) {
+    ...ProjectFields
+    detail
   }
 }

@@ -42,11 +42,12 @@ export const ContactSection = () => {
   return (
     <SectionLayout
       id="contact-section"
+      component="section"
       title={t('contact.title')}
       detail={t('contact.description')}
+      maxWidth="sm"
       sx={{
-        maxWidth: '600px',
-        marginX: 'auto',
+        marginBottom: '16rem',
       }}
     >
       <Card
@@ -60,6 +61,7 @@ export const ContactSection = () => {
           <Grid container spacing={2}>
             <Grid item xs={12} md={12}>
               <TextField
+                data-aos="fade-up"
                 fullWidth
                 label={t('contact.form.name')}
                 {...register('name')}
@@ -69,6 +71,7 @@ export const ContactSection = () => {
             </Grid>
             <Grid item xs={12} md={12}>
               <TextField
+                data-aos="fade-up"
                 fullWidth
                 label={t('contact.form.phone')}
                 {...register('phone')}
@@ -78,6 +81,7 @@ export const ContactSection = () => {
             </Grid>
             <Grid item xs={12} md={12}>
               <TextField
+                data-aos="fade-up"
                 fullWidth
                 label={t('contact.form.email')}
                 type="email"
@@ -88,6 +92,7 @@ export const ContactSection = () => {
             </Grid>
             <Grid item xs={12} md={12}>
               <TextField
+                data-aos="fade-up"
                 fullWidth
                 label={t('contact.form.affair')}
                 {...register('affair')}
@@ -97,6 +102,7 @@ export const ContactSection = () => {
             </Grid>
             <Grid item xs={12}>
               <TextField
+                data-aos="fade-up"
                 fullWidth
                 label={t('contact.form.message')}
                 {...register('message')}
@@ -107,7 +113,7 @@ export const ContactSection = () => {
               />
             </Grid>
             <Grid item xs={12}>
-              <Button fullWidth type="submit" disabled={!isValid || loading}>
+              <Button fullWidth type="submit" disabled={!isValid || loading} data-aos="fade-up">
                 {t('contact.form.btn-send')}
               </Button>
             </Grid>

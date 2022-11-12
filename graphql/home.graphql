@@ -35,16 +35,3 @@ query getHomeData {
     ...ProjectFields
   }
 }
-
-query getProjects {
-  projects(orderBy: publishedAt_DESC) {
-    ...ProjectFields
-  }
-}
-
-query getProject($slug: String!, $stage: Stage!) {
-  project(where: { slug: $slug }, stage: $stage) {
-    ...ProjectFields
-    detail
-  }
-}

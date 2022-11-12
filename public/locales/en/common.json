@@ -10,6 +10,11 @@
     "projects": "My Projects",
     "contact": "Contact Me"
   },
+  "footer": {
+    "made": "Made with",
+    "by": "by",
+    "rights": "All rights reserved"
+  },
 
   "btn": {
     "show-all": "Show All",

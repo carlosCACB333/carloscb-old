@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -24,17 +24,48 @@ import { Icon } from '../icons';
 interface Props {}
 
 export const SideMenu = ({}: Props) => {
-  const router = useRouter();
-  const { author } = useContext(AuthorContext);
   const { t } = useTranslation('common');
-
   const routes = [
-    { name: t('side.home'), Icon: Home, href: '/' },
-    { name: t('side.about'), Icon: Favorite, href: '/#about-section' },
-    { name: t('side.skills'), Icon: Code, href: '/#skills-section' },
-    { name: t('side.projects'), Icon: FolderSpecial, href: '/#projects-section' },
-    { name: t('side.contact'), Icon: ContactPhone, href: '/#contact-section' },
+    { name: t('side.home'), Icon: Home, id: '' },
+    { name: t('side.about'), Icon: Favorite, id: 'about-section' },
+    { name: t('side.skills'), Icon: Code, id: 'skills-section' },
+    { name: t('side.projects'), Icon: FolderSpecial, id: 'projects-section' },
+    { name: t('side.contact'), Icon: ContactPhone, id: 'contact-section' },
   ];
+  const [active, setActive] = useState(routes[0].id);
+  const { asPath } = useRouter();
+  const { author } = useContext(AuthorContext);
+
+  useEffect(() => {
+    const sections = document.querySelectorAll('section');
+    const onScroll = (): void => {
+      const scrollY = window.scrollY;
+      sections.forEach((section) => {
+        const sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop - 200;
+        const sectionId = section.getAttribute('id') || '';
+
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+          setActive(sectionId);
+        }
+      });
+    };
+
+    window.addEventListener('scroll', onScroll);
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    const id = asPath.replace('/', '').replace('#', '');
+    setActive(id);
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [asPath]);
 
   return (
     <Box
@@ -56,7 +87,13 @@ export const SideMenu = ({}: Props) => {
             justifyContent: 'center',
           }}
         >
-          <Icon name="logo" color="primary" sx={{ fontSize: '4em' }} />
+          <Icon
+            name="logo"
+            color="primary"
+            sx={{
+              fontSize: '4em',
+            }}
+          />
         </NextLink>
         <br />
         <br />
@@ -68,11 +105,11 @@ export const SideMenu = ({}: Props) => {
                   py: 1,
                   display: 'flex',
                   alignItems: 'center',
-                  fontWeight: router.asPath === route.href ? 'bold' : 'normal',
-                  color: router.asPath === route.href ? 'primary.main' : 'text.secondary',
+                  fontWeight: active === route.id ? 'bold' : 'normal',
+                  color: active == route.id ? 'primary.main' : 'text.secondary',
                 }}
                 component={NextLink}
-                href={route.href || ''}
+                href={route.id ? `/#${route.id}` : '/'}
               >
                 <ListItemIcon>{<route.Icon />}</ListItemIcon>
                 {route.name.toUpperCase()}

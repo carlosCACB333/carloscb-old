@@ -1,5 +1,5 @@
 import { Avatar, Box, Button, Typography, useMediaQuery } from '@mui/material';
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import React, { useContext } from 'react';
 import { SectionLayout } from '../Layout/';
 import circle from '../../assets/circle.png';
@@ -8,25 +8,28 @@ import { Icon } from '../icons';
 import { getTheme } from '../../theme';
 import { useTranslation } from 'react-i18next';
 
+const iconSize = ['5rem', '6em', '7rem', '8rem'];
+const px = ['2.5rem', '3em', '3.5rem', '4rem'];
+
 export const HomeSection = () => {
   const { t } = useTranslation('home');
   const { mode } = useContext(ThemeContext);
   const { author } = useContext(AuthorContext);
-  const isMd = useMediaQuery(getTheme('dark').breakpoints.up('md'));
+  const isNotMd = useMediaQuery(getTheme('dark').breakpoints.up('md'));
   return (
-    <SectionLayout sx={{ position: 'relative', overflow: 'hidden' }} id="home-section">
+    <SectionLayout sx={{ position: 'relative', overflow: 'hidden', paddingTop: 0 }} component="section" id="">
       <Box
         sx={{
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          position: isMd ? 'absolute' : 'initial',
+          position: isNotMd ? 'absolute' : 'initial',
           top: 0,
           left: 0,
           right: 0,
           bottom: 0,
           justifyContent: 'center',
-          marginY: '6rem',
+          marginTop: isNotMd ? 0 : '4rem',
         }}
       >
         <Avatar
@@ -35,45 +38,44 @@ export const HomeSection = () => {
           alt="Carlos Castillo Blas"
           sx={{ width: '10rem', height: '10rem' }}
           className="gradient"
+          data-aos="zoom-in"
         />
         <Box paddingY={4}>
-          <Typography variant="h1" fontSize="3.5rem">
+          <Typography variant="h1" fontSize="3.5rem" data-aos="zoom-in">
             {author.firstName + ' ' + author.lastName}
           </Typography>
-          <Typography variant="h4" fontWeight="normal" textAlign="center">
+          <Typography variant="h4" fontWeight="normal" textAlign="center" data-aos="zoom-in">
             {author.detail}
           </Typography>
         </Box>
         <Box display="flex" gap={2}>
-          <Button size="large" variant="outlined" href={author.cv?.url || '/'} target="_blank">
+          <Button size="large" variant="outlined" href={author.cv?.url || '/'} target="_blank" data-aos="zoom-in">
             {t('home.btn-cv')}
           </Button>
-          <Button size="large" href="#about-section">
+          <Button size="large" href="#about-section" data-aos="zoom-in">
             {t('home.btn-about')}
           </Button>
         </Box>
       </Box>
 
-      <Box>
+      <Box paddingX={px}>
         <Box
           className="rotate-container"
           sx={{
             position: 'relative',
             maxWidth: 700,
-            width: 'calc(100% - 8rem)',
             margin: '4rem auto',
+            marginTop: isNotMd ? '4rem' : '8rem',
           }}
         >
           <Image
             priority
             src={circle}
             alt="circle"
-            layout="responsive"
-            style={
-              {
-                // opacity: 0.8,
-              }
-            }
+            style={{
+              width: '100%',
+              height: '100%',
+            }}
           />
 
           <Box
@@ -132,15 +134,14 @@ export const HomeSection = () => {
     </SectionLayout>
   );
 };
-
 const IaItem = ({ isDark }: { isDark: boolean }) => {
   return (
     <Box position="relative">
       <Avatar
         className={isDark ? 'gradient' : 'gradient-light'}
         sx={{
-          width: '8rem',
-          height: '8rem',
+          width: iconSize,
+          height: iconSize,
         }}
       >
         <Icon
@@ -191,8 +192,8 @@ const DbItem = ({ isDark }: { isDark: boolean }) => {
       <Avatar
         className={isDark ? 'gradient' : 'gradient-light'}
         sx={{
-          width: '8rem',
-          height: '8rem',
+          width: iconSize,
+          height: iconSize,
         }}
       >
         <Icon
@@ -240,8 +241,8 @@ const BacktItem = ({ isDark }: { isDark: boolean }) => {
       <Avatar
         className={isDark ? 'gradient' : 'gradient-light'}
         sx={{
-          width: '8rem',
-          height: '8rem',
+          width: iconSize,
+          height: iconSize,
         }}
       >
         <Icon
@@ -288,8 +289,8 @@ const FrontItem = ({ isDark }: { isDark: boolean }) => {
       <Avatar
         className={isDark ? 'gradient' : 'gradient-light'}
         sx={{
-          width: '8rem',
-          height: '8rem',
+          width: iconSize,
+          height: iconSize,
         }}
       >
         <Icon

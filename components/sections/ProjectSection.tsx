@@ -12,12 +12,13 @@ interface Props {
   projects: Project[];
 }
 export const ProjectSection = ({ projects }: Props) => {
-  const { t, ...rest } = useTranslation(['home', 'common']);
+  const { t } = useTranslation(['home', 'common']);
 
   return (
     <SectionLayout
       id="projects-section"
-      widh="xl"
+      component="section"
+      maxWidth="xl"
       title={t('home:projects.title')}
       detail={t('home:projects.description')}
     >

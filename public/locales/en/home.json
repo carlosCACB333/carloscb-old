@@ -38,11 +38,5 @@
       "message": "Message",
       "btn-send": "Send message"
     }
-  },
-
-  "footer": {
-    "made": "Made with",
-    "by": "by",
-    "rights": "All rights reserved"
   }
 }

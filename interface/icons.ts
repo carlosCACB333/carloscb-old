@@ -38,4 +38,13 @@ export type IconName =
   | 'github'
   | 'other'
   | 'hup'
+  | 'css'
+  | 'html'
+  | 'sass'
+  | 'java'
+  | 'redux'
+  | 'nest'
+  | 'django'
+  | 'graphql'
+  | 'git'
   | 'logo';

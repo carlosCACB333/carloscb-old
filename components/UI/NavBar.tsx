@@ -15,13 +15,13 @@ interface Props {
 }
 export const NavBar = ({ handleDrawerToggle, drawerWidth }: Props) => {
   const { toggleMode } = useContext(ThemeContext);
-  const { locale, asPath, replace } = useRouter();
+  const { locale, asPath, replace, reload } = useRouter();
   const { t } = useTranslation('common');
 
   const onChangeLanguage = () => {
     const newLocale = locale === 'en' ? 'es' : 'en';
     Cookies.set('NEXT_LOCALE', newLocale, { path: '/' });
-    replace(asPath, asPath, { locale: newLocale, scroll: false });
+    replace(asPath, undefined, { locale: newLocale, scroll: false });
   };
 
   return (
@@ -30,10 +30,11 @@ export const NavBar = ({ handleDrawerToggle, drawerWidth }: Props) => {
         width: { sm: `calc(100% - ${drawerWidth}px)` },
         ml: { sm: `${drawerWidth}px` },
         zIndex: 800,
+        backdropFilter: 'blur(5px)',
       }}
     >
       <Toolbar>
-        <IconButton onClick={handleDrawerToggle} sx={{ mr: 2, display: { sm: 'none' } }}>
+        <IconButton onClick={handleDrawerToggle}>
           <MenuIcon />
         </IconButton>
         <Link href="/project">

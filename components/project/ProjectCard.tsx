@@ -23,6 +23,7 @@ export const ProjectCard = ({ project }: Props) => {
           transition: 'all 0.3s ease-in-out',
         },
       }}
+      data-aos="zoom-in"
     >
       <CardContent>
         <Box sx={{ position: 'relative' }}>

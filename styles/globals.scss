@@ -1,7 +1,14 @@
+body {
+  overflow-x: hidden;
+}
+
 .scroll,
+.MuiDrawer-paper,
+pre > div,
 .remark-highlight > pre {
+  overflow: auto;
   &::-webkit-scrollbar {
-    -webkit-appearance: none;
+    appearance: none;
     &:vertical {
       width: 6px;
     }
@@ -18,16 +25,12 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #bdbdbd;
+    background-color: #babfca;
     border-radius: 20px;
   }
   &::-webkit-scrollbar-track {
     background-color: transparent;
   }
-}
-
-.remark-highlight > pre {
-  background-color: #111936;
 }
 
 .gradient {
@@ -42,7 +45,7 @@ a {
   text-decoration: none;
 }
 
-// totate
+// rotate
 
 .rotate-container {
   animation: antiRotate 30s linear infinite;

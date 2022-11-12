@@ -1,3 +1,4 @@
+import { Box } from '@mui/material';
 import Image, { ImageLoaderProps, ImageProps } from 'next/image';
 import { useCallback } from 'react';
 
@@ -28,7 +29,11 @@ export const HygraphImg = ({ fit = 'clip', ratio, alt, ...props }: Props) => {
     [ratio, fit]
   );
 
-  return <Image fill alt={alt} {...props} loader={imageLoader} />;
+  return (
+    <Box sx={{ position: 'relative', height: '100%', width: '100%' }}>
+      <Image fill alt={alt} {...props} loader={imageLoader} />
+    </Box>
+  );
 };
 
 const getHeight = (width: number, AspectRatio: keyof typeof RATIOS) => {

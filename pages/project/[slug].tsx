@@ -4,21 +4,22 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React from 'react';
 import { Icon } from '../../components/icons';
 import { SectionLayout } from '../../components/Layout';
 import { Carrousel } from '../../components/UI';
 import { GetProjectsSlugDocument, GetProjectDocument, Project, Stage } from '../../graphql/generated/graphql';
 import { client } from '../../utils/apolloClient';
-import { mdToHtml } from '../../utils/mdToHtml';
+import { Md } from '../../components/common';
+
 interface Props {
   project: Project;
 }
 const ProjectDetail = ({ project }: Props) => {
   const { asPath, isPreview } = useRouter();
+
   return (
     <SectionLayout
-      widh="xl"
+      maxWidth="xl"
       title={project.title}
       sx={{
         paddingY: 0,
@@ -52,6 +53,7 @@ const ProjectDetail = ({ project }: Props) => {
           maxWidth: 600,
           margin: 'auto',
         }}
+        data-aos="fade-up"
       >
         <CardContent>
           <Typography variant="h5" component="h2">
@@ -98,8 +100,9 @@ const ProjectDetail = ({ project }: Props) => {
           ))}
         </Box>
       </Box>
+
       <Container>
-        <article dangerouslySetInnerHTML={{ __html: project.detail }} />
+        <Md>{project.detail}</Md>
       </Container>
     </SectionLayout>
   );
@@ -127,9 +130,9 @@ export const getStaticProps: GetStaticProps = async ({ params, preview, locale }
 
   return {
     props: {
-      project: { ...project, detail: await mdToHtml(project?.detail || '') },
+      project,
       ...i18n,
     },
-    revalidate: 60 * 60,
+    revalidate: 3600,
   };
 };

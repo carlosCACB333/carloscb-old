@@ -39,11 +39,5 @@
       "message": "Mensaje",
       "btn-send": "Enviar mensaje"
     }
-  },
-
-  "footer": {
-    "made": "Hecho con",
-    "by": "por",
-    "rights": "Todos los derechos reservados"
   }
 }

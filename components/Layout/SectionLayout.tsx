@@ -1,32 +1,27 @@
-import { Box, Container, SxProps, Typography } from '@mui/material';
-import React, { FC, PropsWithChildren } from 'react';
+import { Container, Typography } from '@mui/material';
+import { ContainerProps } from '@mui/system';
+import React, { FC } from 'react';
 
-interface Props extends PropsWithChildren {
-  bg?: string;
-  sx?: SxProps;
-  id?: string;
+interface Props extends ContainerProps {
   title?: string;
   detail?: string;
-  widh?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | false;
+  component?: React.ElementType;
 }
-export const SectionLayout: FC<Props> = ({ children, bg, sx, id, title, detail, widh = 'lg' }) => {
+export const SectionLayout: FC<Props> = ({ children, title, detail, sx, ...props }) => {
   return (
-    <Box bgcolor={bg ?? 'transparent'} sx={{ marginBottom: '4rem', ...sx }} id={id}>
-      <Container>
-        {title && (
-          <Typography textAlign="center" variant="h1">
-            {title}
-          </Typography>
-        )}
+    <Container sx={{ paddingY: '4rem', ...sx }} {...props}>
+      {title && (
+        <Typography textAlign="center" variant="h1" data-aos="fade-up">
+          {title}
+        </Typography>
+      )}
 
-        {detail && (
-          <Typography textAlign="center" variant="body1" sx={{ mb: 4 }}>
-            {detail}
-          </Typography>
-        )}
-      </Container>
-
-      {widh ? <Container maxWidth={widh}>{children}</Container> : <Box>children</Box>}
-    </Box>
+      {detail && (
+        <Typography textAlign="center" variant="body1" sx={{ mb: 4 }} data-aos="fade-up">
+          {detail}
+        </Typography>
+      )}
+      {children}
+    </Container>
   );
 };

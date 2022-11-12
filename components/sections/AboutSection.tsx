@@ -6,6 +6,7 @@ import { SectionLayout } from '../Layout';
 import Grid from '@mui/material/Unstable_Grid2';
 import { getTheme } from '../../theme';
 import { useTranslation } from 'react-i18next';
+import { Md } from '../common';
 
 export const AboutSection = () => {
   const { author } = useContext(AuthorContext);
@@ -13,8 +14,8 @@ export const AboutSection = () => {
   const { t } = useTranslation('home');
 
   return (
-    <SectionLayout id="about-section">
-      <Grid container height="100%" spacing={4}>
+    <SectionLayout id="about-section" sx={{ paddingRight: 0 }} component="section">
+      <Grid container>
         {isMd && (
           <Grid xs={12} md={6}>
             <Image
@@ -24,18 +25,21 @@ export const AboutSection = () => {
               height={500}
               width={500}
               style={{ borderRadius: 16 }}
+              data-aos="zoom-in"
             />
           </Grid>
         )}
 
         <Grid xs={12} md={6}>
-          <Typography variant="h1" marginY={2}>
+          <Typography variant="h1" marginY={2} data-aos="fade-up">
             {t('about.title')}
           </Typography>
-          <article dangerouslySetInnerHTML={{ __html: author.bio! }} />
+          <div data-aos="fade-up">
+            <Md>{author.bio || ''}</Md>
+          </div>
 
-          <TableContainer className="scroll" sx={{ marginTop: 2 }}>
-            <Table sx={{ minWidth: 400 }} aria-label="Tabla simple" size="small">
+          <TableContainer sx={{ marginTop: 2 }} className="scroll">
+            <Table size="small" data-aos="fade-up">
               <TableBody>
                 <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                   <TableCell sx={{ fontWeight: 'bold' }}>{t('about.user.name')}</TableCell>

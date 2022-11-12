@@ -3,16 +3,18 @@ import React, { FC, PropsWithChildren, useState } from 'react';
 import { Footer } from '../sections';
 import { NavBar, SideMenu } from '../UI';
 
-const drawerWidth = 280;
+let drawerWidth = 260;
 interface Props extends PropsWithChildren {}
 
 export const MainLayout: FC<Props> = ({ children }) => {
-  const [mobileOpen, setMobileOpen] = useState(false);
   const isNotSm = useMediaQuery((theme: Theme) => theme.breakpoints.up('sm'));
+  const [open, setOpen] = useState(isNotSm);
 
   const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
+    setOpen(!open);
+    drawerWidth = open ? 0 : 280;
   };
+
   return (
     <>
       <Box sx={{ display: 'flex' }}>
@@ -20,11 +22,8 @@ export const MainLayout: FC<Props> = ({ children }) => {
         <Box component="nav" sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}>
           <Drawer
             variant={isNotSm ? 'permanent' : 'temporary'}
-            open={mobileOpen}
+            open={open}
             onClose={handleDrawerToggle}
-            ModalProps={{
-              keepMounted: true,
-            }}
             sx={{
               '& .MuiDrawer-paper': { width: drawerWidth, border: 'none' },
             }}
