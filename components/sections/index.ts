@@ -3,4 +3,5 @@ export * from './AboutSection';
 export * from './SkillSection';
 export * from './ContactSection';
 export * from './ProjectSection';
+export * from './CertificationSection';
 export * from './Footer';

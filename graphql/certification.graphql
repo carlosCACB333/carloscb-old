@@ -1,0 +1,9 @@
+query getCertifications($first: Int!, $skip: Int!) {
+  certifications(orderBy: priority_DESC, first: $first, skip: $skip) {
+    id
+    name
+    picture {
+      url
+    }
+  }
+}

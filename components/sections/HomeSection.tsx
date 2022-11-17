@@ -30,6 +30,7 @@ export const HomeSection = () => {
           bottom: 0,
           justifyContent: 'center',
           marginTop: isNotMd ? 0 : '4rem',
+          zIndex: 100,
         }}
       >
         <Avatar
@@ -39,6 +40,11 @@ export const HomeSection = () => {
           sx={{ width: '10rem', height: '10rem' }}
           className="gradient"
           data-aos="zoom-in"
+          imgProps={{
+            sx: {
+              objectPosition: 'top',
+            },
+          }}
         />
         <Box paddingY={4}>
           <Typography variant="h1" fontSize="3.5rem" data-aos="zoom-in">

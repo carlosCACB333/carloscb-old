@@ -1,4 +1,4 @@
-import { AppBar, Box, IconButton, Toolbar, Typography, Button } from '@mui/material';
+import { AppBar, Box, IconButton, Toolbar, Button } from '@mui/material';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import React, { useContext } from 'react';
 import { ThemeContext } from '../../context';
@@ -40,9 +40,12 @@ export const NavBar = ({ handleDrawerToggle, drawerWidth }: Props) => {
         <Link href="/project">
           <Button variant="text">{t('nav.projects')}</Button>
         </Link>
-        <Link href="/blog">
-          <Button variant="text">{t('nav.blog')}</Button>
+        <Link href="/certification">
+          <Button variant="text">{t('nav.certifications')}</Button>
         </Link>
+        {/* <Link href="/blog">
+          <Button variant="text">{t('nav.blog')}</Button>
+        </Link> */}
         <Box flex={1}></Box>
         <IconButton onClick={toggleMode} sx={{ color: 'text.primary' }}>
           <WbSunnyIcon />

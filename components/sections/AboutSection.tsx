@@ -1,5 +1,5 @@
 import { Table, TableBody, TableCell, TableContainer, TableRow, Typography, useMediaQuery } from '@mui/material';
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import React, { useContext } from 'react';
 import { AuthorContext } from '../../context';
 import { SectionLayout } from '../Layout';
@@ -7,6 +7,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { getTheme } from '../../theme';
 import { useTranslation } from 'react-i18next';
 import { Md } from '../common';
+import { HygraphImg } from '../UI/HygraphImg';
 
 export const AboutSection = () => {
   const { author } = useContext(AuthorContext);
@@ -15,17 +16,26 @@ export const AboutSection = () => {
 
   return (
     <SectionLayout id="about-section" sx={{ paddingRight: 0 }} component="section">
-      <Grid container>
+      <Grid container spacing={2}>
         {isMd && (
-          <Grid xs={12} md={6}>
-            <Image
+          <Grid
+            xs={12}
+            md={6}
+            sx={{
+              aspectRatio: '1/1',
+            }}
+          >
+            <HygraphImg
+              className="gradient"
               src={author.photos.at(-1)?.url || ''}
-              alt="Carlos Castillo Blas"
-              layout="responsive"
-              height={500}
-              width={500}
-              style={{ borderRadius: 16 }}
-              data-aos="zoom-in"
+              fit="max"
+              alt={author.firstName + ' ' + author.lastName}
+              aspRatio={1}
+              style={{
+                borderRadius: 15,
+                objectFit: 'cover',
+                objectPosition: 'top',
+              }}
             />
           </Grid>
         )}

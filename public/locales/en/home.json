@@ -28,7 +28,7 @@
   },
 
   "contact": {
-    "title": "Contact me",
+    "title": "We work together?",
     "description": "If you have any questions or want to contact me, send me a message",
     "form": {
       "name": "Your name",
@@ -38,5 +38,9 @@
       "message": "Message",
       "btn-send": "Send message"
     }
+  },
+  "certifications": {
+    "title": "My certifications",
+    "description": "These are some of the certifications I have obtained"
   }
 }

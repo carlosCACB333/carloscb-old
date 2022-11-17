@@ -44,6 +44,7 @@ export const ProjectCard = ({ project }: Props) => {
           </Typography>
         </Box>
       </CardContent>
+
       <CardActions
         sx={{
           justifyContent: 'end',

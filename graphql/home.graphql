@@ -31,7 +31,15 @@ query getHomeData {
       }
     }
   }
-  projects(first: 4, orderBy: publishedAt_DESC) {
+  projects(orderBy: priority_DESC, first: 4) {
     ...ProjectFields
+  }
+
+  certifications(orderBy: priority_DESC, first: 6) {
+    id
+    name
+    picture {
+      url
+    }
   }
 }

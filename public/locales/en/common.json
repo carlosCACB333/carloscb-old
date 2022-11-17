@@ -1,6 +1,7 @@
 {
   "nav": {
     "projects": "projects",
+    "certifications": "certifications",
     "blog": "Blog"
   },
   "side": {
@@ -8,6 +9,7 @@
     "about": "Who I am?",
     "skills": "My Skills",
     "projects": "My Projects",
+    "certifications": "My Certifications",
     "contact": "Contact Me"
   },
   "footer": {

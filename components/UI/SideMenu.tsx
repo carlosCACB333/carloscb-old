@@ -4,6 +4,8 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import { IconButton, Link } from '@mui/material';
+import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
+
 import {
   Code,
   ContactPhone,
@@ -30,6 +32,7 @@ export const SideMenu = ({}: Props) => {
     { name: t('side.about'), Icon: Favorite, id: 'about-section' },
     { name: t('side.skills'), Icon: Code, id: 'skills-section' },
     { name: t('side.projects'), Icon: FolderSpecial, id: 'projects-section' },
+    { name: t('side.certifications'), Icon: VerifiedUserIcon, id: 'certifications-section' },
     { name: t('side.contact'), Icon: ContactPhone, id: 'contact-section' },
   ];
   const [active, setActive] = useState(routes[0].id);

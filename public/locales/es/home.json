@@ -29,7 +29,7 @@
   },
 
   "contact": {
-    "title": "Contáctame",
+    "title": "¿Trabajamos juntos?",
     "description": "Si tienes alguna duda o quieres contactarme,envíame un mensaje",
     "form": {
       "name": "Tu nombre",
@@ -39,5 +39,9 @@
       "message": "Mensaje",
       "btn-send": "Enviar mensaje"
     }
+  },
+  "certifications": {
+    "title": "Mis certificaciones",
+    "description": "Estas son algunas de las certificaciones que he obtenido"
   }
 }

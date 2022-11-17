@@ -19,7 +19,7 @@ export const themePalette = (mode: IMode): PaletteOptions => {
     },
     secondary: {
       light: isDark ? '#d1c4e9' : '#ede7f6',
-      main: isDark ? '#7582eb' : '#673ab7',
+      main: isDark ? '#7582eb' : '#323c8f',
       dark: isDark ? '#651fff' : '#5e35b1',
       200: isDark ? '#b39ddb' : '#b39ddb',
       800: isDark ? '#6200ea' : '#4527a0',
