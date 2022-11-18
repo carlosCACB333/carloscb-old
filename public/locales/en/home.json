@@ -14,7 +14,8 @@
       "phone": "Phone",
       "profession": "Profession",
       "cycle": "Cycle",
-      "university": "University"
+      "university": "University",
+      "address": "Address"
     }
   },
   "skills": {

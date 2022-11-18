@@ -52,14 +52,14 @@ export const ProjectCard = ({ project }: Props) => {
       >
         {project.gitHub && (
           <Link href={project.gitHub} target="_blank">
-            <IconButton>
+            <IconButton aria-label="github">
               <GitHub />
             </IconButton>
           </Link>
         )}
         {project.webSide && (
           <Link href={project.webSide} target="_blank">
-            <IconButton>
+            <IconButton aria-label="webSide">
               <LaptopMacIcon />
             </IconButton>
           </Link>
@@ -71,7 +71,7 @@ export const ProjectCard = ({ project }: Props) => {
             textDecoration: 'none',
           }}
         >
-          <Button size="small" variant="text" endIcon={<ArrowRight />}>
+          <Button size="small" variant="text" endIcon={<ArrowRight />} aria-label="read more">
             {t('btn.show-more')}
           </Button>
         </Link>

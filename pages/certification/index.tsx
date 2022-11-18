@@ -1,7 +1,6 @@
 import { GetStaticProps } from 'next';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
 import React, { useState } from 'react';
 import { CertificationCard } from '../../components/certification/CertificationCard';
 import { SectionLayout } from '../../components/Layout';
@@ -11,12 +10,13 @@ import { client } from '../../utils/apolloClient';
 import Grid from '@mui/material/Unstable_Grid2';
 import { useObserver } from '../../hooks/useObserver';
 import { useCallback } from 'react';
+import { Meta } from '../../components/common';
 
 interface Props {
   certifications: Certification[];
 }
 
-const FIRST = 12;
+const FIRST = 16;
 
 const CertificatePage = ({ certifications: c }: Props) => {
   const [certifications, setCertifications] = useState(c);
@@ -28,13 +28,11 @@ const CertificatePage = ({ certifications: c }: Props) => {
       query: GetCertificationsDocument,
       variables: { first: FIRST, skip: skipRef.current },
     });
-
     setCertifications((prev) => [...prev, ...(data.certifications as Certification[])]);
 
     if (data.certifications.length < FIRST) {
       return false;
     }
-
     skipRef.current += FIRST;
     return true;
   }, []);
@@ -43,14 +41,12 @@ const CertificatePage = ({ certifications: c }: Props) => {
 
   return (
     <SectionLayout maxWidth="xl" title={t('title')} detail={t('description')}>
-      <Head>
-        <title>{t('title')}</title>
-      </Head>
+      <Meta title={t('title')} description={t('description')} />
 
       <Grid container spacing={1}>
-        {certifications.map((certification) => (
+        {certifications.map((certification, idx) => (
           <Grid key={certification.id} xs={12} sm={6} md={4} lg={3} sx={{ aspectRatio: '5/4' }} data-aos="zoom-in">
-            <CertificationCard certification={certification} />
+            <CertificationCard certification={certification} idx={idx} />
           </Grid>
         ))}
       </Grid>

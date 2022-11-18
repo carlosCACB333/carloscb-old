@@ -18,11 +18,11 @@ export const themePalette = (mode: IMode): PaletteOptions => {
       800: isDark ? '#3a5af2' : '#0d47a1',
     },
     secondary: {
-      light: isDark ? '#d1c4e9' : '#ede7f6',
-      main: isDark ? '#7582eb' : '#323c8f',
-      dark: isDark ? '#651fff' : '#5e35b1',
-      200: isDark ? '#b39ddb' : '#b39ddb',
-      800: isDark ? '#6200ea' : '#4527a0',
+      light: isDark ? '#d1c4e9' : '#8c7ca7',
+      main: isDark ? '#6a72ad' : '#63537e',
+      dark: isDark ? '#5e5e9a' : '#4a3f5c',
+      200: isDark ? '#9c9be7' : '#b3a7c9',
+      800: isDark ? '#4527a0' : '#2e1a4d',
     },
     error: {
       light: '#ef9a9a',

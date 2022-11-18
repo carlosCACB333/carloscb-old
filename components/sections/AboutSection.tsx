@@ -1,21 +1,21 @@
-import { Table, TableBody, TableCell, TableContainer, TableRow, Typography, useMediaQuery } from '@mui/material';
-import Image from 'next/image';
-import React, { useContext } from 'react';
-import { AuthorContext } from '../../context';
+import { Typography, useMediaQuery } from '@mui/material';
+import React, { FC } from 'react';
 import { SectionLayout } from '../Layout';
 import Grid from '@mui/material/Unstable_Grid2';
 import { getTheme } from '../../theme';
 import { useTranslation } from 'react-i18next';
 import { Md } from '../common';
 import { HygraphImg } from '../UI/HygraphImg';
-
-export const AboutSection = () => {
-  const { author } = useContext(AuthorContext);
+import { Author } from '../../graphql/generated/graphql';
+interface Props {
+  author: Author;
+}
+export const AboutSection: FC<Props> = ({ author }) => {
   const isMd = useMediaQuery(getTheme('dark').breakpoints.up('md'));
   const { t } = useTranslation('home');
 
   return (
-    <SectionLayout id="about-section" sx={{ paddingRight: 0 }} component="section">
+    <SectionLayout id="about-section" component="section">
       <Grid container spacing={2}>
         {isMd && (
           <Grid
@@ -24,11 +24,11 @@ export const AboutSection = () => {
             sx={{
               aspectRatio: '1/1',
             }}
+            data-aos="fade-right"
           >
             <HygraphImg
               className="gradient"
               src={author.photos.at(-1)?.url || ''}
-              fit="max"
               alt={author.firstName + ' ' + author.lastName}
               aspRatio={1}
               style={{
@@ -36,6 +36,7 @@ export const AboutSection = () => {
                 objectFit: 'cover',
                 objectPosition: 'top',
               }}
+              sizes="(max-width: 900px) 20vw, 40vw"
             />
           </Grid>
         )}
@@ -47,41 +48,94 @@ export const AboutSection = () => {
           <div data-aos="fade-up">
             <Md>{author.bio || ''}</Md>
           </div>
+          <br />
+          <Grid container spacing={1} className="scroll">
+            <Grid xs={4}>
+              <Typography sx={{ margin: 0 }} variant="h4" marginY={2} data-aos="fade-up">
+                {t('about.user.name')}
+              </Typography>
+            </Grid>
+            <Grid xs={8}>
+              <Typography sx={{ margin: 0 }} variant="body1" marginY={2} data-aos="fade-up">
+                {author.firstName + ' ' + author.lastName}
+              </Typography>
+            </Grid>
 
-          <TableContainer sx={{ marginTop: 2 }} className="scroll">
-            <Table size="small" data-aos="fade-up">
-              <TableBody>
-                <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                  <TableCell sx={{ fontWeight: 'bold' }}>{t('about.user.name')}</TableCell>
-                  <TableCell>{author.firstName + ' ' + author.lastName}</TableCell>
-                </TableRow>
-                <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                  <TableCell sx={{ fontWeight: 'bold' }}>{t('about.user.email')}</TableCell>
-                  <TableCell>{author.email}</TableCell>
-                </TableRow>
-                <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                  <TableCell sx={{ fontWeight: 'bold' }}>{t('about.user.age')}</TableCell>
-                  <TableCell>{new Date().getFullYear() - new Date(author.birth).getFullYear()}</TableCell>
-                </TableRow>
-                <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                  <TableCell sx={{ fontWeight: 'bold' }}>{t('about.user.phone')}</TableCell>
-                  <TableCell>{author.phone}</TableCell>
-                </TableRow>
-                <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                  <TableCell sx={{ fontWeight: 'bold' }}>{t('about.user.profession')}</TableCell>
-                  <TableCell>{author.profession}</TableCell>
-                </TableRow>
-                <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                  <TableCell sx={{ fontWeight: 'bold' }}>{t('about.user.university')}</TableCell>
-                  <TableCell>{author.university}</TableCell>
-                </TableRow>
-                <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                  <TableCell sx={{ fontWeight: 'bold' }}>{t('about.user.cycle')}</TableCell>
-                  <TableCell>{author.cycle}</TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </TableContainer>
+            <Grid xs={4}>
+              <Typography sx={{ margin: 0 }} variant="h4" marginY={2} data-aos="fade-up">
+                {t('about.user.email')}
+              </Typography>
+            </Grid>
+            <Grid xs={8}>
+              <Typography sx={{ margin: 0 }} variant="body1" marginY={2} data-aos="fade-up">
+                {author.email}
+              </Typography>
+            </Grid>
+
+            <Grid xs={4}>
+              <Typography sx={{ margin: 0 }} variant="h4" marginY={2} data-aos="fade-up">
+                {t('about.user.age')}
+              </Typography>
+            </Grid>
+            <Grid xs={8}>
+              <Typography sx={{ margin: 0 }} variant="body1" marginY={2} data-aos="fade-up">
+                {new Date().getFullYear() - new Date(author.birth).getFullYear()}
+              </Typography>
+            </Grid>
+
+            <Grid xs={4}>
+              <Typography sx={{ margin: 0 }} variant="h4" marginY={2} data-aos="fade-up">
+                {t('about.user.phone')}
+              </Typography>
+            </Grid>
+            <Grid xs={8}>
+              <Typography sx={{ margin: 0 }} variant="body1" marginY={2} data-aos="fade-up">
+                {author.phone}
+              </Typography>
+            </Grid>
+            <Grid xs={4}>
+              <Typography sx={{ margin: 0 }} variant="h4" marginY={2} data-aos="fade-up">
+                {t('about.user.profession')}
+              </Typography>
+            </Grid>
+            <Grid xs={8}>
+              <Typography sx={{ margin: 0 }} variant="body1" marginY={2} data-aos="fade-up">
+                {author.profession}
+              </Typography>
+            </Grid>
+
+            <Grid xs={4}>
+              <Typography sx={{ margin: 0 }} variant="h4" marginY={2} data-aos="fade-up">
+                {t('about.user.university')}
+              </Typography>
+            </Grid>
+
+            <Grid xs={8}>
+              <Typography sx={{ margin: 0 }} variant="body1" marginY={2} data-aos="fade-up">
+                {author.university}
+              </Typography>
+            </Grid>
+            <Grid xs={4}>
+              <Typography sx={{ margin: 0 }} variant="h4" marginY={2} data-aos="fade-up">
+                {t('about.user.cycle')}
+              </Typography>
+            </Grid>
+            <Grid xs={8}>
+              <Typography sx={{ margin: 0 }} variant="body1" marginY={2} data-aos="fade-up">
+                {author.cycle}
+              </Typography>
+            </Grid>
+            <Grid xs={4}>
+              <Typography sx={{ margin: 0 }} variant="h4" marginY={2} data-aos="fade-up">
+                {t('about.user.address')}
+              </Typography>
+            </Grid>
+            <Grid xs={8}>
+              <Typography sx={{ margin: 0 }} variant="body1" marginY={2} data-aos="fade-up">
+                {author.address}
+              </Typography>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </SectionLayout>

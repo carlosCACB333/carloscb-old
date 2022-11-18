@@ -9,7 +9,7 @@ import { SectionLayout } from '../../components/Layout';
 import { Carrousel } from '../../components/UI';
 import { GetProjectsSlugDocument, GetProjectDocument, Project, Stage } from '../../graphql/generated/graphql';
 import { client } from '../../utils/apolloClient';
-import { Md } from '../../components/common';
+import { Md, Meta } from '../../components/common';
 
 interface Props {
   project: Project;
@@ -25,6 +25,8 @@ const ProjectDetail = ({ project }: Props) => {
         paddingY: 0,
       }}
     >
+      <Meta title={project.title} description={project.detail} />
+
       {isPreview && (
         <Alert
           severity="warning"
@@ -40,7 +42,7 @@ const ProjectDetail = ({ project }: Props) => {
           <AlertTitle>Modo de previsualización</AlertTitle>
           Solo puedes ver esto porque estás en modo de previsualización.{' '}
           <Link href={`/api/prev/exit?url=${asPath}`}>
-            <Button size="small" variant="text">
+            <Button size="small" variant="text" aria-label="exit preview">
               Desabilitar
             </Button>
           </Link>
@@ -80,14 +82,14 @@ const ProjectDetail = ({ project }: Props) => {
         <Box sx={{ display: 'flex', gap: 1 }}>
           {project.gitHub && (
             <Link href={project.gitHub} target="_blank">
-              <Button size="large" startIcon={<GitHub />}>
+              <Button size="large" startIcon={<GitHub />} arial-label="github">
                 Ver código
               </Button>
             </Link>
           )}
           {project.webSide && (
             <Link href={project.webSide} target="_blank">
-              <Button size="large" startIcon={<LaptopWindows />}>
+              <Button size="large" startIcon={<LaptopWindows />} aria-label="web">
                 Ver en línea
               </Button>
             </Link>

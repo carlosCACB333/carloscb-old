@@ -15,7 +15,7 @@ interface Props {
 }
 export const NavBar = ({ handleDrawerToggle, drawerWidth }: Props) => {
   const { toggleMode } = useContext(ThemeContext);
-  const { locale, asPath, replace, reload } = useRouter();
+  const { locale, asPath, replace } = useRouter();
   const { t } = useTranslation('common');
 
   const onChangeLanguage = () => {
@@ -34,32 +34,44 @@ export const NavBar = ({ handleDrawerToggle, drawerWidth }: Props) => {
       }}
     >
       <Toolbar>
-        <IconButton onClick={handleDrawerToggle}>
+        <IconButton onClick={handleDrawerToggle} aria-label="menu">
           <MenuIcon />
         </IconButton>
         <Link href="/project">
-          <Button variant="text">{t('nav.projects')}</Button>
+          <Button
+            size="small"
+            variant={asPath === '/project' ? 'contained' : 'text'}
+            color="primary"
+            aria-label="projects"
+          >
+            {t('nav.projects')}
+          </Button>
         </Link>
         <Link href="/certification">
-          <Button variant="text">{t('nav.certifications')}</Button>
+          <Button
+            size="small"
+            variant={asPath === '/certification' ? 'contained' : 'text'}
+            color="primary"
+            aria-label="certifications"
+          >
+            {t('nav.certifications')}
+          </Button>
         </Link>
-        {/* <Link href="/blog">
-          <Button variant="text">{t('nav.blog')}</Button>
-        </Link> */}
+
         <Box flex={1}></Box>
-        <IconButton onClick={toggleMode} sx={{ color: 'text.primary' }}>
+        <IconButton onClick={toggleMode} color="primary" aria-label="toggle light/dark mode">
           <WbSunnyIcon />
         </IconButton>
 
         <Button
-          variant="outlined"
+          variant={locale === 'en' ? 'contained' : 'outlined'}
+          color="primary"
           size="small"
           onClick={onChangeLanguage}
           startIcon={<TranslateOutlined />}
-          sx={{ ml: 1 }}
-        >
-          {locale === 'en' ? 'Es' : 'En'}
-        </Button>
+          sx={{ minWidth: 0, padding: '4px 0 4px 10px' }}
+          aria-label="change language"
+        />
       </Toolbar>
     </AppBar>
   );

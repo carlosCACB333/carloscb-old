@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { client } from '../../utils/apolloClient';
 import { GetProjectsDocument, Project } from '../../graphql/generated/graphql';
 import { SectionLayout } from '../../components/Layout';
@@ -7,9 +7,9 @@ import { ProjectCard } from '../../components/project/ProjectCard';
 import Grid from '@mui/material/Unstable_Grid2';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
 import { ProgressBar } from '../../components/UI';
 import { useObserver } from '../../hooks/useObserver';
+import { Meta } from '../../components/common';
 
 interface Props {
   projects: Project[];
@@ -43,9 +43,8 @@ const ProjectsPage = ({ projects: p }: Props) => {
 
   return (
     <SectionLayout maxWidth="xl" title={t('title')} detail={t('description')}>
-      <Head>
-        <title>{t('title')}</title>
-      </Head>
+      <Meta title={t('title')} description={t('description')} />
+
       <Grid container spacing={2}>
         {projects.map((project) => (
           <Grid key={project.id} xs={12} md={6}>

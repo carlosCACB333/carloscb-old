@@ -11,8 +11,8 @@ export const MainLayout: FC<Props> = ({ children }) => {
   const [open, setOpen] = useState(isNotSm);
 
   const handleDrawerToggle = () => {
+    drawerWidth = open ? 0 : 260;
     setOpen(!open);
-    drawerWidth = open ? 0 : 280;
   };
 
   return (

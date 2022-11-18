@@ -13,7 +13,6 @@ interface Props {
 }
 export const CertificationSection = ({ certifications }: Props) => {
   const { t } = useTranslation(['home', 'common']);
-  console.log(certifications);
 
   return (
     <SectionLayout
@@ -24,9 +23,9 @@ export const CertificationSection = ({ certifications }: Props) => {
       detail={t('home:certifications.description')}
     >
       <Grid container spacing={1}>
-        {certifications.map((cert) => (
+        {certifications.map((cert, idx) => (
           <Grid key={cert.id} xs={12} md={6} lg={4} sx={{ aspectRatio: '5/4' }} data-aos="zoom-in">
-            <CertificationCard certification={cert} />
+            <CertificationCard certification={cert} idx={idx} />
           </Grid>
         ))}
       </Grid>
@@ -43,6 +42,7 @@ export const CertificationSection = ({ certifications }: Props) => {
           variant="text"
           color="primary"
           endIcon={<ArrowRightAltOutlined />}
+          aria-label={t('common:btn.show-all')}
         >
           {t('common:btn.show-all')}
         </Button>

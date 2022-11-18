@@ -1,20 +1,22 @@
 import { Avatar, Box, Button, Typography, useMediaQuery } from '@mui/material';
 import Image from 'next/image';
-import React, { useContext } from 'react';
+import React, { FC, useContext } from 'react';
 import { SectionLayout } from '../Layout/';
 import circle from '../../assets/circle.png';
-import { AuthorContext, ThemeContext } from '../../context';
+import { ThemeContext } from '../../context';
 import { Icon } from '../icons';
 import { getTheme } from '../../theme';
 import { useTranslation } from 'react-i18next';
+import { Author } from '../../graphql/generated/graphql';
 
 const iconSize = ['5rem', '6em', '7rem', '8rem'];
 const px = ['2.5rem', '3em', '3.5rem', '4rem'];
-
-export const HomeSection = () => {
+interface Props {
+  author: Author;
+}
+export const HomeSection: FC<Props> = ({ author }) => {
   const { t } = useTranslation('home');
   const { mode } = useContext(ThemeContext);
-  const { author } = useContext(AuthorContext);
   const isNotMd = useMediaQuery(getTheme('dark').breakpoints.up('md'));
   return (
     <SectionLayout sx={{ position: 'relative', overflow: 'hidden', paddingTop: 0 }} component="section" id="">
@@ -24,7 +26,7 @@ export const HomeSection = () => {
           flexDirection: 'column',
           alignItems: 'center',
           position: isNotMd ? 'absolute' : 'initial',
-          top: 0,
+          top: -50,
           left: 0,
           right: 0,
           bottom: 0,
@@ -37,7 +39,7 @@ export const HomeSection = () => {
           src={author.photos[0].url}
           variant="rounded"
           alt="Carlos Castillo Blas"
-          sx={{ width: '10rem', height: '10rem' }}
+          sx={{ width: '12rem', height: '12rem' }}
           className="gradient"
           data-aos="zoom-in"
           imgProps={{
@@ -47,18 +49,33 @@ export const HomeSection = () => {
           }}
         />
         <Box paddingY={4}>
-          <Typography variant="h1" fontSize="3.5rem" data-aos="zoom-in">
-            {author.firstName + ' ' + author.lastName}
-          </Typography>
-          <Typography variant="h4" fontWeight="normal" textAlign="center" data-aos="zoom-in">
+          <Typography
+            variant="h1"
+            textAlign="center"
+            data-aos="zoom-in"
+            sx={{
+              maxWidth: 400,
+            }}
+          >
             {author.detail}
+          </Typography>
+
+          <Typography variant="h2" fontWeight="normal" textAlign="center" data-aos="zoom-in">
+            {author.firstName + ' ' + author.lastName}
           </Typography>
         </Box>
         <Box display="flex" gap={2}>
-          <Button size="large" variant="outlined" href={author.cv?.url || '/'} target="_blank" data-aos="zoom-in">
+          <Button
+            size="large"
+            variant="outlined"
+            href={author.cv?.url || '/'}
+            target="_blank"
+            data-aos="zoom-in"
+            arial-label={t('home.btn-about')}
+          >
             {t('home.btn-cv')}
           </Button>
-          <Button size="large" href="#about-section" data-aos="zoom-in">
+          <Button size="large" href="#about-section" data-aos="zoom-in" arial-label={t('home.btn-about')}>
             {t('home.btn-about')}
           </Button>
         </Box>
@@ -93,7 +110,7 @@ export const HomeSection = () => {
             }}
           >
             <Box className="rotate-item">
-              <FrontItem isDark={mode === 'dark'} />
+              <FrontItem isDark={mode === 'dark'} isLarge={isNotMd} />
             </Box>
           </Box>
 
@@ -106,7 +123,7 @@ export const HomeSection = () => {
             }}
           >
             <Box className="rotate-item">
-              <BacktItem isDark={mode === 'dark'} />
+              <BacktItem isDark={mode === 'dark'} isLarge={isNotMd} />
             </Box>
           </Box>
 
@@ -119,7 +136,7 @@ export const HomeSection = () => {
             }}
           >
             <Box className="rotate-item">
-              <IaItem isDark={mode === 'dark'} />
+              <IaItem isDark={mode === 'dark'} isLarge={isNotMd} />
             </Box>
           </Box>
 
@@ -132,7 +149,7 @@ export const HomeSection = () => {
             }}
           >
             <Box className="rotate-item">
-              <DbItem isDark={mode === 'dark'} />
+              <DbItem isDark={mode === 'dark'} isLarge={isNotMd} />
             </Box>
           </Box>
         </Box>
@@ -140,7 +157,12 @@ export const HomeSection = () => {
     </SectionLayout>
   );
 };
-const IaItem = ({ isDark }: { isDark: boolean }) => {
+
+interface ItemProps {
+  isDark: boolean;
+  isLarge: boolean;
+}
+const IaItem = ({ isDark, isLarge }: ItemProps) => {
   return (
     <Box position="relative">
       <Avatar
@@ -153,7 +175,7 @@ const IaItem = ({ isDark }: { isDark: boolean }) => {
         <Icon
           name="ia"
           sx={{
-            fontSize: '4rem',
+            fontSize: isLarge ? '4rem' : '3rem',
             color: 'text.primary',
           }}
         />
@@ -192,7 +214,7 @@ const IaItem = ({ isDark }: { isDark: boolean }) => {
     </Box>
   );
 };
-const DbItem = ({ isDark }: { isDark: boolean }) => {
+const DbItem = ({ isDark, isLarge }: ItemProps) => {
   return (
     <Box position="relative">
       <Avatar
@@ -205,7 +227,7 @@ const DbItem = ({ isDark }: { isDark: boolean }) => {
         <Icon
           name="sql"
           sx={{
-            fontSize: '3rem',
+            fontSize: isLarge ? '4rem' : '3rem',
             color: 'text.primary',
           }}
         />
@@ -241,7 +263,7 @@ const DbItem = ({ isDark }: { isDark: boolean }) => {
     </Box>
   );
 };
-const BacktItem = ({ isDark }: { isDark: boolean }) => {
+const BacktItem = ({ isDark, isLarge }: ItemProps) => {
   return (
     <Box position="relative">
       <Avatar
@@ -254,7 +276,7 @@ const BacktItem = ({ isDark }: { isDark: boolean }) => {
         <Icon
           name="backend"
           sx={{
-            fontSize: '4rem',
+            fontSize: isLarge ? '4rem' : '3rem',
             color: 'text.primary',
           }}
         />
@@ -289,7 +311,7 @@ const BacktItem = ({ isDark }: { isDark: boolean }) => {
     </Box>
   );
 };
-const FrontItem = ({ isDark }: { isDark: boolean }) => {
+const FrontItem = ({ isDark, isLarge }: ItemProps) => {
   return (
     <Box position="relative">
       <Avatar
@@ -302,7 +324,7 @@ const FrontItem = ({ isDark }: { isDark: boolean }) => {
         <Icon
           name="frontend"
           sx={{
-            fontSize: '4rem',
+            fontSize: isLarge ? '4rem' : '3rem',
             color: 'text.primary',
           }}
         />

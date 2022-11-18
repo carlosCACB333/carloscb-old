@@ -2,7 +2,6 @@ import React from 'react';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, DotGroup, Dot } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import { SkipNextOutlined, SkipPreviousOutlined } from '@mui/icons-material';
-
 import style from '../../styles/carrousel.module.css';
 import { Box, useTheme } from '@mui/material';
 import { HygraphImg } from './HygraphImg';
@@ -23,10 +22,12 @@ export const Carrousel = ({ images, sizes }: Props) => {
             <Slide key={image.id} index={idx}>
               <HygraphImg
                 src={image.url}
-                alt="project"
+                fit="scale"
+                alt={`Project image ${idx}`}
                 aspRatio={16 / 9}
-                sizes={sizes || '(max-width: 600px) 100vw, (max-width: 900px) 50vw, 40vw'}
                 priority={idx === 0}
+                loading={idx === 0 ? 'eager' : 'lazy'}
+                sizes="(max-width: 600px) 80vw, (max-width: 900px) 40vw, 30vw"
               />
             </Slide>
           ))}
@@ -64,16 +65,18 @@ export const Carrousel = ({ images, sizes }: Props) => {
                 display: 'flex',
                 gap: '0.5rem',
                 justifyContent: 'center',
-                marginTop: '1rem',
+                marginY: '1rem',
               }}
             >
               {Array.from({ length: totalSlides || 0 }, (_, i) => (
-                <Dot
+                <div
                   key={i}
-                  slide={i}
                   className={style.dot}
                   style={{ backgroundColor: currentSlide === i ? palette.primary.main : palette.primary.light }}
-                />
+                  onClick={() => {
+                    console.log('click');
+                  }}
+                ></div>
               ))}
             </Box>
           )}

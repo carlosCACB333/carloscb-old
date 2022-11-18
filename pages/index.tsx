@@ -7,28 +7,24 @@ import {
   HomeSection,
   CertificationSection,
 } from '../components/sections';
-import { Category, GetHomeDataDocument, Project, Certification } from '../graphql/generated/graphql';
+import { Category, GetHomeDataDocument, Project, Certification, Locale, Author } from '../graphql/generated/graphql';
 import { client } from '../utils/apolloClient';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import { useContext } from 'react';
-import { AuthorContext } from '../context';
+import { env } from '../utils/env';
+import { Meta } from '../components/common';
 
 interface Props {
   categories: Category[];
   projects: Project[];
   certifications: Certification[];
+  author: Author;
 }
-const HomePage: NextPage<Props> = ({ categories, projects, certifications }) => {
-  const { author } = useContext(AuthorContext);
-
+const HomePage: NextPage<Props> = ({ categories, projects, certifications, author }) => {
   return (
     <>
-      <Head>
-        <title>{`${author.firstName} ${author.lastName}`}</title>
-      </Head>
-      <HomeSection />
-      <AboutSection />
+      <Meta author={author} />
+      <HomeSection author={author} />
+      <AboutSection author={author} />
       <SkillSection categories={categories} />
       <ProjectSection projects={projects} />
       <CertificationSection certifications={certifications} />
@@ -39,12 +35,16 @@ const HomePage: NextPage<Props> = ({ categories, projects, certifications }) => 
 
 export default HomePage;
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
+export const getStaticProps: GetStaticProps = async ({ locale = 'es' }) => {
   const i18n = await serverSideTranslations(locale || 'es', ['common', 'home']);
-  const { data } = await client.query({ query: GetHomeDataDocument });
+  const { data } = await client.query({
+    query: GetHomeDataDocument,
+    variables: { locales: [locale as Locale], email: env.author },
+  });
   const categories = data.categories;
   const projects = data.projects;
   const certifications = data.certifications;
+  const author = data.author;
 
-  return { props: { ...i18n, categories, projects, certifications }, revalidate: 3600 }; // 1 hour
+  return { props: { ...i18n, categories, projects, certifications, author }, revalidate: 3600 }; // 1 hour
 };

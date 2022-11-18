@@ -6,7 +6,7 @@ interface Props {
 export const ProgressBar = ({ sx }: Props) => {
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', ...sx }}>
-      <CircularProgress color="primary" />
+      <CircularProgress color="primary" aria-label="loading" />
     </Box>
   );
 };

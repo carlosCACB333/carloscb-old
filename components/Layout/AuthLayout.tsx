@@ -37,7 +37,7 @@ export const AuthLayout = ({ children, isLogin }: Props) => {
               </Typography>
             </Box>
 
-            <Button variant="outlined" fullWidth>
+            <Button variant="outlined" fullWidth aria-label="google login">
               Iniciar sesión con Google
             </Button>
             <Box
@@ -54,6 +54,7 @@ export const AuthLayout = ({ children, isLogin }: Props) => {
                   mx: 2,
                 }}
                 disabled
+                aria-label="or"
               >
                 O
               </Button>

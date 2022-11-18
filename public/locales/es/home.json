@@ -14,7 +14,8 @@
       "phone": "Celular",
       "profession": "Profesión",
       "cycle": "Ciclo",
-      "university": "Universidad"
+      "university": "Universidad",
+      "address": "Dirección"
     }
   },
 

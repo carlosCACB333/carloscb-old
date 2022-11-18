@@ -16,13 +16,38 @@ fragment ProjectFields on Project {
   }
 }
 
-query getHomeData {
-  categories {
+fragment AuthorField on Author {
+  id
+  bio
+  birth
+  email
+  firstName
+  lastName
+  phone
+  profession
+  university
+  cycle
+  detail
+  facebook
+  linkedin
+  github
+  keywords
+  address
+  cv {
+    url
+  }
+  photos {
+    url
+  }
+}
+
+query getHomeData($email: String!, $locales: [Locale!]!) {
+  categories(locales: $locales) {
     icon
     id
     name
     detail
-    skills {
+    skills(locales: $locales, first: 100) {
       ... on Skill {
         id
         name
@@ -41,5 +66,9 @@ query getHomeData {
     picture {
       url
     }
+  }
+
+  author(where: { email: $email }, locales: $locales) {
+    ...AuthorField
   }
 }

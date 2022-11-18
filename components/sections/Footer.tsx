@@ -4,8 +4,8 @@ import { AuthorContext } from '../../context';
 import { useTranslation } from 'react-i18next';
 
 export const Footer = () => {
-  const { author } = useContext(AuthorContext);
   const { t } = useTranslation('common');
+  const { author, loading } = useContext(AuthorContext);
   return (
     <Box
       sx={{
@@ -17,7 +17,7 @@ export const Footer = () => {
     >
       <Typography>
         {t('footer.made')} <span style={{ color: 'red' }}>❤</span> {t('footer.by')}{' '}
-        {author.firstName + ' ' + author.lastName}
+        {!loading && author && author.firstName + ' ' + author.lastName}
       </Typography>
 
       <Typography>

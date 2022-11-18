@@ -121,33 +121,35 @@ export const SideMenu = ({}: Props) => {
           ))}
         </List>
       </Box>
-      <Box
-        sx={{
-          display: 'flex',
-          alignSelf: 'center',
-        }}
-      >
-        <Link href={author?.facebook || ''} target="_blank">
-          <IconButton>
-            <Facebook color="secondary" />
-          </IconButton>
-        </Link>
-        <Link href={`https://wa.me/51${author.phone}`} target="_blank">
-          <IconButton>
-            <WhatsApp color="secondary" />
-          </IconButton>
-        </Link>
-        <Link href={author?.linkedin || ''} target="_blank">
-          <IconButton>
-            <LinkedIn color="secondary" />
-          </IconButton>
-        </Link>
-        <Link href={author?.github || ''} target="_blank">
-          <IconButton>
-            <GitHub color="secondary" />
-          </IconButton>
-        </Link>
-      </Box>
+      {author && (
+        <Box
+          sx={{
+            display: 'flex',
+            alignSelf: 'center',
+          }}
+        >
+          <Link href={author.facebook || ''} target="_blank">
+            <IconButton aria-label="facebook">
+              <Facebook color="secondary" />
+            </IconButton>
+          </Link>
+          <Link href={`https://wa.me/51${author.phone}`} target="_blank">
+            <IconButton aria-label="whatsapp">
+              <WhatsApp color="secondary" />
+            </IconButton>
+          </Link>
+          <Link href={author.linkedin || ''} target="_blank">
+            <IconButton aria-label="linkedin">
+              <LinkedIn color="secondary" />
+            </IconButton>
+          </Link>
+          <Link href={author.github || ''} target="_blank">
+            <IconButton aria-label="github">
+              <GitHub color="secondary" />
+            </IconButton>
+          </Link>
+        </Box>
+      )}
     </Box>
   );
 };

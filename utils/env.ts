@@ -9,4 +9,5 @@ export const env = {
     api: process.env.EMAIL_API || '',
     from: process.env.EMAIL_FROM || '',
   },
+  baseUrl: process.env.NEXT_PUBLIC_BASE_URL || '',
 };

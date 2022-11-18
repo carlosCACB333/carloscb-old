@@ -42,6 +42,7 @@ export const ProjectSection = ({ projects }: Props) => {
           variant="text"
           color="primary"
           endIcon={<ArrowRightAltOutlined />}
+          aria-label={t('common:btn.show-all')}
         >
           {t('common:btn.show-all')}
         </Button>

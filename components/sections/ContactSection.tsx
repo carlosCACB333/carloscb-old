@@ -113,7 +113,13 @@ export const ContactSection = () => {
               />
             </Grid>
             <Grid item xs={12}>
-              <Button fullWidth type="submit" disabled={!isValid || loading} data-aos="fade-up">
+              <Button
+                fullWidth
+                type="submit"
+                disabled={!isValid || loading}
+                data-aos="fade-up"
+                aria-label={t('contact.form.btn-send')}
+              >
                 {t('contact.form.btn-send')}
               </Button>
             </Grid>
