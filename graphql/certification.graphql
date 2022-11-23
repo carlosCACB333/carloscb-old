@@ -1,5 +1,5 @@
-query getCertifications($first: Int!, $skip: Int!) {
-  certifications(orderBy: priority_DESC, first: $first, skip: $skip) {
+query getCertifications($first: Int!, $skip: Int!, $stage: Stage!) {
+  certifications(orderBy: priority_DESC, first: $first, skip: $skip, stage: $stage) {
     id
     name
     picture {

@@ -1,12 +1,11 @@
 import { ArrowRight, GitHub } from '@mui/icons-material';
-import { Card, CardContent, Box, Typography, CardActions, IconButton, Button } from '@mui/material';
-import Link from 'next/link';
-import React from 'react';
-import { Project } from '../../graphql/generated/graphql';
-import { Icon } from '../icons';
-import { Carrousel } from '../UI';
 import LaptopMacIcon from '@mui/icons-material/LaptopMac';
+import { Box, Button, Card, CardActions, CardContent, IconButton, Typography } from '@mui/material';
 import { useTranslation } from 'next-i18next';
+import Link from 'next/link';
+import { Project } from '../../graphql/generated/graphql';
+import { SkillGroup } from '../category';
+import { Carrousel } from '../UI';
 
 interface Props {
   project: Project;
@@ -27,12 +26,8 @@ export const ProjectCard = ({ project }: Props) => {
     >
       <CardContent>
         <Box sx={{ position: 'relative' }}>
-          <Box sx={{ display: 'flex', justifyContent: 'end', gap: 0.2, marginBottom: 1 }}>
-            {project.skills.map((skill) => (
-              <Icon key={skill.id} name={skill.icon as any} />
-            ))}
-          </Box>
-
+          <SkillGroup skills={project.skills} />
+          <div style={{ height: 4 }}></div>
           <Carrousel images={project.pictures} />
 
           <Typography gutterBottom variant="h2" component="div">

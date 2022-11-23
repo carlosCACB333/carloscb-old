@@ -1,17 +1,17 @@
 import { GetStaticProps, NextPage } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { Meta } from '../components/common';
 import {
   AboutSection,
-  SkillSection,
-  ContactSection,
-  ProjectSection,
-  HomeSection,
   CertificationSection,
+  ContactSection,
+  HomeSection,
+  ProjectSection,
+  SkillSection,
 } from '../components/sections';
-import { Category, GetHomeDataDocument, Project, Certification, Locale, Author } from '../graphql/generated/graphql';
+import { Author, Category, Certification, GetHomeDataDocument, Locale, Project, Stage } from '../graphql';
 import { client } from '../utils/apolloClient';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { env } from '../utils/env';
-import { Meta } from '../components/common';
 
 interface Props {
   categories: Category[];
@@ -35,11 +35,11 @@ const HomePage: NextPage<Props> = ({ categories, projects, certifications, autho
 
 export default HomePage;
 
-export const getStaticProps: GetStaticProps = async ({ locale = 'es' }) => {
+export const getStaticProps: GetStaticProps = async ({ locale = 'es', preview }) => {
   const i18n = await serverSideTranslations(locale || 'es', ['common', 'home']);
   const { data } = await client.query({
     query: GetHomeDataDocument,
-    variables: { locales: [locale as Locale], email: env.author },
+    variables: { locales: [locale as Locale], email: env.author, stage: preview ? Stage.Draft : Stage.Published },
   });
   const categories = data.categories;
   const projects = data.projects;

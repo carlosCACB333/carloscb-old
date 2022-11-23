@@ -1,9 +1,10 @@
-import { vscDarkPlus, prism as vs } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { prism as vs, vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 export const getCodeTheme = (theme: string) => {
   if (theme === 'dark') {
     return {
       ...vscDarkPlus,
+
       'pre[class*="language-"]': {
         ...vscDarkPlus['pre[class*="language-"]'],
       },

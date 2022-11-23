@@ -1,10 +1,10 @@
+import { Box, useTheme } from '@mui/material';
 import { FC } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { Prism } from 'react-syntax-highlighter';
-import { getCodeTheme } from '../../theme';
-import { Box, useTheme } from '@mui/material';
 import { ReactMarkdownOptions } from 'react-markdown/lib/react-markdown';
+import { Prism } from 'react-syntax-highlighter';
 import { useWidth } from '../../hooks/useWidth';
+import { getCodeTheme } from '../../theme';
 
 interface Props extends ReactMarkdownOptions {}
 export const Md: FC<Props> = ({ children, ...props }) => {

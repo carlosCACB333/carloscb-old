@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material';
-import React, { useContext } from 'react';
-import { AuthorContext } from '../../context';
+import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+import { AuthorContext } from '../../context';
 
 export const Footer = () => {
   const { t } = useTranslation('common');

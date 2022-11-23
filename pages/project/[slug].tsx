@@ -1,22 +1,19 @@
-import { GitHub, LaptopWindows } from '@mui/icons-material';
-import { Box, Button, Container, CardContent, Typography, Card, Alert, AlertTitle } from '@mui/material';
+import { ArrowBackIos, GitHub, LaptopWindows } from '@mui/icons-material';
+import { Box, Button, Card, CardContent, Container, Typography } from '@mui/material';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { Md, Meta } from '../../components/common';
 import { Icon } from '../../components/icons';
 import { SectionLayout } from '../../components/Layout';
 import { Carrousel } from '../../components/UI';
-import { GetProjectsSlugDocument, GetProjectDocument, Project, Stage } from '../../graphql/generated/graphql';
+import { GetProjectDocument, GetProjectsSlugDocument, Project, Stage } from '../../graphql';
 import { client } from '../../utils/apolloClient';
-import { Md, Meta } from '../../components/common';
 
 interface Props {
   project: Project;
 }
 const ProjectDetail = ({ project }: Props) => {
-  const { asPath, isPreview } = useRouter();
-
   return (
     <SectionLayout
       maxWidth="xl"
@@ -26,28 +23,6 @@ const ProjectDetail = ({ project }: Props) => {
       }}
     >
       <Meta title={project.title} description={project.detail} />
-
-      {isPreview && (
-        <Alert
-          severity="warning"
-          variant="filled"
-          sx={{
-            position: 'fixed',
-            bottom: 0,
-            right: 0,
-            zIndex: 100,
-            marginBottom: 2,
-          }}
-        >
-          <AlertTitle>Modo de previsualización</AlertTitle>
-          Solo puedes ver esto porque estás en modo de previsualización.{' '}
-          <Link href={`/api/prev/exit?url=${asPath}`}>
-            <Button size="small" variant="text" aria-label="exit preview">
-              Desabilitar
-            </Button>
-          </Link>
-        </Alert>
-      )}
 
       <br />
       <Card
@@ -80,6 +55,11 @@ const ProjectDetail = ({ project }: Props) => {
         }}
       >
         <Box sx={{ display: 'flex', gap: 1 }}>
+          <Link href="/project">
+            <Button size="large" startIcon={<ArrowBackIos />} variant="outlined" aria-label="back">
+              Volver
+            </Button>
+          </Link>
           {project.gitHub && (
             <Link href={project.gitHub} target="_blank">
               <Button size="large" startIcon={<GitHub />} arial-label="github">

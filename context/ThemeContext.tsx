@@ -1,6 +1,6 @@
-import { createContext, FC, PropsWithChildren, useEffect, useMemo, useState } from 'react';
-import { ThemeProvider as ThemeProv } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider as ThemeProv } from '@mui/material/styles';
+import { createContext, FC, PropsWithChildren, useEffect, useMemo, useState } from 'react';
 import { getTheme } from '../theme';
 type Mode = 'light' | 'dark';
 

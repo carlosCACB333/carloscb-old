@@ -1,11 +1,11 @@
 import { Button, Card, CardContent, Grid, TextField } from '@mui/material';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { Contact } from '../../interface/contact';
 import { contactResolver } from '../../resolvers';
 import { SectionLayout } from '../Layout';
-import { useTranslation } from 'react-i18next';
 
 export const ContactSection = () => {
   const { t } = useTranslation('home');

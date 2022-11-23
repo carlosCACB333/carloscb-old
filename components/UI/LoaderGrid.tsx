@@ -1,5 +1,4 @@
 import { Grid } from '@mui/material';
-import React from 'react';
 import { Loader } from './Loader';
 
 export const LoaderGrid = ({ count = 8 }) => {

@@ -14,6 +14,9 @@ export const getTheme = (mode: IMode) => {
     shape: {
       borderRadius: 8,
     },
+    zIndex: {
+      drawer: 1000000,
+    },
   });
 
   return responsiveFontSizes(theme, {

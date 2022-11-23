@@ -1,16 +1,16 @@
+import Grid from '@mui/material/Unstable_Grid2';
 import { GetStaticProps } from 'next';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import React, { useCallback, useState } from 'react';
 import { CertificationCard } from '../../components/certification/CertificationCard';
+import { Meta } from '../../components/common';
 import { SectionLayout } from '../../components/Layout';
 import { ProgressBar } from '../../components/UI';
-import { Certification, GetCertificationsDocument } from '../../graphql/generated/graphql';
-import { client } from '../../utils/apolloClient';
-import Grid from '@mui/material/Unstable_Grid2';
+import { Certification, GetCertificationsDocument, Stage } from '../../graphql';
 import { useObserver } from '../../hooks/useObserver';
-import { useCallback } from 'react';
-import { Meta } from '../../components/common';
+import { client } from '../../utils/apolloClient';
 
 interface Props {
   certifications: Certification[];
@@ -22,11 +22,12 @@ const CertificatePage = ({ certifications: c }: Props) => {
   const [certifications, setCertifications] = useState(c);
   const skipRef = React.useRef(FIRST);
   const { t } = useTranslation('certification');
+  const { isPreview } = useRouter();
 
   const loadMore = useCallback(async () => {
     const { data } = await client.query({
       query: GetCertificationsDocument,
-      variables: { first: FIRST, skip: skipRef.current },
+      variables: { first: FIRST, skip: skipRef.current, stage: isPreview ? Stage.Draft : Stage.Published },
     });
     setCertifications((prev) => [...prev, ...(data.certifications as Certification[])]);
 
@@ -35,7 +36,7 @@ const CertificatePage = ({ certifications: c }: Props) => {
     }
     skipRef.current += FIRST;
     return true;
-  }, []);
+  }, [isPreview]);
 
   const { moreRef } = useObserver(loadMore);
 
@@ -60,13 +61,14 @@ const CertificatePage = ({ certifications: c }: Props) => {
 
 export default CertificatePage;
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
+export const getStaticProps: GetStaticProps = async ({ locale, preview }) => {
   const i18n = await serverSideTranslations(locale || 'es', ['common', 'certification']);
   const { data } = await client.query({
     query: GetCertificationsDocument,
     variables: {
       first: FIRST,
       skip: 0,
+      stage: preview ? Stage.Draft : Stage.Published,
     },
   });
 

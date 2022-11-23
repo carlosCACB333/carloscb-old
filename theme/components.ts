@@ -1,5 +1,4 @@
-import { Components, Theme } from '@mui/material';
-import { PaletteOptions } from '@mui/material';
+import { Components, PaletteOptions, Theme } from '@mui/material';
 
 export const themeComponents = (options: PaletteOptions): Components<Omit<Theme, 'components'>> => {
   return {

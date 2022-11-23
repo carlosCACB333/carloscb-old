@@ -1,5 +1,6 @@
-import { Box, Drawer, Theme, Toolbar, useMediaQuery } from '@mui/material';
-import React, { FC, PropsWithChildren, useState } from 'react';
+import { Alert, AlertTitle, Box, Button, Drawer, Link, Theme, Toolbar, useMediaQuery } from '@mui/material';
+import { useRouter } from 'next/router';
+import { FC, PropsWithChildren, useState } from 'react';
 import { Footer } from '../sections';
 import { NavBar, SideMenu } from '../UI';
 
@@ -9,6 +10,7 @@ interface Props extends PropsWithChildren {}
 export const MainLayout: FC<Props> = ({ children }) => {
   const isNotSm = useMediaQuery((theme: Theme) => theme.breakpoints.up('sm'));
   const [open, setOpen] = useState(isNotSm);
+  const { asPath, isPreview } = useRouter();
 
   const handleDrawerToggle = () => {
     drawerWidth = open ? 0 : 260;
@@ -36,6 +38,28 @@ export const MainLayout: FC<Props> = ({ children }) => {
           {children}
           <Footer />
         </Box>
+
+        {isPreview && (
+          <Alert
+            severity="warning"
+            variant="filled"
+            sx={{
+              position: 'fixed',
+              bottom: 0,
+              right: 0,
+              zIndex: 100,
+              marginBottom: 2,
+            }}
+          >
+            <AlertTitle>Modo de previsualización</AlertTitle>
+            Solo puedes ver esto porque estás en modo de previsualización.{' '}
+            <Link href={`/api/prev/exit?url=${asPath}`}>
+              <Button size="small" variant="text" aria-label="exit preview">
+                Desabilitar
+              </Button>
+            </Link>
+          </Alert>
+        )}
       </Box>
     </>
   );

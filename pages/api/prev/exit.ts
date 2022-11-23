@@ -14,6 +14,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<DataRe
 
 const clearPreview = async (req: NextApiRequest, res: NextApiResponse<DataRes>) => {
   const url = req.query.url as string;
-  res.clearPreviewData({});
+  res.clearPreviewData({
+    path: '/',
+  });
   res.redirect(url).end();
 };

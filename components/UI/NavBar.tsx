@@ -1,13 +1,13 @@
-import { AppBar, Box, IconButton, Toolbar, Button } from '@mui/material';
-import WbSunnyIcon from '@mui/icons-material/WbSunny';
-import React, { useContext } from 'react';
-import { ThemeContext } from '../../context';
-import MenuIcon from '@mui/icons-material/Menu';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { TranslateOutlined } from '@mui/icons-material';
+import MenuIcon from '@mui/icons-material/Menu';
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
+import { AppBar, Box, Button, IconButton, Toolbar } from '@mui/material';
 import Cookies from 'js-cookie';
 import { useTranslation } from 'next-i18next';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useContext } from 'react';
+import { ThemeContext } from '../../context';
 
 interface Props {
   handleDrawerToggle: () => void;
@@ -55,6 +55,11 @@ export const NavBar = ({ handleDrawerToggle, drawerWidth }: Props) => {
             aria-label="certifications"
           >
             {t('nav.certifications')}
+          </Button>
+        </Link>
+        <Link href="/blog">
+          <Button size="small" variant={asPath === '/blog' ? 'contained' : 'text'} color="primary" aria-label="blog">
+            {t('nav.blog')}
           </Button>
         </Link>
 

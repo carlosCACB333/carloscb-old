@@ -16,15 +16,9 @@ fragment ProjectFields on Project {
   }
 }
 
-query getProjectsSlug {
-  projects {
-    slug
-  }
-}
-
 # Paginate the projects
-query getProjects($first: Int!, $skip: Int!) {
-  projects(orderBy: publishedAt_DESC, first: $first, skip: $skip) {
+query getProjects($first: Int!, $skip: Int!, $stage: Stage!) {
+  projects(orderBy: publishedAt_DESC, first: $first, skip: $skip, stage: $stage) {
     ...ProjectFields
   }
 }
@@ -33,5 +27,11 @@ query getProject($slug: String!, $stage: Stage!) {
   project(where: { slug: $slug }, stage: $stage) {
     ...ProjectFields
     detail
+  }
+}
+
+query getProjectsSlug {
+  projects {
+    slug
   }
 }

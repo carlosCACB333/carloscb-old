@@ -1,5 +1,5 @@
-import { TypographyOptions } from '@mui/material/styles/createTypography';
 import { PaletteOptions } from '@mui/material';
+import { TypographyOptions } from '@mui/material/styles/createTypography';
 
 export const themeTypography = (options: PaletteOptions): TypographyOptions => {
   return {

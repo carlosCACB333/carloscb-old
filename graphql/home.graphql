@@ -41,8 +41,8 @@ fragment AuthorField on Author {
   }
 }
 
-query getHomeData($email: String!, $locales: [Locale!]!) {
-  categories(locales: $locales) {
+query getHomeData($email: String!, $locales: [Locale!]!, $stage: Stage!) {
+  categories(locales: $locales, stage: $stage) {
     icon
     id
     name
@@ -56,11 +56,11 @@ query getHomeData($email: String!, $locales: [Locale!]!) {
       }
     }
   }
-  projects(orderBy: priority_DESC, first: 4) {
+  projects(orderBy: priority_DESC, first: 4, stage: $stage) {
     ...ProjectFields
   }
 
-  certifications(orderBy: priority_DESC, first: 6) {
+  certifications(orderBy: priority_DESC, first: 6, stage: $stage) {
     id
     name
     picture {
@@ -68,7 +68,7 @@ query getHomeData($email: String!, $locales: [Locale!]!) {
     }
   }
 
-  author(where: { email: $email }, locales: $locales) {
+  author(where: { email: $email }, locales: $locales, stage: $stage) {
     ...AuthorField
   }
 }

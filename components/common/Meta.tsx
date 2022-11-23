@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import React, { FC, PropsWithChildren, useContext } from 'react';
+import { FC, PropsWithChildren, useContext } from 'react';
 import { AuthorContext } from '../../context';
 import { Author } from '../../graphql/generated/graphql';
 import { env } from '../../utils/env';

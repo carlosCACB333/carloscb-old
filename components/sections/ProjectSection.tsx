@@ -1,12 +1,11 @@
+import { ArrowRightAltOutlined } from '@mui/icons-material';
 import { Button } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
-import React from 'react';
-import { SectionLayout } from '../Layout';
-import { Project } from '../../graphql/generated/graphql';
 import Link from 'next/link';
-import { ProjectCard } from '../project/ProjectCard';
-import { ArrowRightAltOutlined } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
+import { Project } from '../../graphql/generated/graphql';
+import { SectionLayout } from '../Layout';
+import { ProjectCard } from '../project/ProjectCard';
 
 interface Props {
   projects: Project[];

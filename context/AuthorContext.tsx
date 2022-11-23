@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
 import { createContext, FC, PropsWithChildren } from 'react';
-import { Author, GetAuthorDocument, Locale } from '../graphql/generated/graphql';
+import { Author, GetAuthorDocument, Locale, Stage } from '../graphql/generated/graphql';
 import { env } from '../utils/env';
 
 interface AuthorContextProps {
@@ -12,10 +12,10 @@ interface AuthorContextProps {
 export const AuthorContext = createContext<AuthorContextProps>({} as AuthorContextProps);
 
 export const AuthorProvider: FC<PropsWithChildren> = ({ children }) => {
-  const { locale } = useRouter();
+  const { locale, isPreview } = useRouter();
 
   const { data, loading } = useQuery(GetAuthorDocument, {
-    variables: { email: env.author, locales: [locale as Locale] },
+    variables: { email: env.author, locales: [locale as Locale], stage: isPreview ? Stage.Draft : Stage.Published },
     fetchPolicy: 'cache-and-network',
   });
 

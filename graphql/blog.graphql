@@ -1,0 +1,89 @@
+fragment PostsField on Post {
+  id
+  title
+  priority
+  slug
+  summary
+  tags {
+    id
+    icon
+    name
+  }
+  categories {
+    id
+    name
+    icon
+  }
+  updatedAt
+  banner {
+    url
+  }
+
+  createdBy {
+    id
+    name
+    picture
+  }
+
+  content
+}
+
+fragment CategoryField on Category {
+  id
+  slug
+  name
+  icon
+  img {
+    url
+  }
+
+  posts {
+    id
+  }
+}
+
+query getBlogsData($stage: Stage!) {
+  posts(orderBy: updatedAt_DESC, stage: $stage) {
+    ...PostsField
+  }
+
+  categories {
+    ...CategoryField
+  }
+
+  skills {
+    id
+    name
+  }
+}
+
+query getBlogsByCategory($category: String!, $stage: Stage!) {
+  posts(orderBy: updatedAt_DESC, stage: $stage) {
+    ...PostsField
+  }
+
+  filteredPosts: posts(where: { categories_some: { slug: $category } }, orderBy: updatedAt_DESC, stage: $stage) {
+    ...PostsField
+  }
+
+  categories(stage: $stage) {
+    ...CategoryField
+  }
+
+  skills(where: { categories_some: { slug: $category } }, stage: $stage) {
+    id
+    name
+  }
+}
+
+query searchPosts($search: String!, $stage: Stage!) {
+  posts(where: { _search: $search }, orderBy: updatedAt_DESC, stage: $stage) {
+    ...PostsField
+  }
+}
+
+query getPostsSlug {
+  posts {
+    slug
+  }
+}

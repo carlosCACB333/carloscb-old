@@ -1,5 +1,4 @@
 import { Skeleton } from '@mui/material';
-import React from 'react';
 
 export const Loader = ({ count = 8 }) => {
   return (

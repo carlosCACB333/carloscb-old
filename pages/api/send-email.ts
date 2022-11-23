@@ -1,8 +1,8 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { createTransport } from 'nodemailer';
 import { Contact } from '../../interface';
 import { env } from '../../utils/env';
-import { createTransport } from 'nodemailer';
 import { getTemplateEmail } from '../../utils/getTemplateEmail';
 
 type Data = {

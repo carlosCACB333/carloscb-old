@@ -1,18 +1,18 @@
-import { Accordion, AccordionDetails, AccordionSummary, Grid, Typography } from '@mui/material';
-import React from 'react';
-import { SectionLayout } from '../Layout';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Box } from '@mui/system';
 import Timeline from '@mui/lab/Timeline';
-import TimelineItem from '@mui/lab/TimelineItem';
-import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
-import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import TimelineDot from '@mui/lab/TimelineDot';
+import TimelineItem from '@mui/lab/TimelineItem';
+import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
+import TimelineSeparator from '@mui/lab/TimelineSeparator';
+import { Accordion, AccordionDetails, AccordionSummary, Grid, Typography } from '@mui/material';
+import { Box } from '@mui/system';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Category, Skill } from '../../graphql/generated/graphql';
 import { Icon } from '../icons';
-import { useTranslation } from 'react-i18next';
+import { SectionLayout } from '../Layout';
 
 export const SkillSection = ({ categories }: { categories: Category[] }) => {
   const [expanded, setExpanded] = React.useState<string | false>(false);

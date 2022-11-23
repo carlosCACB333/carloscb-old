@@ -18,6 +18,10 @@
     "rights": "All rights reserved"
   },
 
+  "404": {
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist."
+  },
   "btn": {
     "show-all": "Show All",
     "show-more": "Show"

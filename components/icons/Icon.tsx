@@ -1,17 +1,17 @@
-import { SvgIcon, SvgIconProps } from '@mui/material';
-import React from 'react';
-import PanToolAltIcon from '@mui/icons-material/PanToolAlt';
-import { IconName } from '../../interface/icons';
 import {
   BookmarkAddOutlined,
   CodeOffOutlined,
   CssOutlined,
+  CurrencyBitcoin,
   DnsOutlined,
   GitHub,
   HtmlOutlined,
   JavascriptOutlined,
   PhoneAndroidOutlined,
 } from '@mui/icons-material';
+import PanToolAltIcon from '@mui/icons-material/PanToolAlt';
+import { SvgIcon, SvgIconProps } from '@mui/material';
+import { IconName } from '../../interface/icons';
 interface Props extends SvgIconProps {
   name?: IconName;
 }
@@ -203,6 +203,17 @@ export const Icon = ({ name, ...props }: Props) => {
 
     case 'git':
       return <GitHub {...props} />;
+
+    case 'bitcoin':
+      return <CurrencyBitcoin />;
+
+    case 'notfound':
+      return (
+        <SvgIcon xmlns="http://www.w3.org/2000/svg" width={266.667} height={266.667} viewBox="0 0 200 200" {...props}>
+          <path d="M10.2 30.2c-1.9 1.9-1.7 110.1.1 111.7.9.7 11.5 1.2 32.4 1.3l31.1.3-4.1 10.5-4.2 10.5-11.5.5c-11.5.5-11.5.5-11.5 3v2.5h115V168c0-2.5 0-2.5-11.5-3l-11.5-.5-4.2-10.5-4.1-10.5 31.1-.3c20.9-.1 31.5-.6 32.4-1.3 1.8-1.6 2-109.8.1-111.7-1.7-1.7-177.9-1.7-179.6 0zM184 86v51H16V35h168v51zm-60.8 66.9c2.1 5.2 3.8 10.1 3.8 10.8 0 1-5.3 1.3-27 1.3-21.8 0-27-.3-27-1.3 0-1.2 1.9-6.2 6.6-17.5l1.3-3.2 19.2.2 19.3.3 3.8 9.4z" />
+          <path d="M49.7 57.7c-1.6 1.5-.5 4 3.5 8l4.2 4.3-4.2 4.3c-4.6 4.7-5 5.8-2.7 7.7 1.4 1.1 2.2.7 5.8-2.8 2.4-2.3 4.7-4.2 5.2-4.2s2.8 1.8 5 4c2.8 2.8 4.7 3.9 5.8 3.4 2.8-1 1.9-4.2-2.3-8.8l-3.9-4.3 4-3.9c2.5-2.4 3.9-4.6 3.7-5.9-.5-3.5-3.7-2.9-7.8 1.6l-3.9 4.3-4.5-4.2c-4.4-4-6.5-5-7.9-3.5zM126.7 57.7c-1.5 1.5-.5 3.9 3.3 7.8l4 4.1-4 3.9c-4.2 4.1-5.2 7.8-2.3 8.9 1.1.5 3-.6 5.8-3.4 2.2-2.2 4.5-4 5-4s2.8 1.9 5.2 4.2c3.6 3.5 4.4 3.9 5.8 2.8 2.3-1.9 1.9-3-2.7-7.7l-4.2-4.3 4.2-4.3c4.4-4.5 5.3-7.1 2.6-8.1-2.3-.9-2-1-6.9 3.5l-4.4 4.1-3.9-4.1c-3.7-3.9-6-4.9-7.5-3.4zM92.5 94.2c-3.2 1.7-7.6 6.1-9.1 9-1.9 3.7-1.8 10.7.1 11.4 2.1.9 4.5-1.4 4.5-4.3 0-6 5.6-11.3 12-11.3s12 5.3 12 11.3c0 2.9 2.4 5.2 4.5 4.3 1.8-.7 2.1-7.6.4-10.9-1.7-3.2-6-7.7-9.1-9.3-3.2-1.7-12.5-1.8-15.3-.2z" />
+        </SvgIcon>
+      );
     default:
       return <CodeOffOutlined {...props} />;
   }

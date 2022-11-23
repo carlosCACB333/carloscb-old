@@ -1,5 +1,4 @@
 import { Box, CircularProgress, SxProps } from '@mui/material';
-import React from 'react';
 interface Props {
   sx?: SxProps;
 }

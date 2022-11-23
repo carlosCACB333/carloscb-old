@@ -1,9 +1,19 @@
-import { useRef, useEffect, useMemo } from 'react';
+import { useEffect, useRef } from 'react';
 
 export const useObserver = (loadMore: () => Promise<boolean>) => {
   const moreRef = useRef<HTMLDivElement>(null);
+  const firtRender = useRef(true);
 
   useEffect(() => {
+    if (firtRender.current) {
+      firtRender.current = false;
+      return;
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!moreRef.current) return;
+
     const observer = new IntersectionObserver(
       async (entries) => {
         if (entries[0].isIntersecting) {

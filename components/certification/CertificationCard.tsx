@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Certification } from '../../graphql/generated/graphql';
 import { HygraphImg } from '../UI';
 

@@ -1,13 +1,13 @@
 import { Avatar, Box, Button, Typography, useMediaQuery } from '@mui/material';
 import Image from 'next/image';
-import React, { FC, useContext } from 'react';
-import { SectionLayout } from '../Layout/';
+import { FC, useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import circle from '../../assets/circle.png';
 import { ThemeContext } from '../../context';
-import { Icon } from '../icons';
-import { getTheme } from '../../theme';
-import { useTranslation } from 'react-i18next';
 import { Author } from '../../graphql/generated/graphql';
+import { getTheme } from '../../theme';
+import { Icon } from '../icons';
+import { SectionLayout } from '../Layout/';
 
 const iconSize = ['5rem', '6em', '7rem', '8rem'];
 const px = ['2.5rem', '3em', '3.5rem', '4rem'];

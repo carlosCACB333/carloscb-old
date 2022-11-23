@@ -1,9 +1,8 @@
-import React from 'react';
-import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, DotGroup, Dot } from 'pure-react-carousel';
-import 'pure-react-carousel/dist/react-carousel.es.css';
 import { SkipNextOutlined, SkipPreviousOutlined } from '@mui/icons-material';
-import style from '../../styles/carrousel.module.css';
 import { Box, useTheme } from '@mui/material';
+import { ButtonBack, ButtonNext, CarouselProvider, DotGroup, Slide, Slider } from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
+import style from '../../styles/carrousel.module.css';
 import { HygraphImg } from './HygraphImg';
 
 interface Props {

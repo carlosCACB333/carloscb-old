@@ -1,12 +1,12 @@
 import { Typography, useMediaQuery } from '@mui/material';
-import React, { FC } from 'react';
-import { SectionLayout } from '../Layout';
 import Grid from '@mui/material/Unstable_Grid2';
-import { getTheme } from '../../theme';
+import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Md } from '../common';
-import { HygraphImg } from '../UI/HygraphImg';
 import { Author } from '../../graphql/generated/graphql';
+import { getTheme } from '../../theme';
+import { Md } from '../common';
+import { SectionLayout } from '../Layout';
+import { HygraphImg } from '../UI/HygraphImg';
 interface Props {
   author: Author;
 }

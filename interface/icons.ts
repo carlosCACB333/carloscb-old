@@ -47,4 +47,6 @@ export type IconName =
   | 'django'
   | 'graphql'
   | 'git'
-  | 'logo';
+  | 'logo'
+  | 'bitcoin'
+  | 'notfound';

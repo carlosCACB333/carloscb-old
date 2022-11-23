@@ -1,12 +1,11 @@
-import React from 'react';
-import { SectionLayout } from '../Layout';
-import { Certification } from '../../graphql/generated/graphql';
-import { useTranslation } from 'react-i18next';
 import { ArrowRightAltOutlined } from '@mui/icons-material';
 import { Button } from '@mui/material';
-import Link from 'next/link';
 import Grid from '@mui/material/Unstable_Grid2';
+import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
+import { Certification } from '../../graphql/generated/graphql';
 import { CertificationCard } from '../certification/CertificationCard';
+import { SectionLayout } from '../Layout';
 
 interface Props {
   certifications: Certification[];

@@ -17,6 +17,11 @@
     "by": "por",
     "rights": "Todos los derechos reservados"
   },
+  "404": {
+    "title": "Página no encontrada",
+    "description": "La página que estás buscando no existe o ha sido movida."
+  },
+
   "btn": {
     "show-all": "Mostrar todo",
     "show-more": "Ver"

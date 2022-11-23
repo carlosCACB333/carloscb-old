@@ -19,6 +19,11 @@ module.exports = withPWA({
         protocol: 'https',
         pathname: '/*',
       },
+      {
+        hostname: 'lh3.googleusercontent.com',
+        protocol: 'https',
+        pathname: '/*',
+      },
     ],
   },
 });

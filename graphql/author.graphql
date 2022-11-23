@@ -23,8 +23,8 @@ fragment AuthorField on Author {
   }
 }
 
-query getAuthor($email: String!, $locales: [Locale!]!) {
-  author(where: { email: $email }, locales: $locales) {
+query getAuthor($email: String!, $locales: [Locale!]!, $stage: Stage!) {
+  author(where: { email: $email }, locales: $locales, stage: $stage) {
     ...AuthorField
   }
 }

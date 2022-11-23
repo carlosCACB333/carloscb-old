@@ -1,21 +1,23 @@
-import '../styles/globals.scss';
-import * as React from 'react';
-import Head from 'next/head';
-import { AppProps } from 'next/app';
-import CssBaseline from '@mui/material/CssBaseline';
-import createEmotionCache from '../config/createCache';
-import { CacheProvider, EmotionCache } from '@emotion/react';
-import { ThemeProvider } from '../context';
-import { MainLayout } from '../components/Layout';
 import { ApolloProvider } from '@apollo/client';
-import { client } from '../utils/apolloClient';
-import { AuthorProvider } from '../context/AuthorContext';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { appWithTranslation } from 'next-i18next';
-import Script from 'next/script';
+import { CacheProvider, EmotionCache } from '@emotion/react';
+import CssBaseline from '@mui/material/CssBaseline';
 import aos from 'aos';
 import 'aos/dist/aos.css';
+import { appWithTranslation } from 'next-i18next';
+import { AppProps } from 'next/app';
+import Head from 'next/head';
+import Script from 'next/script';
+import * as React from 'react';
+import { Provider } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { store } from '../app';
+import { MainLayout } from '../components/Layout';
+import createEmotionCache from '../config/createCache';
+import { ThemeProvider } from '../context';
+import { AuthorProvider } from '../context/AuthorContext';
+import '../styles/globals.scss';
+import { client } from '../utils/apolloClient';
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -60,26 +62,28 @@ const NextApp = (props: MyAppProps) => {
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <ThemeProvider>
-        <ApolloProvider client={client}>
-          <AuthorProvider>
-            <MainLayout>
-              <CssBaseline />
-              <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={true}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="colored"
-              />
-              <Component {...pageProps} />
-            </MainLayout>
-          </AuthorProvider>
-        </ApolloProvider>
+        <Provider store={store}>
+          <ApolloProvider client={client}>
+            <AuthorProvider>
+              <MainLayout>
+                <CssBaseline />
+                <ToastContainer
+                  position="top-right"
+                  autoClose={5000}
+                  hideProgressBar={true}
+                  newestOnTop={false}
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                  theme="colored"
+                />
+                <Component {...pageProps} />
+              </MainLayout>
+            </AuthorProvider>
+          </ApolloProvider>
+        </Provider>
       </ThemeProvider>
     </CacheProvider>
   );
