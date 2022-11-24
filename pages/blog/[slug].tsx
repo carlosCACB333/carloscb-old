@@ -1,8 +1,10 @@
 import { ArrowBackIos } from '@mui/icons-material';
-import { Avatar, Box, Button, Card, CardContent, Container, Typography, useTheme } from '@mui/material';
+import { Avatar, Box, Button, Card, CardContent, Container, Divider, Typography, useTheme } from '@mui/material';
+import Grid from '@mui/material/Unstable_Grid2';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { BlogCard2 } from '../../components/Blog';
 import { SkillGroup } from '../../components/category/SkillGroup';
 import { Md, Meta } from '../../components/common';
 import { BlogLayout } from '../../components/Layout';
@@ -14,9 +16,11 @@ interface Props {
   posts: Post[];
   post: Post;
   categories: Category[];
+  similarPosts: Post[];
 }
-const BlogDetailPage: NextPage<Props> = ({ posts, categories, post }) => {
+const BlogDetailPage: NextPage<Props> = ({ posts, categories, post, similarPosts }) => {
   const { palette } = useTheme();
+  const { back } = useRouter();
   return (
     <>
       <Meta title={post.title} description={post.summary}>
@@ -60,11 +64,10 @@ const BlogDetailPage: NextPage<Props> = ({ posts, categories, post }) => {
               })}
             </Typography>
             <div>
-              <Link href="/blog">
-                <Button startIcon={<ArrowBackIos />} variant="outlined" aria-label="Volver al blog">
-                  volver
-                </Button>
-              </Link>
+              <br />
+              <Button onClick={back} startIcon={<ArrowBackIos />} variant="text" aria-label="Volver al blog">
+                volver
+              </Button>
             </div>
           </Container>
         </Box>
@@ -76,6 +79,7 @@ const BlogDetailPage: NextPage<Props> = ({ posts, categories, post }) => {
             {post.summary}
           </Typography>
           <Md>{post.content}</Md>
+          <br />
           <br />
 
           <Card>
@@ -89,6 +93,23 @@ const BlogDetailPage: NextPage<Props> = ({ posts, categories, post }) => {
             </CardContent>
           </Card>
         </Box>
+        <br />
+        <br />
+        <Divider />
+        <br />
+        <br />
+
+        <Typography variant="h2" gutterBottom>
+          Artículos relacionados ({similarPosts.length})
+        </Typography>
+
+        <Grid container spacing={1}>
+          {similarPosts.map((post) => (
+            <Grid xs={12} sm={6} md={3} lg={4} key={post.id}>
+              <BlogCard2 post={post} />
+            </Grid>
+          ))}
+        </Grid>
       </BlogLayout>
     </>
   );
@@ -110,12 +131,18 @@ export const getStaticProps: GetStaticProps = async ({ locale, params, preview }
       notFound: true,
     };
   }
+  const tags = post.tags.map((tag) => tag.name);
+  const similarPosts = data.posts.filter((p) => {
+    const postTags = p.tags.map((tag) => tag.name);
+    return postTags.some((tag) => tags.includes(tag)) && p.id !== post.id;
+  }) as Post[];
 
   return {
     props: {
       ...i18n,
       posts: data.posts,
       categories: data.categories,
+      similarPosts,
       post,
     },
     revalidate: 3600,

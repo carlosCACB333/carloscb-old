@@ -7,9 +7,10 @@ import { HygraphImg } from '../UI';
 
 interface Props {
   post: Post;
+  isLg?: boolean;
 }
 
-export const BlogCard: FC<Props> = ({ post }) => {
+export const BlogCard: FC<Props> = ({ post, isLg }) => {
   const { palette } = useTheme();
   return (
     <Card
@@ -69,7 +70,9 @@ export const BlogCard: FC<Props> = ({ post }) => {
             {post.title}
           </Typography>
         </Link>
-        <Typography variant="body2">{post.summary}</Typography>
+        <Typography variant="body2" className={isLg ? undefined : 'truncate-3'}>
+          {post.summary}
+        </Typography>
         <Box
           sx={{
             display: 'flex',

@@ -13,15 +13,15 @@ export const BlogCard2: FC<Props> = ({ post }) => {
   const { palette } = useTheme();
   return (
     <Card sx={{ height: '100%' }} variant="outlined" data-aos="zoom-in">
-      <Box sx={{ aspectRatio: '1' }}>
+      <Box sx={{ aspectRatio: '5/4' }}>
         <HygraphImg
           src={post.banner?.url || ''}
           alt={post.title}
-          fit="clip"
-          aspRatio={1}
+          fit="crop"
+          aspRatio={5 / 4}
           sizes="(max-width: 600px) 100vw, (max-width: 960px) 30vw, (max-width: 1200px) 20vw, 15vw"
           style={{
-            borderRadius: 8,
+            borderStartEndRadius: '4px',
             height: '100%',
             width: '100%',
           }}

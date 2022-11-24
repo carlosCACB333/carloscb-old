@@ -14,7 +14,7 @@ interface Props extends PropsWithChildren {
 
 export const BlogLayout: FC<Props> = ({ posts, categories, tags, children, isDetail }) => {
   const categoriesSorted = [...categories].sort((a, b) => b.posts.length - a.posts.length);
-  const blogPriority = [...posts].sort((a, b) => b.priority - a.priority).slice(0, 4);
+  const blogPriority = [...posts].sort((a, b) => b.priority - a.priority).slice(0, 5);
 
   return (
     <>
@@ -23,7 +23,7 @@ export const BlogLayout: FC<Props> = ({ posts, categories, tags, children, isDet
           <SectionLayout maxWidth="lg">
             <Grid container spacing={2}>
               <Grid xs={12} md={6}>
-                <BlogCard post={blogPriority.shift()!} />
+                <BlogCard post={blogPriority.shift()!} isLg />
               </Grid>
               <Grid container xs={12} md={6}>
                 {blogPriority.map((post) => (
