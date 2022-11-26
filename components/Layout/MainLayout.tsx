@@ -1,40 +1,46 @@
 import { Alert, AlertTitle, Box, Button, Drawer, Link, Theme, Toolbar, useMediaQuery } from '@mui/material';
 import { useRouter } from 'next/router';
-import { FC, PropsWithChildren, useState } from 'react';
+import { FC, PropsWithChildren, useEffect, useRef, useState } from 'react';
 import { Footer } from '../sections';
 import { NavBar, SideMenu } from '../UI';
 
-let drawerWidth = 260;
 interface Props extends PropsWithChildren {}
 
 export const MainLayout: FC<Props> = ({ children }) => {
-  const isNotSm = useMediaQuery((theme: Theme) => theme.breakpoints.up('sm'));
-  const [open, setOpen] = useState(isNotSm);
-  const { asPath, isPreview } = useRouter();
+  const isLarge = useMediaQuery((theme: Theme) => theme.breakpoints.up('sm'));
+
+  const drawerWidth = useRef(0);
+  const [open, setOpen] = useState(false);
+  const { asPath, isPreview, pathname } = useRouter();
+
+  useEffect(() => {
+    setOpen(isLarge);
+    drawerWidth.current = isLarge ? 270 : 0;
+  }, [isLarge]);
 
   const handleDrawerToggle = () => {
-    drawerWidth = open ? 0 : 260;
     setOpen(!open);
+    drawerWidth.current = open ? 0 : 270;
   };
 
   return (
     <>
       <Box sx={{ display: 'flex' }}>
-        <NavBar handleDrawerToggle={handleDrawerToggle} drawerWidth={drawerWidth} />
-        <Box component="nav" sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}>
+        <NavBar handleDrawerToggle={handleDrawerToggle} drawerWidth={drawerWidth.current} />
+        <Box component="nav" sx={{ width: { sm: drawerWidth.current }, flexShrink: { sm: 0 } }}>
           <Drawer
-            variant={isNotSm ? 'permanent' : 'temporary'}
+            variant={isLarge ? 'permanent' : 'temporary'}
             open={open}
             onClose={handleDrawerToggle}
             sx={{
-              '& .MuiDrawer-paper': { width: drawerWidth, border: 'none' },
+              '& .MuiDrawer-paper': { width: drawerWidth.current, border: 'none' },
             }}
           >
             <SideMenu />
           </Drawer>
         </Box>
-        <Box component="main" sx={{ flexGrow: 1, width: { sm: `calc(100% - ${drawerWidth}px)` } }}>
-          <Toolbar />
+        <Box component="main" sx={{ flexGrow: 1, width: { sm: `calc(100% - ${drawerWidth.current}px)` } }}>
+          {pathname !== '/blog/[slug]' && <Toolbar />}
           {children}
           <Footer />
         </Box>

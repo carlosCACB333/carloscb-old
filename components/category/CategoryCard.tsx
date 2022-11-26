@@ -1,7 +1,7 @@
 import { Box, Card, CardContent, Typography, useTheme } from '@mui/material';
-import Link from 'next/link';
 import { FC } from 'react';
 import { Category } from '../../graphql/generated/graphql';
+import { Link } from '../common';
 import { HygraphImg } from '../UI';
 interface Props {
   category: Category;
@@ -44,18 +44,8 @@ export const CategoryCard: FC<Props> = ({ category }) => {
           textAlign: 'center',
         }}
       >
-        <Link href={`/blog/category/${category.slug}`} passHref scroll={false}>
-          <Typography
-            variant="h2"
-            sx={{
-              ':hover': {
-                textDecoration: 'underline',
-                cursor: 'pointer',
-              },
-            }}
-          >
-            {category.name}
-          </Typography>
+        <Link href={`/blog/category/${category.slug}`} scroll={false} variant="h5">
+          {category.name}
         </Link>
         <Typography variant="body2">
           {category.posts.length + ` `}

@@ -4,69 +4,96 @@ import { TypographyOptions } from '@mui/material/styles/createTypography';
 export const themeTypography = (options: PaletteOptions): TypographyOptions => {
   return {
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-    overline: {
-      color: options.text?.primary,
-    },
-    h6: {
-      fontWeight: 500,
-      color: options.text?.secondary,
-      fontSize: '0.75rem',
-    },
-    h5: {
-      fontSize: '0.875rem',
-      color: options.text?.secondary,
-      fontWeight: 500,
-    },
-    h4: {
-      fontSize: '1rem',
-      color: options.text?.secondary,
-      fontWeight: 600,
-    },
-    h3: {
-      fontSize: '1.25rem',
-      color: options.text?.primary,
-      fontWeight: 600,
-    },
-    h2: {
-      fontSize: '1.5rem',
-      color: options.text?.primary,
-      fontWeight: 700,
-    },
+
     h1: {
-      fontSize: '2.125rem',
+      fontWeight: 900,
       color: options.text?.primary,
-      fontWeight: 700,
+      fontSize: '3rem',
+      letterSpacing: 0,
     },
+
+    h2: {
+      fontWeight: 800,
+      color: options.text?.primary,
+      fontSize: '2.65rem',
+      letterSpacing: 0,
+    },
+
+    h3: {
+      fontWeight: 700,
+      color: options.text?.primary,
+      fontSize: '2.3rem',
+      letterSpacing: 0,
+    },
+
+    h4: {
+      fontWeight: 700,
+      color: options.text?.primary,
+      fontSize: '1.95rem',
+      letterSpacing: 0,
+    },
+
+    h5: {
+      fontWeight: 600,
+      color: options.text?.primary,
+      fontSize: '1.6rem',
+      letterSpacing: 0,
+    },
+
+    h6: {
+      fontWeight: 600,
+      color: options.text?.primary,
+      fontSize: '1.25rem',
+      letterSpacing: 0,
+    },
+
     subtitle1: {
-      fontSize: '0.875rem',
+      fontSize: '1.125rem',
       fontWeight: 500,
       color: options.text?.primary,
+      letterSpacing: 0,
     },
     subtitle2: {
-      fontSize: '0.75rem',
-      fontWeight: 400,
-      color: options.text?.secondary,
-    },
-    caption: {
-      fontSize: '0.75rem',
-      color: options.text?.secondary,
-      fontWeight: 400,
-    },
-    body1: {
-      fontSize: '0.875rem',
-      fontWeight: 400,
-      lineHeight: '1.334em',
+      fontSize: '1rem',
+      fontWeight: 500,
       color: options.text?.primary,
+      letterSpacing: 0,
+    },
+
+    body1: {
+      fontSize: '1.125rem',
+      fontWeight: 300,
+      color: options.text?.secondary,
+      letterSpacing: 0,
     },
     body2: {
-      letterSpacing: '0em',
-      fontWeight: 400,
-      lineHeight: '1.5em',
+      fontSize: '1rem',
+      fontWeight: 300,
       color: options.text?.secondary,
+      letterSpacing: 0,
     },
-    button: {
-      textTransform: 'capitalize',
+
+    caption: {
+      fontSize: '0.75rem',
+      fontWeight: 300,
+      color: options.text?.secondary,
+      letterSpacing: 0,
+    },
+
+    overline: {
+      fontSize: '0.75rem',
+      fontWeight: 400,
       color: options.text?.primary,
+      letterSpacing: 0,
+      textTransform: 'uppercase',
+    },
+
+    button: {
+      fontSize: '0.875rem',
+      fontWeight: 500,
+      color: options.text?.primary,
+      letterSpacing: 0,
+      textTransform: 'capitalize',
     },
   };
 };

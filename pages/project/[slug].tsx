@@ -2,9 +2,8 @@ import { ArrowBackIos, GitHub, LaptopWindows } from '@mui/icons-material';
 import { Box, Button, Card, CardContent, Container, Typography } from '@mui/material';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Link from 'next/link';
-import { Md, Meta } from '../../components/common';
-import { Icon } from '../../components/icons';
+import { SkillGroup } from '../../components/category';
+import { Link, Md, Meta } from '../../components/common';
 import { SectionLayout } from '../../components/Layout';
 import { Carrousel } from '../../components/UI';
 import { GetProjectDocument, GetProjectsSlugDocument, Project, Stage } from '../../graphql';
@@ -22,7 +21,11 @@ const ProjectDetail = ({ project }: Props) => {
         paddingY: 0,
       }}
     >
-      <Meta title={project.title} description={project.detail} />
+      <Meta title={project.title} description={project.detail}>
+        <meta property="og:title" content={project.title} />
+        <meta property="og:description" content={project.detail} />
+        <meta property="og:image" content={project.pictures[0]?.url || '/logo.svg'} />
+      </Meta>
 
       <br />
       <Card
@@ -33,9 +36,7 @@ const ProjectDetail = ({ project }: Props) => {
         data-aos="fade-up"
       >
         <CardContent>
-          <Typography variant="h5" component="h2">
-            {project.abstract}
-          </Typography>
+          <Typography sx={{ fontWeight: 'bold', fontStyle: 'italic' }}>{project.abstract}</Typography>
         </CardContent>
       </Card>
       <br />
@@ -54,7 +55,7 @@ const ProjectDetail = ({ project }: Props) => {
           alignItems: 'center',
         }}
       >
-        <Box sx={{ display: 'flex', gap: 1 }}>
+        <Box sx={{ display: 'flex', gap: 1, mb: 1 }}>
           <Link href="/project">
             <Button size="large" startIcon={<ArrowBackIos />} variant="outlined" aria-label="back">
               Volver
@@ -76,11 +77,7 @@ const ProjectDetail = ({ project }: Props) => {
           )}
         </Box>
 
-        <Box sx={{ display: 'flex', justifyContent: 'end', gap: 0.2, marginY: 1 }}>
-          {project.skills.map((skill) => (
-            <Icon key={skill.id} name={skill.icon as any} fontSize="medium" />
-          ))}
-        </Box>
+        <SkillGroup skills={project.skills} />
       </Box>
 
       <Container>

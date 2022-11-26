@@ -42,8 +42,10 @@ export const SkillSection = ({ categories }: { categories: Category[] }) => {
                     }}
                   />
                   <Box>
-                    <Typography variant="h2">{category.name}</Typography>
-                    <Typography variant="body2"> {category.detail}</Typography>
+                    <Typography variant="h4" component="h2">
+                      {category.name}
+                    </Typography>
+                    <Typography variant="body1"> {category.detail}</Typography>
                   </Box>
                 </Box>
               </AccordionSummary>
@@ -91,7 +93,7 @@ const Skill = ({ skill, isFirst, isEnd }: SkillProps) => {
         {!isEnd && <TimelineConnector />}
       </TimelineSeparator>
       <TimelineContent sx={{ py: '12px', px: 2 }}>
-        <Typography variant="h3" component="span">
+        <Typography variant="h5" component="h3">
           {skill.name}
         </Typography>
         <Typography variant="body2">{skill.detail} </Typography>

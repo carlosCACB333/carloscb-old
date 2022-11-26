@@ -1,6 +1,7 @@
 import { ArrowBackIos } from '@mui/icons-material';
 import { Avatar, Box, Button, Card, CardContent, Container, Divider, Typography, useTheme } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
@@ -19,8 +20,10 @@ interface Props {
   similarPosts: Post[];
 }
 const BlogDetailPage: NextPage<Props> = ({ posts, categories, post, similarPosts }) => {
-  const { palette } = useTheme();
+  const { palette, breakpoints } = useTheme();
   const { back } = useRouter();
+  const isLgUp = useMediaQuery(breakpoints.up('lg'));
+
   return (
     <>
       <Meta title={post.title} description={post.summary}>
@@ -31,10 +34,11 @@ const BlogDetailPage: NextPage<Props> = ({ posts, categories, post, similarPosts
 
       <Box
         sx={{
-          aspectRatio: '16/5',
+          aspectRatio: isLgUp ? '16/6' : '5/4',
           position: 'relative',
         }}
       >
+        <HygraphImg src={post.banner?.url!} alt={post.title} fit="crop" aspRatio={isLgUp ? 16 / 6 : 5 / 4} priority />
         <Box
           sx={{
             background: `linear-gradient(rgba(0, 0, 0, 0) 0%, ${palette.background.default} 90%)`,
@@ -55,7 +59,7 @@ const BlogDetailPage: NextPage<Props> = ({ posts, categories, post, similarPosts
           >
             <SkillGroup skills={post.tags} />
             <Typography variant="h1">{post.title}</Typography>
-            <Typography variant="h6" sx={{ fontWeight: 600 }}>
+            <Typography variant="subtitle1">
               {new Date(post.updatedAt).toLocaleDateString('es-PE', {
                 weekday: 'long',
                 year: 'numeric',
@@ -71,13 +75,13 @@ const BlogDetailPage: NextPage<Props> = ({ posts, categories, post, similarPosts
             </div>
           </Container>
         </Box>
-        <HygraphImg src={post.banner?.url!} alt={post.title} fit="crop" aspRatio={16 / 5} />
       </Box>
       <BlogLayout categories={categories} posts={posts} tags={post.tags} isDetail>
         <Box>
-          <Typography variant="h4" component="h1" gutterBottom>
+          <Typography gutterBottom sx={{ fontWeight: 400 }} className="first-letter">
             {post.summary}
           </Typography>
+          <br />
           <Md>{post.content}</Md>
           <br />
           <br />

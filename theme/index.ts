@@ -1,2 +1,2 @@
-export * from './codeTheme';
+export * from './palette';
 export * from './theme';

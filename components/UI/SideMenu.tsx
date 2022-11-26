@@ -1,5 +1,5 @@
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
-import { IconButton, Link } from '@mui/material';
+import { IconButton } from '@mui/material';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -17,10 +17,10 @@ import {
   LinkedIn,
   WhatsApp,
 } from '@mui/icons-material';
-import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'react-i18next';
 import { AuthorContext } from '../../context';
+import { Link } from '../common';
 import { Icon } from '../icons';
 
 interface Props {}
@@ -83,12 +83,13 @@ export const SideMenu = ({}: Props) => {
       }}
     >
       <Box>
-        <NextLink
+        <Link
           href="/"
           style={{
             display: 'flex',
             justifyContent: 'center',
           }}
+          aria-label="home"
         >
           <Icon
             name="logo"
@@ -97,25 +98,25 @@ export const SideMenu = ({}: Props) => {
               fontSize: '4em',
             }}
           />
-        </NextLink>
+        </Link>
         <br />
         <br />
         <List>
           {routes.map((route, idx) => (
             <ListItem key={route.name + idx}>
               <Link
+                variant="subtitle2"
                 sx={{
                   py: 1,
                   display: 'flex',
                   alignItems: 'center',
-                  fontWeight: active === route.id ? 'bold' : 'normal',
-                  color: active == route.id ? 'primary.main' : 'text.secondary',
+                  fontWeight: active === route.id ? 'bold' : 'auto',
+                  color: active == route.id ? 'primary.main' : 'text.primary',
                 }}
-                component={NextLink}
                 href={route.id ? `/#${route.id}` : '/'}
               >
                 <ListItemIcon>{<route.Icon />}</ListItemIcon>
-                {route.name.toUpperCase()}
+                {route.name}
               </Link>
             </ListItem>
           ))}

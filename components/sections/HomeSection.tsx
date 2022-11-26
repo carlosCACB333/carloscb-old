@@ -50,17 +50,18 @@ export const HomeSection: FC<Props> = ({ author }) => {
         />
         <Box paddingY={4}>
           <Typography
-            variant="h1"
+            variant="h2"
+            component="h1"
             textAlign="center"
             data-aos="zoom-in"
             sx={{
-              maxWidth: 400,
+              maxWidth: 500,
             }}
           >
             {author.detail}
           </Typography>
 
-          <Typography variant="h2" fontWeight="normal" textAlign="center" data-aos="zoom-in">
+          <Typography variant="h4" component="h2" fontWeight="normal" textAlign="center" data-aos="zoom-in">
             {author.firstName + ' ' + author.lastName}
           </Typography>
         </Box>

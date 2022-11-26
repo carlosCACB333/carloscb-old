@@ -2,9 +2,9 @@ import { ArrowRight, GitHub } from '@mui/icons-material';
 import LaptopMacIcon from '@mui/icons-material/LaptopMac';
 import { Box, Button, Card, CardActions, CardContent, IconButton, Typography } from '@mui/material';
 import { useTranslation } from 'next-i18next';
-import Link from 'next/link';
 import { Project } from '../../graphql/generated/graphql';
 import { SkillGroup } from '../category';
+import { Link } from '../common';
 import { Carrousel } from '../UI';
 
 interface Props {
@@ -30,11 +30,11 @@ export const ProjectCard = ({ project }: Props) => {
           <div style={{ height: 4 }}></div>
           <Carrousel images={project.pictures} />
 
-          <Typography gutterBottom variant="h2" component="div">
+          <Typography variant="h5" component="h2">
             {project.title}
           </Typography>
 
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body1" color="text.secondary">
             {project.abstract}
           </Typography>
         </Box>

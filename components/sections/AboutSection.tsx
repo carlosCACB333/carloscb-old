@@ -51,7 +51,7 @@ export const AboutSection: FC<Props> = ({ author }) => {
           <br />
           <Grid container spacing={1} className="scroll">
             <Grid xs={4}>
-              <Typography sx={{ margin: 0 }} variant="h4" marginY={2} data-aos="fade-up">
+              <Typography sx={{ margin: 0 }} variant="subtitle1" marginY={2} data-aos="fade-up">
                 {t('about.user.name')}
               </Typography>
             </Grid>
@@ -62,7 +62,7 @@ export const AboutSection: FC<Props> = ({ author }) => {
             </Grid>
 
             <Grid xs={4}>
-              <Typography sx={{ margin: 0 }} variant="h4" marginY={2} data-aos="fade-up">
+              <Typography sx={{ margin: 0 }} variant="subtitle1" marginY={2} data-aos="fade-up">
                 {t('about.user.email')}
               </Typography>
             </Grid>
@@ -73,7 +73,7 @@ export const AboutSection: FC<Props> = ({ author }) => {
             </Grid>
 
             <Grid xs={4}>
-              <Typography sx={{ margin: 0 }} variant="h4" marginY={2} data-aos="fade-up">
+              <Typography sx={{ margin: 0 }} variant="subtitle1" marginY={2} data-aos="fade-up">
                 {t('about.user.age')}
               </Typography>
             </Grid>
@@ -84,7 +84,7 @@ export const AboutSection: FC<Props> = ({ author }) => {
             </Grid>
 
             <Grid xs={4}>
-              <Typography sx={{ margin: 0 }} variant="h4" marginY={2} data-aos="fade-up">
+              <Typography sx={{ margin: 0 }} variant="subtitle1" marginY={2} data-aos="fade-up">
                 {t('about.user.phone')}
               </Typography>
             </Grid>
@@ -94,7 +94,7 @@ export const AboutSection: FC<Props> = ({ author }) => {
               </Typography>
             </Grid>
             <Grid xs={4}>
-              <Typography sx={{ margin: 0 }} variant="h4" marginY={2} data-aos="fade-up">
+              <Typography sx={{ margin: 0 }} variant="subtitle1" marginY={2} data-aos="fade-up">
                 {t('about.user.profession')}
               </Typography>
             </Grid>
@@ -105,7 +105,7 @@ export const AboutSection: FC<Props> = ({ author }) => {
             </Grid>
 
             <Grid xs={4}>
-              <Typography sx={{ margin: 0 }} variant="h4" marginY={2} data-aos="fade-up">
+              <Typography sx={{ margin: 0 }} variant="subtitle1" marginY={2} data-aos="fade-up">
                 {t('about.user.university')}
               </Typography>
             </Grid>
@@ -116,7 +116,7 @@ export const AboutSection: FC<Props> = ({ author }) => {
               </Typography>
             </Grid>
             <Grid xs={4}>
-              <Typography sx={{ margin: 0 }} variant="h4" marginY={2} data-aos="fade-up">
+              <Typography sx={{ margin: 0 }} variant="subtitle1" marginY={2} data-aos="fade-up">
                 {t('about.user.cycle')}
               </Typography>
             </Grid>
@@ -126,7 +126,7 @@ export const AboutSection: FC<Props> = ({ author }) => {
               </Typography>
             </Grid>
             <Grid xs={4}>
-              <Typography sx={{ margin: 0 }} variant="h4" marginY={2} data-aos="fade-up">
+              <Typography sx={{ margin: 0 }} variant="subtitle1" marginY={2} data-aos="fade-up">
                 {t('about.user.address')}
               </Typography>
             </Grid>

@@ -4,10 +4,10 @@ import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import { AppBar, Box, Button, IconButton, Toolbar } from '@mui/material';
 import Cookies from 'js-cookie';
 import { useTranslation } from 'next-i18next';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useContext } from 'react';
 import { ThemeContext } from '../../context';
+import { Link } from '../common';
 
 interface Props {
   handleDrawerToggle: () => void;
@@ -33,34 +33,22 @@ export const NavBar = ({ handleDrawerToggle, drawerWidth }: Props) => {
         backdropFilter: 'blur(5px)',
       }}
     >
-      <Toolbar>
+      <Toolbar sx={{ gap: 1 }}>
         <IconButton onClick={handleDrawerToggle} aria-label="menu">
           <MenuIcon />
         </IconButton>
-        <Link href="/project">
-          <Button
-            size="small"
-            variant={asPath === '/project' ? 'contained' : 'text'}
-            color="primary"
-            aria-label="projects"
-          >
-            {t('nav.projects')}
-          </Button>
+        <Link variant="button" color={asPath === '/project' ? 'primary.main' : 'text.primary'} href="/project">
+          {t('nav.projects')}
         </Link>
-        <Link href="/certification">
-          <Button
-            size="small"
-            variant={asPath === '/certification' ? 'contained' : 'text'}
-            color="primary"
-            aria-label="certifications"
-          >
-            {t('nav.certifications')}
-          </Button>
+        <Link
+          variant="button"
+          color={asPath === '/certification' ? 'primary.main' : 'text.primary'}
+          href="/certification"
+        >
+          {t('nav.certifications')}
         </Link>
-        <Link href="/blog">
-          <Button size="small" variant={asPath === '/blog' ? 'contained' : 'text'} color="primary" aria-label="blog">
-            {t('nav.blog')}
-          </Button>
+        <Link variant="button" color={asPath === '/blog' ? 'primary.main' : 'text.primary'} href="/blog">
+          {t('nav.blog')}
         </Link>
 
         <Box flex={1}></Box>

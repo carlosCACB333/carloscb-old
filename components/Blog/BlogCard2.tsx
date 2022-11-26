@@ -1,8 +1,8 @@
 import { Avatar, Box, Card, CardContent, Typography, useTheme } from '@mui/material';
-import Link from 'next/link';
 import { FC } from 'react';
 import { Post } from '../../graphql/generated/graphql';
 import { SkillGroup } from '../category';
+import { Link } from '../common';
 import { HygraphImg } from '../UI/HygraphImg';
 
 interface Props {
@@ -29,7 +29,7 @@ export const BlogCard2: FC<Props> = ({ post }) => {
       </Box>
       <CardContent>
         <SkillGroup skills={post.tags} />
-        <Typography variant="h6" component="h2">
+        <Typography variant="caption">
           {new Date(post.updatedAt).toLocaleDateString('es-PE', {
             weekday: 'long',
             year: 'numeric',
@@ -37,20 +37,14 @@ export const BlogCard2: FC<Props> = ({ post }) => {
             day: 'numeric',
           })}
         </Typography>
-        <Link href={'/blog/' + post.slug}>
-          <Typography
-            variant="h2"
-            sx={{
-              ':hover': {
-                cursor: 'pointer',
-                textDecoration: 'underline',
-              },
-            }}
-          >
+
+        <div>
+          <Link href={'/blog/' + post.slug} variant="h6">
             {post.title}
-          </Typography>
-        </Link>
-        <Typography variant="body2" className="truncate-3">
+          </Link>
+        </div>
+
+        <Typography variant="body2" className="truncate-3" mt={1}>
           {post.summary}
         </Typography>
         <Box

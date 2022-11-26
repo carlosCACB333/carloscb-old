@@ -11,17 +11,17 @@ export const themeComponents = (options: PaletteOptions): Components<Omit<Theme,
       styleOverrides: { root: { backgroundColor: 'transparent', ':before': { content: 'none' } } },
     },
     MuiAccordionSummary: { styleOverrides: { root: { padding: 0 } } },
-
+    MuiList: { styleOverrides: { dense: true, root: { fontSize: 'initial' } } },
     MuiListItem: { styleOverrides: { root: { padding: 0 } } },
     MuiListItemIcon: { styleOverrides: { root: { minWidth: 'auto', marginRight: 8, color: 'inherit' } } },
     MuiLink: {
       styleOverrides: {
         root: {
-          width: '100%',
           textDecoration: 'none',
           cursor: 'pointer',
-          color: options.text?.secondary,
-          ':hover': { color: options.text?.primary, fontWeight: 'bold' },
+          color: options.text?.primary,
+          lineHeight: 0,
+          ':hover': { color: options.text?.secondary },
         },
       },
     },
