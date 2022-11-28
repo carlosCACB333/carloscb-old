@@ -105,7 +105,7 @@ export const SideMenu = ({}: Props) => {
           {routes.map((route, idx) => (
             <ListItem key={route.name + idx}>
               <Link
-                variant="subtitle2"
+                variant="subtitle1"
                 sx={{
                   py: 1,
                   display: 'flex',

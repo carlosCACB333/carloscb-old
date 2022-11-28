@@ -36,7 +36,7 @@ const ProjectDetail = ({ project }: Props) => {
         data-aos="fade-up"
       >
         <CardContent>
-          <Typography sx={{ fontWeight: 'bold', fontStyle: 'italic' }}>{project.abstract}</Typography>
+          <Typography sx={{ fontWeight: 400, fontStyle: 'italic' }}>{project.abstract}</Typography>
         </CardContent>
       </Card>
       <br />

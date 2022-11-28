@@ -9,11 +9,7 @@ export const SkillGroup: FC<Props> = ({ skills }) => {
   return (
     <AvatarGroup max={50}>
       {skills.map((skill) => (
-        <Avatar
-          key={skill.id}
-          alt={skill.name}
-          sx={{ bgcolor: 'secondary.main', color: 'text.primary', height: 30, width: 30 }}
-        >
+        <Avatar key={skill.id} alt={skill.name} sx={{ bgcolor: 'secondary.main', height: 30, width: 30 }}>
           <Icon name={skill.icon as any} />
         </Avatar>
       ))}

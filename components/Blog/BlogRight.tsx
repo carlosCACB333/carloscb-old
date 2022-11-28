@@ -58,7 +58,7 @@ export const BlogRight: FC<Props> = ({ categories, tags, posts, isDetail }) => {
               </ListItemAvatar>
               <ListItemText
                 primary={
-                  <Link href={'/blog/' + post.slug} scroll={false} variant="subtitle1">
+                  <Link href={'/blog/' + post.slug} variant="subtitle1">
                     {post.title}
                   </Link>
                 }

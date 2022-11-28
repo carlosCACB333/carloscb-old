@@ -13,9 +13,6 @@ export const CertificationCard: FC<Props> = ({ certification, idx }) => {
       sx={{
         width: '100%',
         height: '100%',
-        ':hover': {
-          boxShadow: 3,
-        },
       }}
     >
       <HygraphImg

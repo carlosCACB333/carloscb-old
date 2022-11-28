@@ -39,7 +39,7 @@ export const Md: FC<Props> = ({ children, ...props }) => {
                   backgroundColor: themePalette('dark').background?.paper,
                 }}
               >
-                <CardContent sx={{ paddingBottom: '4px !important' }}>
+                <CardContent>
                   <Box className="scroll" ref={ref}>
                     <Prism
                       style={vscDarkPlus as any}
@@ -53,6 +53,11 @@ export const Md: FC<Props> = ({ children, ...props }) => {
                       language={match[1]}
                       PreTag="div"
                       {...props}
+                      codeTagProps={{
+                        style: {
+                          fontSize: '1rem',
+                        },
+                      }}
                     >
                       {String(children).replace(/\n$/, '')}
                     </Prism>
@@ -93,11 +98,7 @@ export const Md: FC<Props> = ({ children, ...props }) => {
           blockquote: ({ children }) => (
             <Box
               sx={{
-                // borderLeft: '4px solid',
-                // borderColor: 'text.secondary',
-                // pl: 2,
                 p: 0,
-                // m: 0,
                 position: 'relative',
                 ml: '4rem',
                 ':before': {

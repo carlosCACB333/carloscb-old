@@ -48,26 +48,26 @@ export const themeTypography = (options: PaletteOptions): TypographyOptions => {
     },
 
     subtitle1: {
-      fontSize: '1.125rem',
+      fontSize: '1rem',
       fontWeight: 500,
       color: options.text?.primary,
       letterSpacing: 0,
     },
     subtitle2: {
-      fontSize: '1rem',
+      fontSize: '0.875rem',
       fontWeight: 500,
       color: options.text?.primary,
       letterSpacing: 0,
     },
 
     body1: {
-      fontSize: '1.125rem',
+      fontSize: '1rem',
       fontWeight: 300,
       color: options.text?.secondary,
       letterSpacing: 0,
     },
     body2: {
-      fontSize: '1rem',
+      fontSize: '0.875rem',
       fontWeight: 300,
       color: options.text?.secondary,
       letterSpacing: 0,
