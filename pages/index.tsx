@@ -19,7 +19,11 @@ import {
   Stage,
 } from "../graphql";
 import { client } from "../utils/apolloClient";
-import { env } from "../utils/env";
+import { env } from "../config/env";
+import { useContext, useEffect } from "react";
+import { LayoutContext } from "../context";
+import { ProfileAside } from "../components/common";
+import { serializeStrMdx } from "../utils/mdx";
 
 interface Props {
   categories: Category[];
@@ -33,6 +37,12 @@ const HomePage: NextPage<Props> = ({
   certifications,
   author,
 }) => {
+  const { setLayouts } = useContext(LayoutContext);
+
+  useEffect(() => {
+    setLayouts(<ProfileAside />);
+  }, [setLayouts]);
+
   return (
     <>
       <Meta author={author} />
@@ -66,8 +76,16 @@ export const getStaticProps: GetStaticProps = async ({
   const certifications = data.certifications;
   const author = data.author;
 
+  const { source } = await serializeStrMdx(author?.bio || "");
+
   return {
-    props: { ...i18n, categories, projects, certifications, author },
+    props: {
+      ...i18n,
+      categories,
+      projects,
+      certifications,
+      author: { ...author, bio: source },
+    },
     revalidate: 3600,
   }; // 1 hour
 };

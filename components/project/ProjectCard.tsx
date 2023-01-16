@@ -1,31 +1,38 @@
-import { ArrowRight, GitHub } from '@mui/icons-material';
-import LaptopMacIcon from '@mui/icons-material/LaptopMac';
-import { Box, Button, Card, CardActions, CardContent, IconButton, Typography } from '@mui/material';
-import { useTranslation } from 'next-i18next';
-import { Project } from '../../graphql/generated/graphql';
-import { SkillGroup } from '../category';
-import { Link } from '../common';
-import { Carrousel } from '../UI';
+import { ArrowRight, GitHub } from "@mui/icons-material";
+import LaptopMacIcon from "@mui/icons-material/LaptopMac";
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  IconButton,
+  Typography,
+} from "@mui/material";
+import { useTranslation } from "next-i18next";
+import { Project } from "../../graphql/generated/graphql";
+import { SkillGroup } from "../category";
+import { Carrousel, Link } from "../common";
 
 interface Props {
   project: Project;
 }
 
 export const ProjectCard = ({ project }: Props) => {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation("common");
   return (
     <Card
       sx={{
-        height: '100%',
-        ':hover': {
-          transform: 'scale(1.02)',
-          transition: 'all 0.3s ease-in-out',
+        height: "100%",
+        ":hover": {
+          transform: "scale(1.02)",
+          transition: "all 0.3s ease-in-out",
         },
       }}
       data-aos="zoom-in"
     >
       <CardContent>
-        <Box sx={{ position: 'relative' }}>
+        <Box sx={{ position: "relative" }}>
           <SkillGroup skills={project.skills} />
           <div style={{ height: 4 }}></div>
           <Carrousel images={project.pictures} />
@@ -42,7 +49,7 @@ export const ProjectCard = ({ project }: Props) => {
 
       <CardActions
         sx={{
-          justifyContent: 'end',
+          justifyContent: "end",
         }}
       >
         {project.gitHub && (
@@ -63,11 +70,16 @@ export const ProjectCard = ({ project }: Props) => {
         <Link
           href={`/project/${project.slug}`}
           style={{
-            textDecoration: 'none',
+            textDecoration: "none",
           }}
         >
-          <Button size="small" variant="text" endIcon={<ArrowRight />} aria-label="read more">
-            {t('btn.show-more')}
+          <Button
+            size="small"
+            variant="text"
+            endIcon={<ArrowRight />}
+            aria-label="read more"
+          >
+            {t("btn.show-more")}
           </Button>
         </Link>
       </CardActions>

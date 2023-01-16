@@ -1,8 +1,8 @@
 {
   "nav": {
-    "projects": "Proyectos",
-    "certifications": "Certificaciones",
-    "blog": "Blog"
+    "home": "Inicio",
+    "blog": "Blog",
+    "notes": "Apuntes"
   },
   "side": {
     "home": "Inicio",
@@ -10,7 +10,9 @@
     "skills": "Mis habilidades",
     "projects": "Mis proyectos",
     "certifications": "Mis certificaciones",
-    "contact": "Contáctame"
+    "contact": "Contáctame",
+    "all-projects": "Todos los proyectos",
+    "all-certifications": "Todas las certificaciones"
   },
   "footer": {
     "made": "Hecho con",

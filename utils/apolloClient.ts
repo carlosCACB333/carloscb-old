@@ -1,5 +1,5 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { env } from './env';
+import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { env } from "../config/env";
 
 export const client = new ApolloClient({
   uri: env.cms.url,

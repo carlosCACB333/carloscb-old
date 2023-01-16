@@ -1,8 +1,8 @@
-import { Box, Card, CardContent, Typography, useTheme } from '@mui/material';
-import { FC } from 'react';
-import { Category } from '../../graphql/generated/graphql';
-import { Link } from '../common';
-import { HygraphImg } from '../UI';
+import { Box, Card, CardContent, Typography, useTheme } from "@mui/material";
+import { FC } from "react";
+import { Category } from "../../graphql/generated/graphql";
+import { Link, HygraphImg } from "../common";
+
 interface Props {
   category: Category;
 }
@@ -11,14 +11,14 @@ export const CategoryCard: FC<Props> = ({ category }) => {
   return (
     <Card
       sx={{
-        height: '100%',
-        width: '100%',
+        height: "100%",
+        width: "100%",
       }}
       data-aos="zoom-in"
     >
-      <Box sx={{ position: 'relative', height: 200 }}>
+      <Box sx={{ position: "relative", height: 200 }}>
         <HygraphImg
-          src={category.img?.url || ''}
+          src={category.img?.url || ""}
           alt={category.name}
           fit="crop"
           aspRatio={1}
@@ -27,9 +27,9 @@ export const CategoryCard: FC<Props> = ({ category }) => {
         <Box
           sx={{
             background: `linear-gradient(rgba(0, 0, 0, 0) 0%, ${palette.background.paper} 80%)`,
-            position: 'absolute',
-            height: '100%',
-            width: '100%',
+            position: "absolute",
+            height: "100%",
+            width: "100%",
             top: 0,
           }}
         ></Box>
@@ -37,19 +37,23 @@ export const CategoryCard: FC<Props> = ({ category }) => {
 
       <CardContent
         sx={{
-          marginTop: '-20%',
-          height: '100%',
+          marginTop: "-20%",
+          height: "100%",
           zIndex: 10,
-          position: 'relative',
-          textAlign: 'center',
+          position: "relative",
+          textAlign: "center",
         }}
       >
-        <Link href={`/blog/category/${category.slug}`} scroll={false} variant="h5">
+        <Link
+          href={`/blog/category/${category.slug}`}
+          scroll={false}
+          variant="h5"
+        >
           {category.name}
         </Link>
         <Typography variant="body2">
           {category.posts.length + ` `}
-          post{category.posts.length > 1 ? 's' : ''}
+          post{category.posts.length > 1 ? "s" : ""}
         </Typography>
       </CardContent>
     </Card>

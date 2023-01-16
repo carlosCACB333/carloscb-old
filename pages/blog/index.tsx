@@ -1,9 +1,17 @@
-import { GetStaticProps, NextPage } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { BlogPage } from '../../components/Blog';
-import { Meta } from '../../components/common';
-import { Category, GetBlogsDataDocument, Post, Skill, Stage } from '../../graphql';
-import { client } from '../../utils/apolloClient';
+import { GetStaticProps, NextPage } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useContext, useEffect } from "react";
+import { BlogHome, BlogList, BlogRight } from "../../components/Blog";
+import { Meta, ProfileAside } from "../../components/common";
+import { LayoutContext } from "../../context";
+import {
+  Category,
+  GetBlogsDataDocument,
+  Post,
+  Skill,
+  Stage,
+} from "../../graphql";
+import { client } from "../../utils/apolloClient";
 
 interface Props {
   posts: Post[];
@@ -11,10 +19,33 @@ interface Props {
   tags: Skill[];
 }
 const BlogPageMain: NextPage<Props> = ({ posts, categories, tags }) => {
+  const { setLayouts } = useContext(LayoutContext);
+
+  useEffect(() => {
+    setLayouts(
+      <ProfileAside />,
+      <BlogRight
+        categories={categories}
+        tags={tags}
+        posts={posts}
+        isDetail={false}
+      />
+    );
+  }, [categories, posts, setLayouts, tags]);
+
   return (
     <>
-      <Meta title="Blog" description="Los blog post de desarrollo de software más interesantes" />
-      <BlogPage posts={posts} categories={categories} tags={tags} filteredPosts={posts} />
+      <Meta
+        title="Blog"
+        description="Los blog post de desarrollo de software más interesantes"
+      />
+      <BlogHome categories={categories} posts={posts} />
+      <BlogList
+        posts={posts}
+        categories={categories}
+        tags={tags}
+        filteredPosts={posts}
+      />
     </>
   );
 };
@@ -22,7 +53,7 @@ const BlogPageMain: NextPage<Props> = ({ posts, categories, tags }) => {
 export default BlogPageMain;
 
 export const getStaticProps: GetStaticProps = async ({ locale, preview }) => {
-  const i18n = await serverSideTranslations(locale || 'es', ['common']);
+  const i18n = await serverSideTranslations(locale || "es", ["common"]);
   const { data } = await client.query({
     query: GetBlogsDataDocument,
     variables: {

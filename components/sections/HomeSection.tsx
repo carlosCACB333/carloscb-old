@@ -1,37 +1,41 @@
-import { Avatar, Box, Button, Typography, useMediaQuery } from '@mui/material';
-import Image from 'next/image';
-import { FC, useContext } from 'react';
-import { useTranslation } from 'react-i18next';
-import circle from '../../assets/circle.png';
-import { ThemeContext } from '../../context';
-import { Author } from '../../graphql/generated/graphql';
-import { getTheme } from '../../theme';
-import { Icon } from '../icons';
-import { SectionLayout } from '../Layout/';
+import { Avatar, Box, Button, Typography } from "@mui/material";
+import Image from "next/image";
+import { FC, useContext } from "react";
+import { useTranslation } from "next-i18next";
+import circle from "../../assets/circle.png";
+import { ThemeContext } from "../../context";
+import { Author } from "../../graphql/generated/graphql";
+import { Icon } from "../icons";
+import { SectionLayout } from "../layouts";
 
-const iconSize = ['5rem', '6em', '7rem', '8rem'];
-const px = ['2.5rem', '3em', '3.5rem', '4rem'];
+const iconSize = ["5rem", "6em", "7rem", "8rem"];
+const px = ["2.5rem", "3em", "3.5rem", "4rem"];
+const iconFontSize = ["2rem", "3rem", "4rem"];
+
 interface Props {
   author: Author;
 }
 export const HomeSection: FC<Props> = ({ author }) => {
-  const { t } = useTranslation('home');
+  const { t } = useTranslation("home");
   const { mode } = useContext(ThemeContext);
-  const isNotMd = useMediaQuery(getTheme('dark').breakpoints.up('md'));
+
   return (
-    <SectionLayout sx={{ position: 'relative', overflow: 'hidden', paddingTop: 0 }} component="section" id="">
+    <SectionLayout
+      sx={{ position: "relative", overflow: "hidden", paddingTop: 0 }}
+      component="section"
+      id=""
+    >
       <Box
         sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          position: isNotMd ? 'absolute' : 'initial',
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          position: ["initial", "initial", "absolute"],
           top: -50,
           left: 0,
           right: 0,
           bottom: 0,
-          justifyContent: 'center',
-          marginTop: isNotMd ? 0 : '4rem',
+          justifyContent: "center",
           zIndex: 100,
         }}
       >
@@ -39,12 +43,12 @@ export const HomeSection: FC<Props> = ({ author }) => {
           src={author.photos[0].url}
           variant="rounded"
           alt="Carlos Castillo Blas"
-          sx={{ width: '12rem', height: '12rem' }}
+          sx={{ width: "12rem", height: "12rem" }}
           className="gradient"
           data-aos="zoom-in"
           imgProps={{
             sx: {
-              objectPosition: 'top',
+              objectPosition: "top",
             },
           }}
         />
@@ -61,23 +65,34 @@ export const HomeSection: FC<Props> = ({ author }) => {
             {author.detail}
           </Typography>
 
-          <Typography variant="h4" component="h2" fontWeight="normal" textAlign="center" data-aos="zoom-in">
-            {author.firstName + ' ' + author.lastName}
+          <Typography
+            variant="h4"
+            component="h2"
+            fontWeight="normal"
+            textAlign="center"
+            data-aos="zoom-in"
+          >
+            {author.firstName + " " + author.lastName}
           </Typography>
         </Box>
         <Box display="flex" gap={2}>
           <Button
             size="large"
             variant="outlined"
-            href={author.cv?.url || '/'}
+            href={author.cv?.url || "/"}
             target="_blank"
             data-aos="zoom-in"
-            arial-label={t('home.btn-about')}
+            arial-label={t("home.btn-about")}
           >
-            {t('home.btn-cv')}
+            {t("home.btn-cv")}
           </Button>
-          <Button size="large" href="#about-section" data-aos="zoom-in" arial-label={t('home.btn-about')}>
-            {t('home.btn-about')}
+          <Button
+            size="large"
+            href="#about-section"
+            data-aos="zoom-in"
+            arial-label={t("home.btn-about")}
+          >
+            {t("home.btn-about")}
           </Button>
         </Box>
       </Box>
@@ -86,10 +101,9 @@ export const HomeSection: FC<Props> = ({ author }) => {
         <Box
           className="rotate-container"
           sx={{
-            position: 'relative',
+            position: "relative",
             maxWidth: 700,
-            margin: '4rem auto',
-            marginTop: isNotMd ? '4rem' : '8rem',
+            margin: "4rem auto",
           }}
         >
           <Image
@@ -97,60 +111,60 @@ export const HomeSection: FC<Props> = ({ author }) => {
             src={circle}
             alt="circle"
             style={{
-              width: '100%',
-              height: '100%',
+              width: "100%",
+              height: "100%",
             }}
           />
 
           <Box
             sx={{
-              position: 'absolute',
-              left: '50%',
+              position: "absolute",
+              left: "50%",
               top: 0,
-              transform: 'translate(-50%, -50%)',
+              transform: "translate(-50%, -50%)",
             }}
           >
             <Box className="rotate-item">
-              <FrontItem isDark={mode === 'dark'} isLarge={isNotMd} />
+              <FrontItem isDark={mode === "dark"} />
             </Box>
           </Box>
 
           <Box
             sx={{
-              position: 'absolute',
-              left: '100%',
-              top: '50%',
-              transform: 'translate(-50%, -50%)',
+              position: "absolute",
+              left: "100%",
+              top: "50%",
+              transform: "translate(-50%, -50%)",
             }}
           >
             <Box className="rotate-item">
-              <BacktItem isDark={mode === 'dark'} isLarge={isNotMd} />
+              <BacktItem isDark={mode === "dark"} />
             </Box>
           </Box>
 
           <Box
             sx={{
-              position: 'absolute',
+              position: "absolute",
               left: 0,
-              top: '50%',
-              transform: 'translate(-50%, -50%)',
+              top: "50%",
+              transform: "translate(-50%, -50%)",
             }}
           >
             <Box className="rotate-item">
-              <IaItem isDark={mode === 'dark'} isLarge={isNotMd} />
+              <IaItem isDark={mode === "dark"} />
             </Box>
           </Box>
 
           <Box
             sx={{
-              position: 'absolute',
-              left: '50%',
-              top: '100%',
-              transform: 'translate(-50%, -50%)',
+              position: "absolute",
+              left: "50%",
+              top: "100%",
+              transform: "translate(-50%, -50%)",
             }}
           >
             <Box className="rotate-item">
-              <DbItem isDark={mode === 'dark'} isLarge={isNotMd} />
+              <DbItem isDark={mode === "dark"} />
             </Box>
           </Box>
         </Box>
@@ -161,13 +175,13 @@ export const HomeSection: FC<Props> = ({ author }) => {
 
 interface ItemProps {
   isDark: boolean;
-  isLarge: boolean;
 }
-const IaItem = ({ isDark, isLarge }: ItemProps) => {
+
+const IaItem = ({ isDark }: ItemProps) => {
   return (
     <Box position="relative">
       <Avatar
-        className={isDark ? 'gradient' : 'gradient-light'}
+        className={isDark ? "gradient" : "gradient-light"}
         sx={{
           width: iconSize,
           height: iconSize,
@@ -176,15 +190,15 @@ const IaItem = ({ isDark, isLarge }: ItemProps) => {
         <Icon
           name="ia"
           sx={{
-            fontSize: isLarge ? '4rem' : '3rem',
-            color: 'text.primary',
+            color: "text.primary",
+            fontSize: iconFontSize,
           }}
         />
       </Avatar>
       <Avatar
-        className={isDark ? 'gradient' : 'gradient-light'}
+        className={isDark ? "gradient" : "gradient-light"}
         sx={{
-          position: 'absolute',
+          position: "absolute",
           bottom: 0,
           right: 0,
         }}
@@ -192,15 +206,15 @@ const IaItem = ({ isDark, isLarge }: ItemProps) => {
         <Icon
           name="python"
           sx={{
-            color: 'text.primary',
+            color: "text.primary",
           }}
         />
       </Avatar>
 
       <Avatar
-        className={isDark ? 'gradient' : 'gradient-light'}
+        className={isDark ? "gradient" : "gradient-light"}
         sx={{
-          position: 'absolute',
+          position: "absolute",
           top: 0,
           left: 0,
         }}
@@ -208,18 +222,18 @@ const IaItem = ({ isDark, isLarge }: ItemProps) => {
         <Icon
           name="tensorflow"
           sx={{
-            color: 'text.primary',
+            color: "text.primary",
           }}
         />
       </Avatar>
     </Box>
   );
 };
-const DbItem = ({ isDark, isLarge }: ItemProps) => {
+const DbItem = ({ isDark }: ItemProps) => {
   return (
     <Box position="relative">
       <Avatar
-        className={isDark ? 'gradient' : 'gradient-light'}
+        className={isDark ? "gradient" : "gradient-light"}
         sx={{
           width: iconSize,
           height: iconSize,
@@ -228,15 +242,15 @@ const DbItem = ({ isDark, isLarge }: ItemProps) => {
         <Icon
           name="sql"
           sx={{
-            fontSize: isLarge ? '4rem' : '3rem',
-            color: 'text.primary',
+            fontSize: iconFontSize,
+            color: "text.primary",
           }}
         />
       </Avatar>
       <Avatar
-        className={isDark ? 'gradient' : 'gradient-light'}
+        className={isDark ? "gradient" : "gradient-light"}
         sx={{
-          position: 'absolute',
+          position: "absolute",
           bottom: 0,
           right: 0,
         }}
@@ -244,19 +258,19 @@ const DbItem = ({ isDark, isLarge }: ItemProps) => {
         <Icon
           name="mongodb"
           sx={{
-            color: 'text.primary',
+            color: "text.primary",
           }}
         />
       </Avatar>
 
       <Avatar
-        className={isDark ? 'gradient' : 'gradient-light'}
+        className={isDark ? "gradient" : "gradient-light"}
         sx={{
-          position: 'absolute',
+          position: "absolute",
           top: 0,
           left: 0,
-          color: 'text.primary',
-          fontSize: '1rem',
+          color: "text.primary",
+          fontSize: "1rem",
         }}
       >
         SQL
@@ -264,11 +278,11 @@ const DbItem = ({ isDark, isLarge }: ItemProps) => {
     </Box>
   );
 };
-const BacktItem = ({ isDark, isLarge }: ItemProps) => {
+const BacktItem = ({ isDark }: ItemProps) => {
   return (
     <Box position="relative">
       <Avatar
-        className={isDark ? 'gradient' : 'gradient-light'}
+        className={isDark ? "gradient" : "gradient-light"}
         sx={{
           width: iconSize,
           height: iconSize,
@@ -277,27 +291,27 @@ const BacktItem = ({ isDark, isLarge }: ItemProps) => {
         <Icon
           name="backend"
           sx={{
-            fontSize: isLarge ? '4rem' : '3rem',
-            color: 'text.primary',
+            fontSize: iconFontSize,
+            color: "text.primary",
           }}
         />
       </Avatar>
       <Avatar
-        className={isDark ? 'gradient' : 'gradient-light'}
+        className={isDark ? "gradient" : "gradient-light"}
         sx={{
-          position: 'absolute',
+          position: "absolute",
           bottom: 0,
           right: 0,
-          color: 'text.primary',
+          color: "text.primary",
         }}
       >
         dj
       </Avatar>
 
       <Avatar
-        className={isDark ? 'gradient' : 'gradient-light'}
+        className={isDark ? "gradient" : "gradient-light"}
         sx={{
-          position: 'absolute',
+          position: "absolute",
           top: 0,
           left: 0,
         }}
@@ -305,18 +319,18 @@ const BacktItem = ({ isDark, isLarge }: ItemProps) => {
         <Icon
           name="node"
           sx={{
-            color: 'text.primary',
+            color: "text.primary",
           }}
         />
       </Avatar>
     </Box>
   );
 };
-const FrontItem = ({ isDark, isLarge }: ItemProps) => {
+const FrontItem = ({ isDark }: ItemProps) => {
   return (
     <Box position="relative">
       <Avatar
-        className={isDark ? 'gradient' : 'gradient-light'}
+        className={isDark ? "gradient" : "gradient-light"}
         sx={{
           width: iconSize,
           height: iconSize,
@@ -325,15 +339,15 @@ const FrontItem = ({ isDark, isLarge }: ItemProps) => {
         <Icon
           name="frontend"
           sx={{
-            fontSize: isLarge ? '4rem' : '3rem',
-            color: 'text.primary',
+            fontSize: iconFontSize,
+            color: "text.primary",
           }}
         />
       </Avatar>
       <Avatar
-        className={isDark ? 'gradient' : 'gradient-light'}
+        className={isDark ? "gradient" : "gradient-light"}
         sx={{
-          position: 'absolute',
+          position: "absolute",
           bottom: 0,
           right: 0,
         }}
@@ -341,15 +355,15 @@ const FrontItem = ({ isDark, isLarge }: ItemProps) => {
         <Icon
           name="typescript"
           sx={{
-            color: 'text.primary',
+            color: "text.primary",
           }}
         />
       </Avatar>
 
       <Avatar
-        className={isDark ? 'gradient' : 'gradient-light'}
+        className={isDark ? "gradient" : "gradient-light"}
         sx={{
-          position: 'absolute',
+          position: "absolute",
           top: 0,
           left: 0,
         }}
@@ -357,7 +371,7 @@ const FrontItem = ({ isDark, isLarge }: ItemProps) => {
         <Icon
           name="react"
           sx={{
-            color: 'text.primary',
+            color: "text.primary",
           }}
         />
       </Avatar>

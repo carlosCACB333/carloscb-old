@@ -1,0 +1,25 @@
+---
+title: Algortimos de regresión logística
+description: La regresión logística es un tipo de regresión que se utiliza para predecir valores discretos. Es de tipo supervisado, basado en modelos, batch, y lineal.
+date: 2023-01-01
+author: Carlos Antonio Castillo Blas
+tags: regresion logistica, machine learning, algoritmos
+---
+
+## función de activación
+
+La función de activación de la regresión logística es la función sigmoide.
+
+- hθ(x)=g(θTx)=1/(1+e−θTx)
+
+## Función de coste J(θ)S
+
+La función de costo de la regresión logística es la función de entropía cruzada.
+
+- y=1; J(hθ(x),y)=-log(hθ(x))
+- y=0; J(hθ(x),y)=-log(1−hθ(x))
+- J(hθ(x),y)=−ylog(hθ(x))−(1−y)log(1−hθ(x))
+
+## función de optimización
+
+La función de optimización de la regresión logística es la descenso de gradiente.

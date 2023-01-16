@@ -1,9 +1,17 @@
-import { Avatar, Chip, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material';
-import { useRouter } from 'next/router';
-import { FC } from 'react';
-import { Category, Post, Skill } from '../../graphql/generated/graphql';
-import { Link } from '../common';
-import { Searcher } from './Searcher';
+import {
+  Avatar,
+  Chip,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  Typography,
+} from "@mui/material";
+import { useRouter } from "next/router";
+import { FC } from "react";
+import { Category, Post, Skill } from "../../graphql/generated/graphql";
+import { Li, Link } from "../common";
+import { Searcher } from "./Searcher";
 
 interface Props {
   categories: Category[];
@@ -25,13 +33,13 @@ export const BlogRight: FC<Props> = ({ categories, tags, posts, isDetail }) => {
         </Typography>
 
         <List dense>
-          <CategoryItem name="Todos" url="/blog" active={asPath === '/blog'} />
+          <Li name="Todos" url="/blog" active={asPath === "/blog"} />
           {categories.map(({ name, id, slug }) => (
-            <CategoryItem
+            <Li
               key={id}
               name={name}
-              url={'/blog/category/' + slug}
-              active={asPath === '/blog/category/' + slug}
+              url={"/blog/category/" + slug}
+              active={asPath === "/blog/category/" + slug}
             />
           ))}
         </List>
@@ -52,13 +60,13 @@ export const BlogRight: FC<Props> = ({ categories, tags, posts, isDetail }) => {
                     marginRight: 1,
                   }}
                   variant="rounded"
-                  src={post.banner?.url || ''}
+                  src={post.banner?.url || ""}
                   alt={post.title}
                 />
               </ListItemAvatar>
               <ListItemText
                 primary={
-                  <Link href={'/blog/' + post.slug} variant="subtitle1">
+                  <Link href={"/blog/" + post.slug} variant="subtitle1">
                     {post.title}
                   </Link>
                 }
@@ -89,42 +97,5 @@ export const BlogRight: FC<Props> = ({ categories, tags, posts, isDetail }) => {
         ))}
       </div>
     </>
-  );
-};
-
-interface CategoryItemProps {
-  active: boolean;
-  name: string;
-  url: string;
-}
-
-const CategoryItem = ({ active, name, url }: CategoryItemProps) => {
-  return (
-    <ListItem data-aos="fade-up">
-      <ListItemText
-        primary={
-          <Link variant="button" href={url} scroll={false} sx={{ color: active ? 'primary.main' : 'text.primary' }}>
-            {name}
-          </Link>
-        }
-        sx={{
-          position: 'relative',
-          marginLeft: 3,
-          ':before': {
-            content: "''",
-            display: 'inline-block',
-            width: 6,
-            height: 6,
-            borderRadius: '50%',
-            backgroundColor: active ? 'primary.main' : 'text.primary',
-            position: 'absolute',
-            top: '50%',
-            botton: '50%',
-            transform: 'translateY(-50%)',
-            left: -20,
-          },
-        }}
-      />
-    </ListItem>
   );
 };

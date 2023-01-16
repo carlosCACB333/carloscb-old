@@ -1,5 +1,5 @@
-import { CodegenConfig } from '@graphql-codegen/cli';
-import { env } from './utils/env';
+import { CodegenConfig } from "@graphql-codegen/cli";
+import { env } from "./config/env";
 
 const config: CodegenConfig = {
   overwrite: true,
@@ -9,13 +9,13 @@ const config: CodegenConfig = {
       Authorization: `Bearer ${env.cms.token}`,
     },
   },
-  documents: 'graphql/**/*.graphql',
+  documents: "graphql/**/*.graphql",
   generates: {
-    'graphql/generated/graphql.ts': {
-      plugins: ['typescript', 'typescript-operations', 'typed-document-node'],
+    "graphql/generated/graphql.ts": {
+      plugins: ["typescript", "typescript-operations", "typed-document-node"],
     },
-    'graphql/generated/schema.json': {
-      plugins: ['introspection'],
+    "graphql/generated/schema.json": {
+      plugins: ["introspection"],
     },
   },
 };

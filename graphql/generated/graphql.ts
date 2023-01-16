@@ -82,6 +82,7 @@ export type AssetBannerPostArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   orderBy?: InputMaybe<PostOrderByInput>;
@@ -98,6 +99,7 @@ export type AssetCreatedAtArgs = {
 
 /** Asset system model */
 export type AssetCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -107,6 +109,7 @@ export type AssetCvAuthorArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   orderBy?: InputMaybe<AuthorOrderByInput>;
@@ -136,6 +139,7 @@ export type AssetImgCategoryArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   orderBy?: InputMaybe<CategoryOrderByInput>;
@@ -156,6 +160,7 @@ export type AssetPhotoAuthorArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   orderBy?: InputMaybe<AuthorOrderByInput>;
@@ -169,6 +174,7 @@ export type AssetPictureCertificationArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   orderBy?: InputMaybe<CertificationOrderByInput>;
@@ -182,6 +188,7 @@ export type AssetPictureProjectArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   orderBy?: InputMaybe<ProjectOrderByInput>;
@@ -198,6 +205,7 @@ export type AssetPublishedAtArgs = {
 
 /** Asset system model */
 export type AssetPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -207,6 +215,7 @@ export type AssetScheduledInArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   skip?: InputMaybe<Scalars['Int']>;
@@ -222,6 +231,7 @@ export type AssetUpdatedAtArgs = {
 
 /** Asset system model */
 export type AssetUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -864,11 +874,13 @@ export type AuthorCreatedAtArgs = {
 
 
 export type AuthorCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
 
 export type AuthorCvArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -897,6 +909,7 @@ export type AuthorPhotosArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   orderBy?: InputMaybe<AssetOrderByInput>;
@@ -911,6 +924,7 @@ export type AuthorPublishedAtArgs = {
 
 
 export type AuthorPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -919,6 +933,7 @@ export type AuthorScheduledInArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   skip?: InputMaybe<Scalars['Int']>;
@@ -932,6 +947,7 @@ export type AuthorUpdatedAtArgs = {
 
 
 export type AuthorUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -1939,6 +1955,7 @@ export type CategoryCreatedAtArgs = {
 
 
 export type CategoryCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -1958,6 +1975,7 @@ export type CategoryHistoryArgs = {
 
 
 export type CategoryImgArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -1972,6 +1990,7 @@ export type CategoryPostsArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   orderBy?: InputMaybe<PostOrderByInput>;
@@ -1986,6 +2005,7 @@ export type CategoryPublishedAtArgs = {
 
 
 export type CategoryPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -1994,6 +2014,7 @@ export type CategoryScheduledInArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   skip?: InputMaybe<Scalars['Int']>;
@@ -2005,6 +2026,7 @@ export type CategorySkillsArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   skip?: InputMaybe<Scalars['Int']>;
@@ -2017,6 +2039,7 @@ export type CategoryUpdatedAtArgs = {
 
 
 export type CategoryUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -2663,6 +2686,7 @@ export type Certification = Node & {
 
 
 export type CertificationCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -2682,11 +2706,13 @@ export type CertificationHistoryArgs = {
 
 
 export type CertificationPictureArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
 
 export type CertificationPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -2695,6 +2721,7 @@ export type CertificationScheduledInArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   skip?: InputMaybe<Scalars['Int']>;
@@ -2703,6 +2730,7 @@ export type CertificationScheduledInArgs = {
 
 
 export type CertificationUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -4522,7 +4550,7 @@ export type PageInfo = {
 
 export type Post = Node & {
   __typename?: 'Post';
-  banner?: Maybe<Asset>;
+  banner: Asset;
   categories: Array<Category>;
   content: Scalars['String'];
   /** The time the document was created */
@@ -4555,6 +4583,7 @@ export type Post = Node & {
 
 
 export type PostBannerArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -4563,6 +4592,7 @@ export type PostCategoriesArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   orderBy?: InputMaybe<CategoryOrderByInput>;
@@ -4572,6 +4602,7 @@ export type PostCategoriesArgs = {
 
 
 export type PostCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -4591,6 +4622,7 @@ export type PostHistoryArgs = {
 
 
 export type PostPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -4599,6 +4631,7 @@ export type PostScheduledInArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   skip?: InputMaybe<Scalars['Int']>;
@@ -4610,6 +4643,7 @@ export type PostTagsArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   orderBy?: InputMaybe<SkillOrderByInput>;
@@ -4619,6 +4653,7 @@ export type PostTagsArgs = {
 
 
 export type PostUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -4640,7 +4675,7 @@ export type PostConnection = {
 };
 
 export type PostCreateInput = {
-  banner?: InputMaybe<AssetCreateOneInlineInput>;
+  banner: AssetCreateOneInlineInput;
   categories?: InputMaybe<CategoryCreateManyInlineInput>;
   content: Scalars['String'];
   createdAt?: InputMaybe<Scalars['DateTime']>;
@@ -5202,6 +5237,7 @@ export type Project = Node & {
 
 
 export type ProjectCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -5224,6 +5260,7 @@ export type ProjectPicturesArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   orderBy?: InputMaybe<AssetOrderByInput>;
@@ -5233,6 +5270,7 @@ export type ProjectPicturesArgs = {
 
 
 export type ProjectPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -5241,6 +5279,7 @@ export type ProjectScheduledInArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   skip?: InputMaybe<Scalars['Int']>;
@@ -5252,6 +5291,7 @@ export type ProjectSkillsArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   orderBy?: InputMaybe<SkillOrderByInput>;
@@ -5261,6 +5301,7 @@ export type ProjectSkillsArgs = {
 
 
 export type ProjectUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -6419,6 +6460,7 @@ export type ScheduledOperationAffectedDocumentsArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   skip?: InputMaybe<Scalars['Int']>;
@@ -6427,6 +6469,7 @@ export type ScheduledOperationAffectedDocumentsArgs = {
 
 /** Scheduled Operation system model */
 export type ScheduledOperationCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -6441,18 +6484,21 @@ export type ScheduledOperationDocumentInStagesArgs = {
 
 /** Scheduled Operation system model */
 export type ScheduledOperationPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
 
 /** Scheduled Operation system model */
 export type ScheduledOperationReleaseArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
 
 /** Scheduled Operation system model */
 export type ScheduledOperationUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -6833,6 +6879,7 @@ export type ScheduledRelease = Node & {
 
 /** Scheduled Release system model */
 export type ScheduledReleaseCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -6850,6 +6897,7 @@ export type ScheduledReleaseOperationsArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   orderBy?: InputMaybe<ScheduledOperationOrderByInput>;
@@ -6860,12 +6908,14 @@ export type ScheduledReleaseOperationsArgs = {
 
 /** Scheduled Release system model */
 export type ScheduledReleasePublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
 
 /** Scheduled Release system model */
 export type ScheduledReleaseUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -7407,6 +7457,7 @@ export type SkillCategoriesArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   skip?: InputMaybe<Scalars['Int']>;
@@ -7420,6 +7471,7 @@ export type SkillCreatedAtArgs = {
 
 
 export type SkillCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -7448,6 +7500,7 @@ export type SkillPostsArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   orderBy?: InputMaybe<PostOrderByInput>;
@@ -7460,6 +7513,7 @@ export type SkillProjectArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   orderBy?: InputMaybe<ProjectOrderByInput>;
@@ -7474,6 +7528,7 @@ export type SkillPublishedAtArgs = {
 
 
 export type SkillPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -7482,6 +7537,7 @@ export type SkillScheduledInArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   skip?: InputMaybe<Scalars['Int']>;
@@ -7495,6 +7551,7 @@ export type SkillUpdatedAtArgs = {
 
 
 export type SkillUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -8530,7 +8587,7 @@ export type GetAuthorQueryVariables = Exact<{
 
 export type GetAuthorQuery = { __typename?: 'Query', author?: { __typename?: 'Author', id: string, bio?: string | null, birth: any, email: string, firstName: string, lastName: string, phone: string, profession?: string | null, university: string, cycle?: string | null, detail: string, facebook?: string | null, linkedin?: string | null, github?: string | null, keywords: Array<string>, address: string, cv?: { __typename?: 'Asset', url: string } | null, photos: Array<{ __typename?: 'Asset', url: string }> } | null };
 
-export type PostsFieldFragment = { __typename?: 'Post', id: string, title: string, priority: number, slug: string, summary: string, updatedAt: any, content: string, tags: Array<{ __typename?: 'Skill', id: string, icon?: string | null, name: string }>, categories: Array<{ __typename?: 'Category', id: string, name: string, icon?: string | null }>, banner?: { __typename?: 'Asset', url: string } | null, createdBy?: { __typename?: 'User', id: string, name: string, picture?: string | null } | null };
+export type PostsFieldFragment = { __typename?: 'Post', id: string, title: string, priority: number, slug: string, summary: string, updatedAt: any, content: string, tags: Array<{ __typename?: 'Skill', id: string, icon?: string | null, name: string }>, categories: Array<{ __typename?: 'Category', id: string, name: string, icon?: string | null }>, banner: { __typename?: 'Asset', url: string }, createdBy?: { __typename?: 'User', id: string, name: string, picture?: string | null } | null };
 
 export type CategoryFieldFragment = { __typename?: 'Category', id: string, slug: string, name: string, icon?: string | null, img?: { __typename?: 'Asset', url: string } | null, posts: Array<{ __typename?: 'Post', id: string }> };
 
@@ -8539,7 +8596,7 @@ export type GetBlogsDataQueryVariables = Exact<{
 }>;
 
 
-export type GetBlogsDataQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: string, title: string, priority: number, slug: string, summary: string, updatedAt: any, content: string, tags: Array<{ __typename?: 'Skill', id: string, icon?: string | null, name: string }>, categories: Array<{ __typename?: 'Category', id: string, name: string, icon?: string | null }>, banner?: { __typename?: 'Asset', url: string } | null, createdBy?: { __typename?: 'User', id: string, name: string, picture?: string | null } | null }>, categories: Array<{ __typename?: 'Category', id: string, slug: string, name: string, icon?: string | null, img?: { __typename?: 'Asset', url: string } | null, posts: Array<{ __typename?: 'Post', id: string }> }>, skills: Array<{ __typename?: 'Skill', id: string, name: string }> };
+export type GetBlogsDataQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: string, title: string, priority: number, slug: string, summary: string, updatedAt: any, content: string, tags: Array<{ __typename?: 'Skill', id: string, icon?: string | null, name: string }>, categories: Array<{ __typename?: 'Category', id: string, name: string, icon?: string | null }>, banner: { __typename?: 'Asset', url: string }, createdBy?: { __typename?: 'User', id: string, name: string, picture?: string | null } | null }>, categories: Array<{ __typename?: 'Category', id: string, slug: string, name: string, icon?: string | null, img?: { __typename?: 'Asset', url: string } | null, posts: Array<{ __typename?: 'Post', id: string }> }>, skills: Array<{ __typename?: 'Skill', id: string, name: string }> };
 
 export type GetBlogsByCategoryQueryVariables = Exact<{
   category: Scalars['String'];
@@ -8547,7 +8604,7 @@ export type GetBlogsByCategoryQueryVariables = Exact<{
 }>;
 
 
-export type GetBlogsByCategoryQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: string, title: string, priority: number, slug: string, summary: string, updatedAt: any, content: string, tags: Array<{ __typename?: 'Skill', id: string, icon?: string | null, name: string }>, categories: Array<{ __typename?: 'Category', id: string, name: string, icon?: string | null }>, banner?: { __typename?: 'Asset', url: string } | null, createdBy?: { __typename?: 'User', id: string, name: string, picture?: string | null } | null }>, filteredPosts: Array<{ __typename?: 'Post', id: string, title: string, priority: number, slug: string, summary: string, updatedAt: any, content: string, tags: Array<{ __typename?: 'Skill', id: string, icon?: string | null, name: string }>, categories: Array<{ __typename?: 'Category', id: string, name: string, icon?: string | null }>, banner?: { __typename?: 'Asset', url: string } | null, createdBy?: { __typename?: 'User', id: string, name: string, picture?: string | null } | null }>, categories: Array<{ __typename?: 'Category', id: string, slug: string, name: string, icon?: string | null, img?: { __typename?: 'Asset', url: string } | null, posts: Array<{ __typename?: 'Post', id: string }> }>, skills: Array<{ __typename?: 'Skill', id: string, name: string }> };
+export type GetBlogsByCategoryQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: string, title: string, priority: number, slug: string, summary: string, updatedAt: any, content: string, tags: Array<{ __typename?: 'Skill', id: string, icon?: string | null, name: string }>, categories: Array<{ __typename?: 'Category', id: string, name: string, icon?: string | null }>, banner: { __typename?: 'Asset', url: string }, createdBy?: { __typename?: 'User', id: string, name: string, picture?: string | null } | null }>, filteredPosts: Array<{ __typename?: 'Post', id: string, title: string, priority: number, slug: string, summary: string, updatedAt: any, content: string, tags: Array<{ __typename?: 'Skill', id: string, icon?: string | null, name: string }>, categories: Array<{ __typename?: 'Category', id: string, name: string, icon?: string | null }>, banner: { __typename?: 'Asset', url: string }, createdBy?: { __typename?: 'User', id: string, name: string, picture?: string | null } | null }>, categories: Array<{ __typename?: 'Category', id: string, slug: string, name: string, icon?: string | null, img?: { __typename?: 'Asset', url: string } | null, posts: Array<{ __typename?: 'Post', id: string }> }>, skills: Array<{ __typename?: 'Skill', id: string, name: string }> };
 
 export type SearchPostsQueryVariables = Exact<{
   search: Scalars['String'];
@@ -8555,7 +8612,7 @@ export type SearchPostsQueryVariables = Exact<{
 }>;
 
 
-export type SearchPostsQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: string, title: string, priority: number, slug: string, summary: string, updatedAt: any, content: string, tags: Array<{ __typename?: 'Skill', id: string, icon?: string | null, name: string }>, categories: Array<{ __typename?: 'Category', id: string, name: string, icon?: string | null }>, banner?: { __typename?: 'Asset', url: string } | null, createdBy?: { __typename?: 'User', id: string, name: string, picture?: string | null } | null }> };
+export type SearchPostsQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: string, title: string, priority: number, slug: string, summary: string, updatedAt: any, content: string, tags: Array<{ __typename?: 'Skill', id: string, icon?: string | null, name: string }>, categories: Array<{ __typename?: 'Category', id: string, name: string, icon?: string | null }>, banner: { __typename?: 'Asset', url: string }, createdBy?: { __typename?: 'User', id: string, name: string, picture?: string | null } | null }> };
 
 export type GetPostsSlugQueryVariables = Exact<{ [key: string]: never; }>;
 

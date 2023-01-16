@@ -1,0 +1,44 @@
+---
+title: Problemas comunes en ML
+description: Problemas comunes en ML
+date: 2023-01-01
+author: Carlos Antonio Castillo Blas
+tags: Machine Learning, Data Science, Data Analysis, datos faltantes, datos categoricos, dummy encoding, escalado, normalización, desequilibrio de datos
+---
+
+## ¿Como tratar datos faltantes?
+
+podemos usar 3 estrategias:
+
+- Eliminar las filas con datos faltantes
+- si existen muchos datos faltantes en una columna, eliminar la columna
+- reemplazar los datos faltantes con un valor
+  - media
+  - mediana
+  - moda
+  - valor constante
+  - valor aleatorioo
+  - valor estimado
+
+### ¿Como tratar con datos categoricos? Dummy encoding
+
+este metodo consiste en crear una columna por cada categoria, y asignar un 1 o 0 dependiendo si el dato pertenece a esa categoria o no.
+
+### Escalado y normalización de datos
+
+este metodo consiste en transformar los datos a un rango de valores conocido, para que los algoritmos de ML puedan procesarlos de manera mas eficiente.
+
+- min-max scaling (normalización)
+  - transforma los datos a un rango de 0 a 1
+  - se calcula la formula: x' = (x - min(x)) / (max(x) - min(x))
+- standardization
+  - transforma los datos para que tengan una media de 0 y una desviación estandar de 1
+  - se calcula la formula: x' = (x - mean(x)) / std(x)
+
+### Desequilibrio de datos
+
+Se refiere a que los datos no estan balanceados, por ejemplo tenemos un 90% de datos positivos y un 10% de datos negativos. Podemos estas estrategias para balancear los datos:
+
+- **undersampling** : eliminar datos de la clase mayoritaria
+- **oversampling** : duplicar datos de la clase minoritaria
+- **Modificar la función de error** : para que la clase minoritaria tenga mas peso que la clase mayoritaria

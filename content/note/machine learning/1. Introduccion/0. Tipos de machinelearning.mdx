@@ -1,0 +1,58 @@
+---
+title: Clasificación de los algoritmos de machine learning
+description: En esta entrada se clasifican los algoritmos de machine learning en función de la manera que se entrenan, en función en la que aprenden en el tiempo y en función de la manera que hacen predicciones.
+date: 2023-01-01
+author: Carlos Antonio Castillo Blas
+tags: machine learning, clasificación, algoritmos
+---
+
+## En función de la manera que se entrenan:
+
+### Aprendizaje supervisado
+
+conciste en aprender una función que mapea entradas a salidas a partir de ejemplos de entrenamiento. Los ejemplos de entrenamiento consisten en pares de entrada/salida. El aprendizaje supervisado se utiliza en muchos problemas de machine learning, como la clasificación de imágenes, la predicción de precios de acciones y la detección de spam.
+
+Existen dos tipos de aprendizaje supervisado:
+
+line code `python line code`
+
+- Clasificación: la salida es una etiqueta discreta, como "spam" o "no spam".
+- Regresión: la salida es un valor continuo, como el precio de una casa.
+
+### Aprendizaje no supervisado
+
+Consiste en inferir una función que describe la estructura de un conjunto de datos sin etiquetar. Los algoritmos de aprendizaje no supervisado se utilizan en muchos problemas de machine learning, como la segmentación de clientes, la detección de anomalías y la reducción de la dimensionalidad.
+
+## En función en la que aprenden en el tiempo:
+
+### Aprendizaje batch
+
+El aprendizaje batch consiste en aprender de todos los datos disponibles al inicio y no es capaz de aprender de los nuevos datos a medida que llegan.
+
+- Si se decesea adaptar a nuevos datos se debe volver a entrenar el modelo.
+- Es más fácil de implementar.
+- Es ideal para problemas que no necesitan adaptarse a los datos nuevos.
+- Restringido a la capacidad de recursos del dispositivo.
+
+### Aprendizaje online
+
+El aprendizaje online consiste se entrenan incrementaltalmente a medida que llegan nuevos datos individuales o en pequeños lotes.
+
+- Es ideal para problemas que necesitan adaptarse continuamente a los datos nuevos.
+- Puenden lidiar con grandes cantidades de datos.
+- Tienen un ratio de aprendizaje.
+- Pueden ser inestables si se incluyen datos de baja calidad.
+
+## En función de la manera que hacen predicciones:
+
+### Aprendizaje basado en instancias
+
+El aprendizaje basado en instancias consiste en aprender ejemplos de entrenamiento y hacer predicciones basadas en la similitud con ejemplos conocidos.
+
+- Requiere una medida de similitud.
+
+### Aprendizaje basado en modelos
+
+El aprendizaje basado en modelos consiste en aprender un modelo generalizado de los datos de entrenamiento y hacer predicciones basadas en el modelo.
+
+- Requiere ajustar los parámetros del modelo.

@@ -1,8 +1,8 @@
 {
   "nav": {
-    "projects": "projects",
-    "certifications": "certifications",
-    "blog": "Blog"
+    "home": "Home",
+    "blog": "Blog",
+    "notes": "Notes"
   },
   "side": {
     "home": "Home",
@@ -10,7 +10,9 @@
     "skills": "My Skills",
     "projects": "My Projects",
     "certifications": "My Certifications",
-    "contact": "Contact Me"
+    "contact": "Contact Me",
+    "all-projects": "All Projects",
+    "all-certifications": "All Certifications"
   },
   "footer": {
     "made": "Made with",

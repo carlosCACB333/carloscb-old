@@ -1,5 +1,5 @@
-import Joi from 'joi';
-import { Contact } from '../interface/contact';
+import Joi from "joi";
+import { Contact } from "../interfaces/contact";
 
 export const contactSchema = Joi.object<Contact>({
   name: Joi.string().required(),

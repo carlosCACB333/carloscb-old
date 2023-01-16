@@ -1,0 +1,31 @@
+---
+title: Algortimos de regresión lineal
+description: Los algoritmos de regresión lineal son de tipo aprendizaje supervisado,basado en modelos, batch, y lineal.
+date: 2020-01-01
+author: Carlos Antonio Castillo Blas
+tags: regresion lineal, algoritmos, aprendizaje supervisado, modelos, batch, lineal
+---
+
+h(x) = theta0 + theta1 \* x
+
+- Es de tipo aprendizaje supervisado,basado en modelos, batch, y lineal.
+- Predice valores continuos.
+- Se tiene que buscar un theta0 y un theta1 que mejor se ajuste a los datos.
+- se minimiza la función de costo(j(theta)) para encontrar los valores de theta0 y theta1.
+
+## Función de coste
+
+La función de coste es la que se encarga de minimizar los errores de la predicción.
+
+- MSE: Mean Squared Error (Error cuadrático medio) es la media de los errores al cuadrado.
+  j(theta) = 1/2m \* sumatoria de (h(x) - y)^2
+
+## Función de optimización
+
+La función de optimización es la que se encarga de encontrar los valores de theta0 y theta1 que minimizan la función de coste.
+
+- Gradiente descendiente: Es un algoritmo que se encarga de encontrar los valores de theta0 y theta1 que minimizan la función de coste.
+  - Se inicia con valores aleatorios de theta0 y theta1.
+  - Se calcula el error de la predicción.
+  - Se actualizan los valores de theta0 y theta1.
+  - Se repite el proceso hasta que el error sea mínimo.

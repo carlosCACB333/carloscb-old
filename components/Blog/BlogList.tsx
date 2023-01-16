@@ -1,10 +1,14 @@
-import { Pagination } from '@mui/material';
-import Grid from '@mui/material/Unstable_Grid2';
-import { FC, useEffect, useState } from 'react';
-import { setPosts, setPostsInit, useAppDispatch, useAppSelector } from '../../app';
-import { Category, Post, Skill } from '../../graphql/generated/graphql';
-import { BlogLayout } from '../Layout';
-import { BlogCard2 } from './BlogCard2';
+import { Pagination } from "@mui/material";
+import Grid from "@mui/material/Unstable_Grid2";
+import { FC, useEffect, useState } from "react";
+import {
+  setPosts,
+  setPostsInit,
+  useAppDispatch,
+  useAppSelector,
+} from "../../app";
+import { Category, Post, Skill } from "../../graphql/generated/graphql";
+import { BlogCard2 } from "./BlogCard2";
 
 interface Props {
   posts: Post[];
@@ -15,7 +19,12 @@ interface Props {
 
 const PAGE_SIZE = 6;
 
-export const BlogPage: FC<Props> = ({ posts, categories, tags, filteredPosts }) => {
+export const BlogList: FC<Props> = ({
+  posts,
+  categories,
+  tags,
+  filteredPosts,
+}) => {
   const [page, setPage] = useState(1);
   const dispatch = useAppDispatch();
   const { posts: showPosts } = useAppSelector((state) => state.posts);
@@ -30,13 +39,15 @@ export const BlogPage: FC<Props> = ({ posts, categories, tags, filteredPosts }) 
   };
 
   return (
-    <BlogLayout categories={categories} posts={posts} tags={tags}>
+    <>
       <Grid container spacing={2}>
-        {showPosts.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE).map((post) => (
-          <Grid xs={12} md={6} lg={4} key={post.id}>
-            <BlogCard2 post={post} />
-          </Grid>
-        ))}
+        {showPosts
+          .slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
+          .map((post) => (
+            <Grid xs={12} md={6} lg={4} key={post.id}>
+              <BlogCard2 post={post} />
+            </Grid>
+          ))}
       </Grid>
 
       <Pagination
@@ -49,6 +60,6 @@ export const BlogPage: FC<Props> = ({ posts, categories, tags, filteredPosts }) 
       />
       <br />
       <br />
-    </BlogLayout>
+    </>
   );
 };

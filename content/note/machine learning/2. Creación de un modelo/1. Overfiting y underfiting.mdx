@@ -1,0 +1,42 @@
+---
+title: Overfitting y undefitting
+description: Explicación de los problemas de overfitting y undefitting en el aprendizaje de máquina.
+author: Carlos Antonio Castillo Blas
+tags: Machine Learning, Overfitting, Undefitting
+---
+
+## overfitting
+
+El overfitting es un problema que se presenta cuando el modelo se ajusta demasiado a los datos de entrenamiento, y no es capaz de generalizar a datos nuevos.
+
+### ¿Cómo se identificarlo?
+
+- El modelo tiene un buen rendimiento en los datos de entrenamiento, pero un mal rendimiento en los datos de prueba.
+- Un número muy alto de parámetros puede provocar overfitting.
+- Se requiere evaluar la función de hipótesis.
+  - separar los datos en dos conjuntos: entrenamiento y prueba.
+  - entrenar el modelo con los datos de entrenamiento.
+  - evaluar el modelo con los datos de prueba.
+  - si el modelo tiene un buen rendimiento en los datos de prueba, entonces no hay overfitting.
+
+### soluciones
+
+- reducir el número de características.
+  - manual (eliminar características)
+  - Algoritmos de selección de características (random forest, Lasso, Ridge, etc.)
+  - algoritmos de extracción de características (PCA, LDA, etc.)
+- aumentar el número de datos de entrenamiento
+- regularización. Agrega una penalización a los parámetros del modelo para evitar que se ajusten demasiado a los datos de entrenamiento.
+  - mantiene todos los parámetros, pero reduce los valores de los parámetros.
+  - Útil cuando se tiene un gran número de características ligeramente utiles.
+
+## undefitting
+
+El undefitting es un problema que se presenta cuando el modelo no es capaz de ajustarse a los datos de entrenamiento.
+
+## selección del modelo
+
+- dividir los datos en dos conjuntos: entrenamiento, validación y prueba.
+- se calcula la función de hipótesis para el conjunto de entrenamiento.
+- se calcula el número de parámetros del modelo con el conjunto de validación.
+- se evalúa la función de hipótesis mediante el conjunto de prueba calculando el error.
