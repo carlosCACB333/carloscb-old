@@ -29,7 +29,7 @@ export const AppLayout: FC<Props> = ({ children }) => {
     <>
       <NavBar
         handleDrawerToggle={handleDrawerToggle}
-        drawerWidth={open && isLg ? width : 0}
+        drawerWidth={open && isSM ? width : 0}
       />
       <Box
         sx={{

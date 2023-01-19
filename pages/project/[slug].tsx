@@ -12,13 +12,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { MDXRemote } from "next-mdx-remote";
 import { useContext, useEffect } from "react";
 import { SkillGroup } from "../../components/category";
-import {
-  Link,
-  MDXComponents,
-  Meta,
-  Carrousel,
-  ProfileAside,
-} from "../../components/common";
+import { Link, Meta, Carrousel, ProfileAside } from "../../components/common";
 import { SectionLayout } from "../../components/layouts";
 import { LayoutContext } from "../../context";
 import {
@@ -29,6 +23,7 @@ import {
 } from "../../graphql";
 import { serializeStrMdx } from "../../utils";
 import { client } from "../../utils/apolloClient";
+import { MDXComponents } from "../../components/MD";
 
 interface Props {
   project: Project;

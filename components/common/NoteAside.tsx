@@ -50,7 +50,7 @@ export const NoteAside = ({ routes }: Props) => {
                 {route.children?.map((child) => (
                   <Li
                     key={child.slug}
-                    name={child.meta?.title || child.name}
+                    name={child.name}
                     url={`${route.slug}/${child.slug}`}
                     active={asPath.startsWith(`${route.slug}/${child.slug}`)}
                   />

@@ -3,7 +3,7 @@ export * from "./icons";
 export * from "./note";
 
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
-import { Note } from "./note";
+import { NoteMeta } from "./note";
 
 export type MDX = MDXRemoteSerializeResult<
   Record<string, unknown>,
@@ -19,6 +19,7 @@ export interface Toc {
 export interface Route {
   slug: string;
   name: string;
-  meta?: Note;
+  path: string;
+  meta?: NoteMeta;
   children?: Route[];
 }

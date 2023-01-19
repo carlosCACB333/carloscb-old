@@ -2,21 +2,17 @@ import { Container, Typography } from "@mui/material";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { MDXRemote } from "next-mdx-remote";
 import React, { useContext, useEffect } from "react";
-import {
-  Blockquote,
-  MDXComponents,
-  Meta,
-  NoteAside,
-} from "../../components/common";
+import { Blockquote, Meta, NoteAside } from "../../components/common";
 import { LayoutContext } from "../../context";
-import { MDX, Note, Route, Toc } from "../../interfaces";
+import { MDX, NoteMeta, Route, Toc } from "../../interfaces";
 import { serializeFileMdx } from "../../utils";
 import { getRoutes } from "../../utils/mdx";
 import { ContentMenu } from "../../components/common/ContentMenu";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { MDXComponents } from "../../components/MD";
 
 interface Props {
-  meta: Note;
+  meta: NoteMeta;
   source: MDX;
   toc: Toc[];
   routes: Route[];
@@ -32,7 +28,7 @@ const CoursePage: NextPage<Props> = ({ meta, source, toc, routes }) => {
   return (
     <>
       <Meta
-        keywords={meta.tags}
+        keywords={meta.tags?.join(", ")}
         title={meta.title}
         description={meta.description}
       />
@@ -76,29 +72,16 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
     const i18n = await serverSideTranslations(locale || "es", ["common"]);
     const slugs = params?.slugs as string[];
     if (slugs?.length !== 3) return { notFound: true };
+
     const [slug1, slug2, slug3] = slugs;
 
-    let url = "note/";
+    const path = getRoutes("note", 2)
+      .find((r) => r.slug === slug1)
+      ?.children?.find((r) => r.slug === slug2)
+      ?.children?.find((r) => r.slug === slug3)?.path;
 
-    getRoutes("note", 2).forEach((route) => {
-      if (route.slug === slug1) {
-        url += route.name + "/";
-        route.children?.forEach((child) => {
-          if (child.slug === slug2) {
-            url += child.name + "/";
-            child.children?.forEach((child2) => {
-              if (child2.slug === slug3) {
-                url += child2.name;
-              }
-            });
-          }
-        });
-      }
-    });
-
-    console.log(url);
-
-    const { meta, source, toc } = await serializeFileMdx(url);
+    if (!path) return { notFound: true };
+    const { meta, source, toc } = await serializeFileMdx(path);
 
     // routes
 
@@ -119,6 +102,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
       },
     };
   } catch (error) {
+    console.log(error);
     return { notFound: true };
   }
 };

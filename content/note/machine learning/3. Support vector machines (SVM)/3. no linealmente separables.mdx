@@ -1,0 +1,36 @@
+---
+title: Datos no  separables linealmente
+description: La clasificación SVM no separables linealmente son aquellos datos que no se pueden separar con una línea recta. En este caso, se utiliza una función de coste para penalizar los errores y se busca el hiperplano que minimice la función de coste.
+
+date: "2023-01-01"
+author: Carlos Antonio Castillo Blas
+tags: [SVM, Support Vector Machine, Machine Learning]
+---
+
+## Regeresión polinómica
+
+La regresión polinómica es una técnica de aprendizaje automático que se utiliza para modelar relaciones no lineales entre variables. En este tipo de regresión, se utiliza una función polinómica de grado n para modelar la relación entre la variable independiente y la variable dependiente. La regresión polinómica es una extensión de la regresión lineal, ya que la regresión lineal es un caso particular de la regresión polinómica.
+
+<FormCard>
+
+    $$y = \beta_0 + \beta_1 x + \beta_2 x^2 + ... + \beta_n x^n$$
+
+</FormCard>
+
+Al utilizar características polinómicas para generar límites de decición tiene algunos inconvenientes:
+
+- Si se dispone polinios de grado bajo, el modelo no será capaz de capturar la relación entre las variables independientes y la variable dependiente.
+
+- si se dispone de polinomios de grado alto, se generará un gran número de características, lo que requiere una capacidad de cómputo mayor.
+
+## Gaussian RBF Kernel
+
+Este kernel es muy utilizado en la clasificación de datos. Su funcionamiento para una característica x es calcular una nueva característica en función de la proximidad a unos puntos de referencia.
+
+<FormCard>
+
+$$f_i=sim(x,l^{(i)})=\exp\left(-\frac{\left\|x-l^{(i)}\right\|^2}{2\sigma^2}\right)$$
+
+$$h_\theta(x)= \theta_0 + \theta_1 f_1 + \theta_2 f_2 + ... + \theta_n f_n$$
+
+</FormCard>

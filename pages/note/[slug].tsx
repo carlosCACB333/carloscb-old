@@ -50,6 +50,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = getRoutes("note", 0).map((route) => ({
     params: { slug: route.slug },
   }));
+
   return { paths, fallback: "blocking" };
 };
 
@@ -57,6 +58,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   try {
     const i18n = await serverSideTranslations(locale || "es", ["common"]);
     let routes = getRoutes("note", 2);
+
     routes = routes.find((r) => r.slug === params?.slug)?.children || [];
     routes = routes.map((r) => ({
       ...r,
@@ -70,6 +72,8 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
       },
     };
   } catch (error) {
+    console.log(error);
+
     return { redirect: { destination: "/note", permanent: false } };
   }
 };

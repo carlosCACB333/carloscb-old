@@ -14,12 +14,7 @@ import { BlogCard2, BlogRight } from "../../components/Blog";
 import { SkillGroup } from "../../components/category/SkillGroup";
 import { SectionLayout } from "../../components/layouts";
 import { LayoutContext } from "../../context";
-import {
-  MDXComponents,
-  Meta,
-  HygraphImg,
-  ProfileAside,
-} from "../../components/common";
+import { Meta, HygraphImg, ProfileAside } from "../../components/common";
 import {
   Category,
   GetBlogsDataDocument,
@@ -39,6 +34,7 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
+import { MDXComponents } from "../../components/MD";
 
 interface Props {
   posts: Post[];

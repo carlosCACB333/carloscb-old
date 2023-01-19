@@ -1,7 +1,6 @@
 export * from "./Link";
 export * from "./Meta";
 export * from "./Blockquote";
-export * from "./MDXComponents";
 export * from "./NoteAside";
 export * from "./Li";
 export * from "./ContentMenu";

@@ -4,9 +4,11 @@ import { FC } from "react";
 import { useTranslation } from "next-i18next";
 import { Author } from "../../graphql/generated/graphql";
 import { getTheme } from "../../theme";
-import { MDXComponents, HygraphImg } from "../common";
 import { SectionLayout } from "../layouts";
 import { MDXRemote } from "next-mdx-remote";
+import { MDXComponents } from "../MD";
+import { HygraphImg } from "../common";
+
 interface Props {
   author: Author;
 }

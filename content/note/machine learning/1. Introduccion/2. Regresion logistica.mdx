@@ -1,25 +1,53 @@
 ---
 title: Algortimos de regresión logística
 description: La regresión logística es un tipo de regresión que se utiliza para predecir valores discretos. Es de tipo supervisado, basado en modelos, batch, y lineal.
-date: 2023-01-01
+date: "2023-01-01"
 author: Carlos Antonio Castillo Blas
-tags: regresion logistica, machine learning, algoritmos
+tags: [regresion logistica, machine learning, algoritmos]
 ---
 
-## función de activación
+## Función de hipótesis
 
-La función de activación de la regresión logística es la función sigmoide.
+La función de hipótesis de la regresión logística es la función sigmoide.
 
-- hθ(x)=g(θTx)=1/(1+e−θTx)
+<FormCard>
+    $$h_{\theta}(x) = \frac{1}{1 + e^{-z}}$$
+
+    $$z(x) = \theta_{0} + \theta_{1}x_{1} + \theta_{2}x_{2} + ... + \theta_{n}x_{n}$$
+
+</FormCard>
+
+como el sultado es una probalidad necesitamos un trheshold para determinar si es 0 o 1 y para eso usamos la función de activación.
+
+- y=1; $$h_{\theta}(x) \geq 0.5$$
+- y=0; $$h_{\theta}(x) < 0.5$$
 
 ## Función de coste J(θ)S
 
 La función de costo de la regresión logística es la función de entropía cruzada.
 
-- y=1; J(hθ(x),y)=-log(hθ(x))
-- y=0; J(hθ(x),y)=-log(1−hθ(x))
-- J(hθ(x),y)=−ylog(hθ(x))−(1−y)log(1−hθ(x))
+<FormCard>
+    y=1
+
+    $$J(\theta) = -log(h_{\theta}(x))$$
+
+    y=0
+
+    $$J(\theta) = -log(1 - h_{\theta}(x))$$
+
+    Combinando en una sola función
+
+    $$J(\theta(x),y) = -ylog(h_{\theta}(x)) - (1-y)log(1 - h_{\theta}(x))$$
+
+</FormCard>
 
 ## función de optimización
 
 La función de optimización de la regresión logística es la descenso de gradiente.
+
+<FormCard>
+    $$\theta_{j} := \theta_{j} - \alpha \frac{\partial}{\partial \theta_{j}}J(\theta)$$
+
+    $$\theta_{j} := \theta_{j} - \alpha \frac{1}{m} \sum_{i=1}^{m}(h_{\theta}(x^{(i)}) - y^{(i)})x_{j}^{(i)}$$
+
+</FormCard>

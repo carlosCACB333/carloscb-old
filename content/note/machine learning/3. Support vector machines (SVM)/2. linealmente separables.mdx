@@ -1,0 +1,61 @@
+---
+title: Datos linealmente separables
+description: En este caso, los datos se pueden separar con una linea recta. El objetivo es encontrar la linea recta que maximice el margen entre los datos de entrenamiento.
+date: "2023-01-01"
+author: Carlos Antonio Castillo Blas
+tags:
+  [
+    lineal,
+    svm,
+    hard margin classification,
+    soft margin  clasification,
+    support vectors,
+    outliers,
+    cost function,
+  ]
+---
+
+## Hard Margin Classification
+
+Los datos que se encuentran más cerca de la linea recta son los **Support Vectors** y son los límites de decición. **De esta manera los datos siempre se encuentran detrás de los Support Vectors** los cuales generan dos problemas:
+
+- Sólo funciona con datos linealmente separables.
+- Es muy sensible a los outliers o datos anómalos.
+
+### función de hipótesis
+
+<FormCard>
+
+$$ \theta^Tx = \theta_0 + \theta_1x_1 + \theta_2x_2 + \theta_3x_3 + ... + \theta_nx_n $$
+
+$$
+h_\theta(x)= \begin{cases} 1 & \text{si } \theta^Tx \geq 0 \\ 0 & \text{si } \theta^Tx < 0 \end{cases}
+$$
+
+</FormCard>
+
+### Función de coste
+
+La función de coste es la siguiente:
+
+<FormCard>
+
+$$
+y=1 \rightarrow J(\theta,y)=\max(0,1-\theta^Tx)
+$$
+
+$$
+y=0 \rightarrow J(\theta,y)=\max(0,1+\theta^Tx)
+$$
+
+donde $$\theta^Tx$$ es la función de hipótesis. y uniendo ambas ecuaciones tenemos:
+
+$$
+J(\theta,y)=y\max(0,1-\theta^Tx)+(1-y)\max(0,1+\theta^Tx)
+$$
+
+</FormCard>
+
+## Soft Margin Classification
+
+El objetivo de este modelo es mantener un balance adecuado entre mantener el limite de decisión lo más lejos posible de los datos de entrenamiento y minimizar la sencibilidad a los outliers. Para ello se introduce un iperparámetro $$C$$ que controla el balance entre estos dos objetivos.

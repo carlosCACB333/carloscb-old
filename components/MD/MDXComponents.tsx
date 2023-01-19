@@ -9,9 +9,15 @@ import {
   TableRow,
   TableCell,
   Divider,
+  Button,
+  Card,
+  CardContent,
 } from "@mui/material";
 import NextLink from "next/link";
 import { getTheme } from "../../theme";
+import { FormCard } from "./FormCard";
+import Grid from "@mui/material/Unstable_Grid2";
+import { Blockquote } from "../common";
 
 type MDXC = ComponentProps<typeof mdx.MDXProvider>["components"];
 
@@ -67,4 +73,14 @@ export const MDXComponents: MDXC = {
     return <TableCell {...props} />;
   },
   hr: (props: any) => <Divider {...props} />,
+  img: (props: any) => (
+    <img {...props} style={{ width: "100%", height: "auto" }} />
+  ),
+  blockquote: (props: any) => <Blockquote {...props} />,
+  // componentes para usar en el MDX
+  Button,
+  Card,
+  CardContent,
+  FormCard,
+  Grid,
 };

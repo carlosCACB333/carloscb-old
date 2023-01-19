@@ -1,0 +1,73 @@
+---
+title: Evaluación de los resultados
+description:
+  La evaluación de los resultados es una parte importante del proceso de aprendizaje automático.
+  En este artículo se explica como se puede evaluar los resultados de un modelo de aprendizaje automático.
+date: "2017-05-15"
+author: Carlos Castillo Blas
+tags: [Evaluación, Resultados, ml]
+---
+
+Una vez preprosado los datos, entrenado el algoritmo, se necesita un mecanismo para evaluar si el modelo se comporta adecuadamente. Para evaluar los resultados de un modelo de aprendizaje automático se puede utilizar distintas métricas, como por ejemplo:
+
+- Métricas Numéricas
+  - presición
+  - exhactitud
+  - exhaustividad
+- Representación gráfica de los resultados
+  - Curva ROC
+  - Curva Precision-Recall
+
+## Matriz de confusión
+
+La matriz de confusión es una representación gráfica de los resultados de un modelo de aprendizaje automático. Esta matriz se compone de dos ejes, el eje X y el eje Y. El eje X representa los valores reales de la variable objetivo, mientras que el eje Y representa los valores predichos por el modelo. La matriz de confusión se puede representar de la siguiente forma:
+
+|                            | Valor real (Verdadero) | Valor real (Falso) |
+| -------------------------- | ---------------------- | ------------------ |
+| Valor predicho (Verdadero) | Verdadero Positivo     | Falso Positivo     |
+| Valor predicho (Falso)     | Falso Negativo         | Verdadero Negativo |
+
+- **Presición**  
+   La presición es la proporción de valores predichos que son correctos. Se puede calcular de la siguiente forma:
+
+<FormCard>
+  $$
+    \text{presición} = \frac{\text{Verdadero Positivo}}{\text{Verdadero Positivo} + \text{Falso Positivo}}
+  $$
+</FormCard>
+
+- **Exhaustividad**
+  La exhaustividad es la proporción de valores reales que son predichos correctamente. Se puede calcular de la siguiente forma:
+
+<FormCard>
+  $$
+    \text{exhaustividad} = \frac{\text{Verdadero Positivo}}{\text{Verdadero Positivo} + \text{Falso Negativo}}
+  $$
+</FormCard>
+
+- **F1 Score**
+  El F1 Score es la media armónica de la presición y la exhaustividad. Mientras más serca de 1 sea el F1 Score, mejor será el modelo.
+  Se puede calcular de la siguiente forma:
+
+<FormCard> 
+  $$
+    \text{F1 Score} = \frac{2 \times \text{presición} \times \text{exhaustividad}}{\text{presición} + \text{exhaustividad}}
+  $$
+</FormCard>
+
+## Representaciones gráficas de los resultados
+
+<Grid container spacing={1}>
+  <Grid sx={12} md={6}>
+    ##### Curva ROC
+    ![Curva ROC](/note/curva-roc.png)
+    La curva ROC es una representación gráfica de los resultados de un modelo de aprendizaje automático. Esta curva se compone de dos ejes, el eje X y el eje Y. El Y representa la proporción de valores reales que son predichos correctamente, mientras que el eje X representa la proporción de valores reales que son predichos incorrectamente. La curva ROC se puede representar de la siguiente forma:
+
+  </Grid>
+
+  <Grid sx={12} md={6}>
+    ##### Curva Precision-Recall(PR)
+    ![Curva ROC](/note/curva-pr.png)
+    La curva Precision-Recall(PR) representa la alta exhactitud(baja tasa de falsos positivos) y la alta presición(baja tasa de falsos negatibos)
+  </Grid>
+</Grid>

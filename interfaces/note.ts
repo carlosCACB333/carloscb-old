@@ -1,9 +1,7 @@
-export interface Note {
+export interface NoteMeta {
   title: string;
-  slug: string;
-  url: string;
   date: string;
   description: string;
-  tags: string;
+  tags: string[];
   author: string;
 }

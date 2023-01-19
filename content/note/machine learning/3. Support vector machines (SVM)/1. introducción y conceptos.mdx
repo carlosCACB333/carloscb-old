@@ -1,0 +1,28 @@
+---
+title: ¿Qué es el Support Vector Machine (SVM)?
+description: El Support Vector Machine (SVM) es un algoritmo de aprendizaje supervisado que se utiliza para clasificación y regresión. En este artículo se explica la teoría detrás de este algoritmo y se muestra su implementación en Python.
+date: "2023-01-01T00:00:00.000Z"
+author: Carlos Antonio Castillo Blas
+tags:
+  [
+    machine learning,
+    machine learning algorithms,
+    support vector machine,
+    svm,
+    python,
+    scikit-learn,
+  ]
+---
+
+Este algoritmo funciona bién con datos complejos y de tamaño pequeno o medianos. Se puede aplicar de diferentes formas en funcón de los datos
+
+A comparación de la algoritmos de regresión logística, el SVM genera genera la función de hipótesis lo más lejos posible de los datos de entrenamiento. Esto se conoce como **Large Margin Classification**.
+
+![Large Margin Classification](/note/svm.png)
+
+- **Datos linealmente separables:** los datos se pueden separar con una linea recta.
+  - **Hard Margin Classification** (clasificación con márgenes duros)
+  - **Soft Margin Classification** (clasificación con márgenes blandos)
+- **Datos no linealmente separables:** los datos no se pueden separar con una linea recta.
+  - **Gaussian RBF Kernel** (kernel gaussiano RBF)
+  - **Polynomial Kernel** (kernel polinomial)
