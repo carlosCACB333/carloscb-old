@@ -1,0 +1,72 @@
+---
+title: Ecmascript 12
+description: Ecmascript 12 (ES12) es la nueva versión de Ecmascript que se lanzó en 2021.
+date: "2023-01-20"
+author: Carlos Antonio Castillo Blas
+tags:
+  [
+    "javascript",
+    "ecmascript",
+    "es12",
+    "es2021",
+    "numeric separators",
+    "replaceAll",
+    "Promise.any",
+    "Private Instance Methods",
+  ]
+---
+
+## Numeric Separators
+
+Los separadores numéricos permiten separar los dígitos de los números literales para mejorar la legibilidad. Los separadores numéricos se pueden usar en literales numéricos enteros y de punto flotante.
+
+```js
+const num = 1_000_000_000_000;
+```
+
+## ReplaceAll
+
+El método `replaceAll` reemplaza todas las ocurrencias de una cadena de texto por otra cadena de texto.
+
+```js
+const str = "Hello World";
+str.replaceAll("Hello", "Hi"); // Hi World
+```
+
+## Promise.any
+
+El método `Promise.any` devuelve una promesa que se resuelve cuando al menos una de las promesas pasadas como argumento se resuelve. Si todas las promesas son rechazadas, la promesa devuelta es rechazada con un `AggregateError`, que es una subclase de `Error`. **Devuelve la primera promesa que se resuelve.**
+
+```js
+const promise1 = new Promise((resolve, reject) =>
+  setTimeout(reject, 500, "one")
+);
+const promise2 = new Promise((resolve, reject) =>
+  setTimeout(reject, 100, "two")
+);
+
+Promise.any([promise1, promise2]).then((value) => {
+  console.log(value);
+});
+// expected output: "two"
+```
+
+## Private Instance Methods
+
+Los métodos privados de instancia son métodos que se pueden definir en una clase. Estos métodos no se pueden llamar desde fuera de la clase. Los métodos privados de instancia se pueden llamar desde otros métodos de la clase.
+
+```js
+class Rectangle {
+  #height = 0;
+  #width;
+
+  constructor(height, width) {
+    this.#height = height;
+    this.#width = width;
+  }
+
+  getArea() {
+    return this.#height * this.#width;
+  }
+}
+```

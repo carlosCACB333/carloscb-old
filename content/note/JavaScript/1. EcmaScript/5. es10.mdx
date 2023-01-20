@@ -1,0 +1,94 @@
+---
+title: Ecmascript 10
+description: Ecmascript 10 (ES10) es la décima versión del estándar de JavaScript. Fue publicada en 2019.
+date: "2023-01-20"
+author: Carlos Antonio Castillo Blas
+tags: ["javascript", "ecmascript", "es2019", "es10"]
+---
+
+## Arrays
+
+### flat
+
+El método `flat` nos permite aplanar un array, es decir, convertir un array de arrays en un array plano. Por ejemplo:
+
+```js
+const array = [1, 2, [3, 4, [5, 6]]];
+const flatArray = array.flat();
+console.log(flatArray); // [1, 2, 3, 4, [5, 6]]
+```
+
+Por defecto, el método `flat` solo aplanará un nivel, pero podemos pasarle un argumento para indicarle cuántos niveles queremos aplanar:
+
+```js
+const array = [1, 2, [3, 4, [5, 6]]];
+const flatArray = array.flat(2);
+console.log(flatArray); // [1, 2, 3, 4, 5, 6]
+```
+
+### flatMap
+
+El método `flatMap` es una combinación de `map` y `flat`. Por ejemplo:
+
+```js
+const array = [1, 2, 3, 4];
+
+const flatMappedArray = array.flatMap((number) => [number * 2]);
+
+console.log(flatMappedArray); // [2, 4, 6, 8]
+```
+
+## String
+
+### trimStart
+
+El método `trimStart` elimina los espacios en blanco al principio de un string. Por ejemplo:
+
+```js
+const string = "   Hello world   ";
+const trimmedString = string.trimStart();
+
+console.log(trimmedString); // "Hello world   "
+```
+
+### trimEnd
+
+El método `trimEnd` elimina los espacios en blanco al final de un string. Por ejemplo:
+
+```js
+const string = "   Hello world   ";
+const trimmedString = string.trimEnd();
+
+console.log(trimmedString); // "   Hello world"
+```
+
+## Object
+
+### fromEntries
+
+El método `fromEntries` nos permite convertir un array de arrays en un objeto. Por ejemplo:
+
+```js
+const entries = [
+  ["name", "Carlos"],
+  ["age", 30],
+];
+
+const object = Object.fromEntries(entries);
+
+console.log(object); // { name: "Carlos", age: 30 }
+```
+
+## Error
+
+### try...catch
+
+El bloque `try...catch` nos permite capturar errores. Por ejemplo:
+
+```js
+try {
+  throw new Error("Error");
+} catch (error) {
+  console.log(error); // Error: Error
+}
+```

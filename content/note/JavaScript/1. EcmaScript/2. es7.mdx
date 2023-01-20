@@ -1,0 +1,33 @@
+---
+title: Ecmascript 7
+description: Ecmascript 7 es la nueva versión del lenguaje de programación Javascript. En este artículo te explicamos las novedades que trae esta nueva versión.
+date: "2023-01-20"
+author: Carlos Antonio Castillo Blas
+tags:
+  [
+    "javascript",
+    "es7",
+    "es2016",
+    "Exponentiation Operator",
+    "Array.prototype.includes",
+  ]
+---
+
+## Exponentiation Operator
+
+El operador de exponenciación es una nueva forma de realizar potencias en Javascript. En lugar de utilizar la función `Math.pow` podemos utilizar el operador `**` para realizar potencias.
+
+```javascript
+console.log(2 ** 3); // 8
+console.log(2 ** (3 ** 2)); // 512
+```
+
+## Array.prototype.includes
+
+El método `includes` nos permite saber si un elemento se encuentra dentro de un array. Este método es similar al método `indexOf` pero con la diferencia de que `includes` devuelve un valor booleano.
+
+```javascript
+const array = [1, 2, 3, 4, 5];
+console.log(array.includes(3)); // true
+console.log(array.includes(6)); // false
+```

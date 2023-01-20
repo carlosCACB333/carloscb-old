@@ -94,10 +94,13 @@ export const AppLayout: FC<Props> = ({ children }) => {
         {Rightbar && isLg && (
           <Box>
             <Box
+              className="scroll"
               component="aside"
               sx={{
                 position: "sticky",
-                top: "6rem",
+                top: "4rem",
+                maxHeight: "calc(100vh - 5rem)",
+                pr: 2,
               }}
             >
               {Rightbar}

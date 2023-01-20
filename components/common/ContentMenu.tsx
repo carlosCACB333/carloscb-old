@@ -26,7 +26,7 @@ export const ContentMenu: FC<Props> = ({ toc }) => {
             <Li key={url} active={url === "#" + active} name={title} url={url}>
               <List
                 sx={{
-                  ml: 1,
+                  pl: 2,
                 }}
               >
                 {children.map((child) => (
@@ -36,6 +36,7 @@ export const ContentMenu: FC<Props> = ({ toc }) => {
                     name={child.title}
                     url={child.url}
                     scroll
+                    variant="secondary"
                   />
                 ))}
               </List>

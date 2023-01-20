@@ -7,6 +7,7 @@ interface CategoryItemProps extends PropsWithChildren {
   name: string;
   url: string;
   scroll?: boolean;
+  variant?: "primary" | "secondary";
 }
 export const Li = ({
   active,
@@ -14,10 +15,10 @@ export const Li = ({
   url,
   children,
   scroll = false,
+  variant = "primary",
 }: CategoryItemProps) => {
   return (
     <ListItem
-      data-aos="fade-up"
       dense
       sx={{
         display: "list-item",
@@ -43,7 +44,11 @@ export const Li = ({
             width: 6,
             height: 6,
             borderRadius: "50%",
-            backgroundColor: active ? "primary.main" : "text.primary",
+            backgroundColor: active
+              ? "primary.main"
+              : variant === "primary"
+              ? "text.primary"
+              : "text.disabled",
             position: "absolute",
             top: ".4rem",
             left: -20,

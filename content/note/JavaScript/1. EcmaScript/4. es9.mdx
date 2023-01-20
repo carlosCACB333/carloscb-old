@@ -1,0 +1,76 @@
+---
+title: Ecmascript 9
+description: Ecmascript 9 es una nueva versión de Ecmascript lanzada en 2018. En esta versión se incluyen nuevas características las cuales se detallan en este artículo.
+date: "2023-01-20"
+author: Carlos Antonio Castillo Blas
+tags: ["javascript", "ecmascript", "es2018", "es9"]
+---
+
+## Expresiones regulares
+
+Las expresiones regulares son una herramienta muy poderosa para la manipulación de cadenas de texto. En esta versión se incluyen dos nuevas características:
+
+### Expresiones regulares con nombres de grupos
+
+En esta versión se incluye la posibilidad de nombrar los grupos de una expresión regular. Esto permite acceder a los grupos de una expresión regular por su nombre en lugar de por su posición. Por ejemplo, si tenemos la siguiente expresión regular:
+
+```js
+const regex = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/;
+```
+
+Podemos acceder a los grupos de la siguiente forma:
+
+```js
+const match = regex.exec("2018-01-20");
+const year = match.groups.year;
+const month = match.groups.month;
+const day = match.groups.day;
+```
+
+### Expresiones regulares con espacios en blanco
+
+En esta versión se incluye la posibilidad de incluir espacios en blanco en las expresiones regulares. Esto permite escribir expresiones regulares más legibles. Por ejemplo, si tenemos la siguiente expresión regular:
+
+```js
+const regex = /foo  bar/;
+```
+
+Podemos escribirla de la siguiente forma:
+
+```js
+const regex = /foo\s\sbar/;
+```
+
+## Spread
+
+En esta versión se incluye la posibilidad de usar el operador spread para agrupar propiedades de objetos. Por ejemplo, si tenemos los siguientes objetos:
+
+```js
+const obj1 = { a: 1, b: 2 , c: 3 };
+cosnt { a, ...rest } = obj1;
+```
+
+## Promise
+
+### Promise.prototype.finally
+
+En esta versión se incluye la posibilidad de ejecutar una función cuando una promesa se resuelve o se rechaza. Por ejemplo, si tenemos la siguiente promesa:
+
+```js
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("foo");
+  }, 300);
+});
+
+promise
+  .then((value) => {
+    console.log(value);
+  })
+  .catch((error) => {
+    console.log(error);
+  })
+  .finally(() => {
+    console.log("promise finished");
+  });
+```

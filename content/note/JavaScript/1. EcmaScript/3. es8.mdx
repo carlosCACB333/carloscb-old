@@ -1,0 +1,109 @@
+---
+title: Ecmascript 8
+description: Ecmascript 8 (ES8) es la octava versión del estándar ECMAScript. Fue publicada en 2017 y contiene nuevas características para el lenguaje de programación JavaScript.
+date: "2023-01-20"
+author: Carlos Antonio Castillo Blas
+tags:
+  [
+    "javascript",
+    "es8",
+    "ecmascript",
+    "es2017",
+    "object.values",
+    "object.entries",
+    "string padding",
+    "trailing commas",
+    "async await",
+  ]
+---
+
+## Object.entries
+
+La función `Object.entries()` devuelve un array de pares clave-valor de un objeto. El orden de los elementos del array es el mismo que el orden de la enumeración de las propiedades de la matriz.
+
+```javascript
+const object1 = {
+  a: "somestring",
+  b: 42,
+};
+
+console.log(Object.entries(object1));
+// expected output: Array ["a", "somestring"], Array ["b", 42]
+```
+
+## Object.values
+
+La función `Object.values()` devuelve un array de los valores de un objeto. El orden de los elementos del array es el mismo que el orden de la enumeración de las propiedades de la matriz.
+
+```javascript
+const object1 = {
+  a: "somestring",
+  b: 42,
+};
+
+console.log(Object.values(object1));
+// expected output: Array ["somestring", 42]
+```
+
+## String padding
+
+La función `padStart()` y `padEnd()` nos permite añadir caracteres a la izquierda o derecha de un string.
+
+```javascript
+"abc".padStart(10); // "       abc"
+"abc".padStart(10, "foo"); // "foofoofabc"
+"abc".padStart(6, "123465"); // "123abc"
+"abc".padStart(8, "0"); // "00000abc"
+"abc".padStart(1); // "abc"
+
+"abc".padEnd(10); // "abc       "
+"abc".padEnd(10, "foo"); // "abcfoofoof"
+"abc".padEnd(6, "123465"); // "abc123"
+"abc".padEnd(8, "0"); // "abc00000"
+"abc".padEnd(1); // "abc"
+```
+
+## Trailing commas
+
+Las comas finales en los parámetros de funciones , objetos y arrays son ahora válidas.
+
+```javascript
+function func(
+  a,
+  b,
+  c,
+  d
+  // Trailing comma
+) {}
+
+const obj = {
+  a: 1,
+  b: 2,
+  c: 3,
+  // Trailing comma
+};
+
+const arr = [
+  1,
+  2,
+  3,
+  ,
+  ,
+  4,
+  // Trailing comma
+];
+```
+
+## Async await
+
+La palabra clave `async` se utiliza para definir una función asíncrona, que devuelve un objeto `AsyncFunction`. Una función asíncrona es una función que sabe esperar por una `Promise` y que puede contener una expresión `await`. La palabra clave `await` se utiliza para esperar por una `Promise`. Cuando la `Promise` se resuelve, se devuelve el resultado. Cuando la `Promise` se rechaza, se lanza la excepción.
+
+```javascript
+async function myFunction() {
+  try {
+    const resolvedValue = await promise;
+  } catch (rejectedValue) {
+    // …
+  }
+}
+```

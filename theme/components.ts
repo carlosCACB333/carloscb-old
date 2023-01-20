@@ -39,7 +39,12 @@ export const themeComponents = (
       },
     },
 
-    MuiList: { styleOverrides: { dense: true, root: { fontSize: "initial" } } },
+    MuiList: {
+      styleOverrides: {
+        dense: true,
+        root: { fontSize: "initial", padding: 0 },
+      },
+    },
     MuiListItem: { styleOverrides: { root: { padding: 0 } } },
     MuiListItemIcon: {
       styleOverrides: {

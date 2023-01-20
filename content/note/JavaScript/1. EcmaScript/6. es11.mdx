@@ -1,0 +1,128 @@
+---
+title: Ecmascript 11
+description: Ecmascript 11 (ES11) es la versión 11 de la especificación ECMAScript. Esta especificación define el lenguaje de programación ECMAScript y los objetos incorporados en el mismo.
+date: "2023-01-20"
+author: Carlos Antonio Castillo Blas
+tags:
+  [
+    "javascript",
+    "ecmascript",
+    "es11",
+    "es2020",
+    "optional chaining",
+    "nullish coalescing",
+    "bigint",
+    "promise.allsettled",
+    "globalthis",
+    "matchall",
+    "dynamic import",
+  ]
+---
+
+## Optional Chaining
+
+El operador de encadenamiento opcional (?.) permite leer el valor de una propiedad ubicada profundamente en una cadena de objetos sin tener que verificar si cada referencia en la cadena es válida.
+
+```js
+const user = {
+  name: "Carlos",
+  age: 30,
+  address: {
+    street: "Calle 1",
+    number: 123,
+  },
+};
+
+console.log(user?.address?.street); // Calle 1
+console.log(user?.address?.street?.number); // undefined
+```
+
+## Nullish Coalescing
+
+El operador de coalescencia nula (??) devuelve su operando derecho cuando su operando izquierdo es null o undefined, y de lo contrario devuelve su operando izquierdo.
+
+```js
+const user = {
+  name: "Carlos",
+  age: 30,
+  address: {
+    street: "Calle 1",
+    number: 123,
+  },
+};
+
+console.log(user?.address?.street ?? "No address"); // Calle 1
+console.log(user?.address?.street?.number ?? "No number"); // No number
+```
+
+## BigInt
+
+BigInt es un tipo de dato que permite representar números enteros grandes. Los números BigInt se pueden utilizar con operadores aritméticos y lógicos.
+
+```js
+const bigInt = 1234567890123456789012345678901234567890n;
+console.log(bigInt); // 1234567890123456789012345678901234567890n
+```
+
+## Promise.allSettled
+
+La función Promise.allSettled() devuelve una promesa que se resuelve después de que todas las promesas dadas se hayan resuelto o rechazado, con un objeto que contiene información sobre el resultado.
+
+```js
+const promise1 = Promise.resolve(3);
+const promise2 = 42;
+const promise3 = new Promise((resolve, reject) => {
+  setTimeout(resolve, 100, "foo");
+});
+
+Promise.allSettled([promise1, promise2, promise3]).then((values) => {
+  console.log(values);
+  // [
+  //   { status: 'fulfilled', value: 3 },
+  //   { status: 'fulfilled', value: 42 },
+  //   { status: 'fulfilled', value: 'foo' }
+  // ]
+});
+```
+
+## GlobalThis
+
+La propiedad globalThis es un objeto global que proporciona acceso a las propiedades globales en cualquier contexto. Es una forma de acceder a las propiedades globales sin tener que preocuparse por el contexto global.
+
+```js
+console.log(globalThis); // Window {window: Window, self: Window, document: document, name: "", location: Location, …}
+```
+
+## matchAll
+
+La función matchAll() devuelve un iterador de todos los resultados de la cadena de texto que coinciden con una expresión regular, incluidos los grupos de captura.
+
+```js
+const str = "test1test2test3";
+const regex = /test(\d)/g;
+
+const matches = str.matchAll(regex);
+
+for (const match of matches) {
+  console.log(match);
+  // [ 'test1', '1', index: 0, input: 'test1test2test3', groups: undefined ]
+  // [ 'test2', '2', index: 5, input: 'test1test2test3', groups: undefined ]
+  // [ 'test3', '3', index: 10, input: 'test1test2test3', groups: undefined ]
+}
+```
+
+## dynamic import
+
+La expresión de importación dinámica permite importar módulos de forma asíncrona.
+
+```js
+const modulePath = "./module.js";
+
+import(modulePath)
+  .then((module) => {
+    // Do something with the module.
+  })
+  .catch((err) => {
+    // Handle failure.
+  });
+```

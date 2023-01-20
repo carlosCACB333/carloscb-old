@@ -1,0 +1,268 @@
+---
+title: Ecmascript 6
+description: Ecmascript 6 es la nueva versión del lenguaje de programación Javascript que fue publicada en el 2015.
+date: "2023-01-19"
+author: Carlos Antonio Castillo Blas
+tags:
+  [
+    "javascript",
+    "es6",
+    "es2015",
+    "ecmascript",
+    "let",
+    "const",
+    "arrow functions",
+    "default parameters",
+    "rest parameters",
+    "spread operator",
+    "object literal extensions",
+    "object.assign()",
+    "destructuring assignment",
+    "template literals",
+    "for...of",
+    "classes",
+    "modules",
+  ]
+---
+
+## Variables
+
+### var
+
+La palabra reservada `var` permite declarar variables, sin embargo, su alcance es **global o local a una función** sin importar el ámbito del bloque. Esta era la manera de declarar variables en Javascript antes de ES6.
+
+```javascript
+var a = 1;
+{
+  var a = 2;
+  console.log(a); // 2
+}
+console.log(a); // 2
+```
+
+### let
+
+La palabra reservada `let` permite declarar variables limitando su **alcance al bloque**, declaración o expresión donde se está usando.
+
+```javascript
+let a = 1;
+{
+  let a = 2;
+  console.log(a); // 2
+}
+console.log(a); // 1
+```
+
+### const
+
+La palabra reservada `const` permite declarar constantes, es decir, variables cuyo valor no puede ser cambiado a través de reasignación.
+
+```javascript
+const a = 1;
+a = 2; // TypeError: Assignment to constant variable.
+```
+
+## Funciones
+
+### Arrow functions
+
+Las funciones flecha son una forma más corta de escribir funciones. No tienen su propio `this`, `arguments`, `super` o `new.target`. Estas funciones son siempre anónimas.
+
+```javascript
+var evens = [2, 4, 6, 8, 10];
+var odds = evens.map((v) => v + 1);
+console.log(odds); // [3, 5, 7, 9, 11]
+```
+
+### Default parameters
+
+Los parámetros por defecto permiten inicializar parámetros con valores por defecto en caso de que no se pasen valores.
+
+```javascript
+function greet(name = "Carlos") {
+  console.log(`Hello ${name}!`);
+}
+greet(); // Hello Carlos!
+greet("John"); // Hello John!
+```
+
+### Rest parameters
+
+Los parámetros rest son los parámetros de una función que no están asociados a un argumento específico. Estos se convierten en un arreglo cuyos elementos son los argumentos no asignados a parámetros.
+
+```javascript
+function sum(...values) {
+  let result = 0;
+  for (let value of values) {
+    result += value;
+  }
+  return result;
+}
+console.log(sum(1, 2, 3)); // 6
+```
+
+### Spread operator
+
+El operador de propagación es el operador `...` que permite expandir un arreglo en lugares donde se esperan cero o más argumentos (llamadas a funciones) o elementos (arreglos literales).
+
+```javascript
+function sum(x, y, z) {
+  return x + y + z;
+}
+const numbers = [1, 2, 3];
+console.log(sum(...numbers)); // 6
+```
+
+## Objetos
+
+### Object literal extensions
+
+Las extensiones de objetos literales permiten definir propiedades y métodos de un objeto de una manera más corta.
+
+```javascript
+var name = "Carlos";
+var age = 25;
+var person = { name, age };
+console.log(person); // { name: "Carlos", age: 25 }
+```
+
+### Object.assign()
+
+El método `Object.assign()` copia las propiedades enumerables de uno o más objetos fuente a un objeto destino. Devuelve el objeto destino.
+
+```javascript
+var person = { name: "Carlos" };
+var age = { age: 25 };
+var personAge = Object.assign(person, age);
+console.log(personAge); // { name: "Carlos", age: 25 }
+```
+
+## Destructuring assignment
+
+La asignación de desestructuración es una expresión de JavaScript que permite desempacar valores de arreglos o propiedades de objetos en distintas variables.
+
+### Objects Destructuring
+
+```javascript
+var person = { name: "Carlos", age: 25 };
+var { name, age } = person;
+console.log(name); // Carlos
+console.log(age); // 25
+```
+
+### Rest in Objects Destructuring
+
+```javascript
+var person = { name: "Carlos", age: 25, country: "Mexico" };
+var { name, ...rest } = person;
+console.log(name); // Carlos
+console.log(rest); // { age: 25, country: "Mexico" }
+```
+
+### Arrays Destructuring
+
+```javascript
+var numbers = [1, 2, 3];
+var [x, y, z] = numbers;
+console.log(x); // 1
+console.log(y); // 2
+console.log(z); // 3
+```
+
+## Strings
+
+### Template literals
+
+Las plantillas literales son cadenas de texto que permiten expresiones incrustadas. Pueden ocupar varias líneas y tienen mejor sintaxis para la interpolación de cadenas.
+
+```javascript
+var name = "Carlos";
+var greeting = `Hello ${name}!`;
+console.log(greeting); // Hello Carlos!
+```
+
+## Promise
+
+Las promesas son un objeto que representa la terminación o el fracaso eventual de una operación asíncrona y su valor resultante.
+
+```javascript
+var promise = new Promise(function (resolve, reject) {
+  setTimeout(function () {
+    resolve("Hello World!");
+  }, 1000);
+});
+promise.then(function (value) {
+  console.log(value); // Hello World!
+});
+```
+
+## Classes
+
+Las clases no es más que azucar sintáctica para la herencia basada en prototipos de Javascript. Las clases no introducen un nuevo modelo de herencia orientada a objetos en Javascript.
+
+```javascript
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+  greet() {
+    console.log(`Hello ${this.name}!`);
+  }
+}
+const person = new Person("Carlos");
+person.greet(); // Hello Carlos!
+```
+
+## Modules
+
+Los módulos son la forma de Javascript de importar y exportar funcionalidad de otros archivos.
+
+```javascript
+// file: person.js
+export class Person {
+  constructor(name) {
+    this.name = name;
+  }
+  greet() {
+    console.log(`Hello ${this.name}!`);
+  }
+}
+```
+
+```javascript
+// file: main.js
+import { Person } from "./person";
+const person = new Person("Carlos");
+person.greet(); // Hello Carlos!
+```
+
+## Generators
+
+Los generadores son funciones que pueden ser pausadas y reanudadas. Las funciones generadoras devuelven un objeto `Generator` que implementa la interfaz `Iterator`.
+
+```javascript
+function* fibonacci() {
+  let [prev, curr] = [0, 1];
+  for (;;) {
+    [prev, curr] = [curr, prev + curr];
+    yield curr;
+  }
+}
+
+for (let n of fibonacci()) {
+  if (n > 1000) break;
+  console.log(n);
+}
+```
+
+## Set
+
+Los conjuntos son colecciones de valores. Cada valor en el conjunto solo puede ocurrir una vez; esto es lo que lo diferencia de una matriz.
+
+```javascript
+var set = new Set();
+set.add(1);
+set.add(2);
+set.add(2);
+console.log(set.size); // 2
+```
