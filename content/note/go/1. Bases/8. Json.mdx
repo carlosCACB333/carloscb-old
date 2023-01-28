@@ -1,0 +1,73 @@
+---
+title: Json
+description: Los json son un formato de datos muy usado en la actualidad, en este post veremos como leer y escribir archivos json en go.
+date: "2023-01-22"
+author: Carlos Antonio Castillo Blas
+tags: ["go", "json"]
+---
+
+## marshal
+
+El marshal es la función que nos permite codificar un objeto en json, para ello debemos pasarle un objeto que implemente la interfaz `Marshaler` o un slice de objetos que implementen la interfaz `Marshaler` y nos devolverá un slice de bytes con el json codificado.
+
+- Los atributos de la estructura deben empezar con mayúscula para que sean exportados y sean visibles desde fuera del paquete.
+
+```go
+
+package main
+
+import (
+    "encoding/json"
+    "fmt"
+)
+
+type Person struct {
+    Name string
+    Age  int
+}
+
+func main() {
+    p1 := Person{Name: "Carlos", Age: 25}
+    p2 := Person{Name: "Jason", Age: 22}
+    b, err := json.Marshal([]Person{p1, p2})
+    if err != nil {
+        fmt.Println(err)
+        return
+    }
+    fmt.Println(string(b))
+}
+
+```
+
+## unmarshal
+
+El unmarshal es la función que nos permite decodificar un json en un objeto, para ello debemos pasarle un slice de bytes con el json codificado y un objeto que implemente la interfaz `Unmarshaler` o un slice de objetos que implementen la interfaz `Unmarshaler` y nos devolverá un slice de bytes con el json codificado.
+
+```go
+
+package main
+
+import (
+    "encoding/json"
+    "fmt"
+)
+
+type Person struct {
+    Name string
+    Age  int
+}
+
+func main() {
+    js:=`[{"Name":"Carlos","Age":25},{"Name":"Jason","Age":22}]`
+
+    var p []Person
+    err := json.Unmarshal([]byte(js), &p)
+    if err != nil {
+        fmt.Println(err)
+        return
+    }
+    fmt.Println(p)
+
+}
+
+```

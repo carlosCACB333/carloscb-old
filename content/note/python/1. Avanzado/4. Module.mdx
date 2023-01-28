@@ -1,0 +1,104 @@
+---
+title: Módulos
+description: Los módulos son archivos que contienen código Python que pueden ser importados para usar sus funciones en otros archivos.
+author: Carlos Antonio Castillo Blas
+date: "2023-01-23"
+tags: ["python", "programacion", "modulos"]
+---
+
+Los módulos son archivos que contienen código Python que pueden ser importados para usar sus funciones en otros archivos.
+
+Los módulos son muy útiles para organizar el código y reutilizarlo en otros proyectos.
+
+## Crear un módulo
+
+Para crear un módulo, simplemente crea un archivo con extensión `.py` y escribe el código que quieras.
+
+Por ejemplo, vamos a crear un módulo llamado `mimodulo.py` con el siguiente código:
+
+```python
+# mimodulo.py
+
+def saluda():
+    print("Hola, soy un módulo")
+```
+
+## Importar un módulo
+
+Para importar un módulo, usamos la palabra reservada `import` seguida del nombre del módulo.
+
+```python
+
+import mimodulo
+
+mimodulo.saluda()
+```
+
+## **name** y **main**
+
+Cuando ejecutamos un archivo Python, el intérprete de Python define una variable especial llamada `__name__` con el valor `__main__`.
+
+Si importamos un módulo, el valor de `__name__` será el nombre del módulo.
+
+Por ejemplo:
+
+```python
+# mimodulo.py
+
+def saluda():
+   print("El nombre del módulo es:", __name__)
+```
+
+```python
+# main.py
+
+import mimodulo
+
+print("El nombre del módulo es:", __name__)
+mimodulo.saluda()
+```
+
+Si ejecutamos el archivo `main.py`:
+
+```bash
+$ python main.py
+
+# main.py
+El nombre del módulo es: __main__
+# mimodulo.py
+El nombre del módulo es: mimodulo
+
+```
+
+## Paquetes
+
+Los paquetes son una forma de organizar módulos relacionados en una jerarquía de directorios.
+
+Por ejemplo, supongamos que tenemos un proyecto con los siguientes módulos:
+
+```bash
+mimodulo.py
+mimodulo2.py
+mimodulo3.py
+```
+
+Podemos organizarlos en un paquete de la siguiente forma:
+
+```bash
+
+mimodulo.py
+mimodulo2.py
+mimodulo3.py
+
+paquete/
+    __init__.py # Solo es requerido en Python 2
+    mimodulo.py
+    mimodulo2.py
+    mimodulo3.py
+```
+
+Para importar un módulo dentro de un paquete, usamos la siguiente sintaxis:
+
+```python
+import paquete.mimodulo
+```

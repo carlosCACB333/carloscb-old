@@ -1,0 +1,294 @@
+---
+title: Arreglos de datos
+description: En este artículo se explica como crear arreglos de datos en Go.
+date: "2023-01-22"
+author: Carlos Antonio Castillo Blas
+tags: ["go", "arreglos", "datos"]
+---
+
+## Arrays
+
+Los arreglos son una estructura de datos que nos permite almacenar una colección de elementos del mismo tipo. En Go, los arreglos son estáticos, es decir, una vez que se crea un arreglo, no se puede cambiar su tamaño.
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    var a [5]int
+    var b [5]int = [5]int{1, 2, 3, 4, 5}
+    fmt.Println( b) // [1 2 3 4 5]
+    fmt.Println( a) // [0 0 0 0 0]
+
+    a[4] = 100
+    fmt.Println( a) // [0 0 0 0 100]
+    fmt.Println( a[4]) // 100
+    fmt.Println( len(a)) //  5
+}
+```
+
+## Slices
+
+Los slices son una estructura de datos que nos permite almacenar una colección de elementos del mismo tipo. En Go, los slices son dinámicos, es decir, una vez que se crea un slice, se puede cambiar su tamaño.
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    var a []int
+    var b []int = []int{1, 2, 3, 4, 5}
+    fmt.Println( b) // [1 2 3 4 5]
+    fmt.Println( a) // []
+
+    a = append(a, 100)
+    fmt.Println( a) // [100]
+    fmt.Println( a[0]) // 100
+    fmt.Println( len(a)) //  1
+}
+
+```
+
+## Manipulación de estructuras de datos
+
+### Data slicing
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    var a []int = []int{1, 2, 3, 4, 5}
+    fmt.Println( a) // [1 2 3 4 5]
+
+    b := a[1:3]
+    fmt.Println( b) // [2 3]
+
+    c := a[1:]
+    fmt.Println( c) // [2 3 4 5]
+
+    d := a[:3]
+    fmt.Println( d) // [1 2 3]
+
+    e := a[:]
+    fmt.Println( e) // [1 2 3 4 5]
+}
+```
+
+### Data appending
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    var a []int = []int{1, 2, 3, 4, 5}
+    fmt.Println( a) // [1 2 3 4 5]
+
+    a = append(a, 6)
+    fmt.Println( a) // [1 2 3 4 5 6]
+
+    a = append(a, 7, 8, 9)
+    fmt.Println( a) // [1 2 3 4 5 6 7 8 9]
+}
+```
+
+### Data deleting
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    var a []int = []int{1, 2, 3, 4, 5}
+    fmt.Println( a) // [1 2 3 4 5]
+
+    a = append(a[:2], a[3:]...)
+    fmt.Println( a) // [1 2 4 5]
+}
+```
+
+### Make
+
+La función make nos permite crear slices, maps y channels. La función make recibe como parámetros el tipo de dato que se va a crear, el tamaño del slice y el tamaño del arreglo interno del slice.
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    a := make([]int, 5, 10)
+    fmt.Println( a) // [0 0 0 0 0]
+    fmt.Println( len(a)) // 5
+    fmt.Println( cap(a)) // 10
+}
+```
+
+## Arreglos subyacentes
+
+Los slices son estructuras de datos que apuntan a un arreglo subyacente. Cuando usamos la función append, si el slice no tiene espacio para almacenar el nuevo elemento, se crea un nuevo arreglo subyacente y se copian los elementos del arreglo original al nuevo arreglo.
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    a := make([]int, 5, 10)
+    fmt.Println( a) // [0 0 0 0 0]
+    fmt.Println( len(a)) // 5
+    fmt.Println( cap(a)) // 10
+
+    a = append(a, 1)
+    fmt.Println( a) // [0 0 0 0 0 1]
+    fmt.Println( len(a)) // 6
+    fmt.Println( cap(a)) // 10
+}
+```
+
+La función `append` nos permite agregar elementos a un slice. Si el slice no tiene espacio para almacenar el nuevo elemento, se crea un nuevo arreglo subyacente y se copian los elementos del arreglo original al nuevo arreglo. En caso de que el slice tenga espacio para almacenar el nuevo elemento, se agrega el nuevo elemento al arreglo subyacente.
+
+```go
+package ma
+
+import "fmt"
+
+func main() {
+   a := []int{1, 2, 3, 4, 5}
+   b := append(a[:2], 0, 0) // No se crea un nuevo arreglo subyacente por lo que se modifica el arreglo original
+   fmt.Println(a) // [1 2 0 0]
+   fmt.Println(b) // [1 2 0 0 5]
+
+}
+
+```
+
+## Map
+
+Los map son estructuras de datos que nos permiten almacenar pares de llave-valor. En Go, los map son dinámicos, es decir, una vez que se crea un map, se puede cambiar su tamaño.
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    var a map[string]int
+    var b map[string]int = map[string]int{"a": 1, "b": 2, "c": 3}
+    fmt.Println( b) // map[a:1 b:2 c:3]
+    fmt.Println( a) // map[]
+
+    a = make(map[string]int)
+    a["a"] = 100 // add a new key
+    fmt.Println( a) // map[a:100]
+    fmt.Println( a["a"]) // 100
+    fmt.Println( len(a)) //  1
+
+    delete(a, "a") // delete a key
+    fmt.Println( a) // map[]
+
+    for k, v := range b {
+        fmt.Println(k, v)
+    }
+}
+```
+
+## Struct
+
+Los structs son estructuras de datos que nos permiten almacenar datos de diferentes tipos. En Go, los structs son dinámicos, es decir, una vez que se crea un struct, se puede cambiar su tamaño.
+
+```go
+
+package main
+
+import "fmt"
+
+type Person struct {
+    name string
+    age int
+}
+
+func main() {
+    var a Person
+    var b Person = Person{name: "John", age: 30}
+    fmt.Println( b) // {John 30}
+    fmt.Println( a) // { 0}
+
+    a.name = "Jane"
+    a.age = 20
+    fmt.Println( a) // {Jane 20}
+    fmt.Println( a.name) // Jane
+    fmt.Println( a.age) // 20
+}
+```
+
+### Structs embedding
+
+Se le llama así al tipo de dato dentro de otro dipo pero sin que se llame como un atributo.
+
+Un campo promovido es un campo que se hereda de un tipo anidado. Un campo promovido se puede acceder como si fuera un campo del tipo que lo contiene.
+
+```go
+package main
+
+import "fmt"
+
+type Person struct {
+    name string
+    age int
+}
+
+type Employee struct {
+    Person
+    salary int
+}
+
+func main() {
+    employee := Employee{Person: Person{name: "John", age: 30}, salary: 1000}
+    fmt.Println( employee) // {{John 30} 1000}
+    fmt.Println( employee.name) // John
+    fmt.Println( employee.age) // 30
+    fmt.Println( employee.salary) // 1000
+}
+```
+
+### Structs anonymous
+
+```go
+package main
+
+import "fmt"
+
+type Person struct {
+    name string
+    age int
+}
+
+func main() {
+    var a struct {
+        name string
+        age int
+    }
+    var b struct {
+        name string
+        age int
+    } = struct {
+        name string
+        age int
+    }{name: "John", age: 30}
+    fmt.Println( b) // {John 30}
+    fmt.Println( a) // { 0}
+
+    a.name = "Jane"
+    a.age = 20
+    fmt.Println( a) // {Jane 20}
+    fmt.Println( a.name) // Jane
+    fmt.Println( a.age) // 20
+}
+```

@@ -1,0 +1,71 @@
+---
+title: Entornos virtuales
+description: Los Entornos virtuales son un espacio aislado donde podemos instalar paquetes de Python sin afectar al resto del sistema.
+date: "2023-01-24"
+author: Carlos Antonio Castillo Blas
+tags:
+  [
+    "python",
+    "pip",
+    "paquetes",
+    "gestor de paquetes",
+    "instalar paquetes",
+    "instalar paquetes python",
+  ]
+---
+
+## ¿Qué es Pip?
+
+Pip es un gestor de paquetes para Python. Es decir, es un programa que nos permite instalar, actualizar y eliminar paquetes de Python.
+
+## Crear un entorno virtual
+
+- instalamos el paquete `python3-venv`:
+
+```bash
+sudo install python3-venv
+```
+
+- creamos el entorno virtual:
+
+```bash
+python3 -m venv nombre_del_entorno
+```
+
+- activamos el entorno virtual:
+
+```bash
+source nombre_del_entorno/bin/activate
+```
+
+- instalamos paquetes:
+
+```bash
+pip install nombre_del_paquete
+```
+
+- desactivamos el entorno virtual:
+
+```bash
+deactivate
+```
+
+## Comandos de pip
+
+```bash
+pip3 install nombre_del_paquete # instalar paquete
+pip3 install -r requirements.txt # instalar paquetes desde un archivo
+pip3 install --upgrade nombre_del_paquete # actualizar paquete
+pip3 uninstall nombre_del_paquete # desinstalar paquete
+pip3 list # listar paquetes instalados
+pip3 freeze # listar paquetes instalados en un archivo
+pip3 freeze > requirements.txt # guardar paquetes instalados en un archivo
+pip3 show nombre_del_paquete # mostrar información de un paquete
+pip3 search nombre_del_paquete # buscar paquete
+pip3 check # comprobar dependencias
+pip3 cache list # listar paquetes en caché
+pip3 cache remove nombre_del_paquete # eliminar paquete de la caché
+pip3 help # mostrar ayuda
+
+which python3 # mostrar ruta de python que se está ejecutando
+```

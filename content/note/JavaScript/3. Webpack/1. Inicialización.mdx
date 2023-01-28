@@ -1,0 +1,114 @@
+---
+title: Webpack
+description: Webpack es un empaquetador de módulos para aplicaciones JavaScript modernas. Cuando webpack procesa su aplicación, crea un gráfico de dependencias que mapea cada módulo que su proyecto necesita y genera uno o más paquetes.
+date: "2023-01-25"
+author: Carlos Antonio Castillo Blas
+tags: ["javascript", "webpack", "bundlers"]
+---
+
+En este artículo vamos a ver cómo configurar Webpack para que nos ayude a empaquetar nuestros proyectos de TypeScript. Vamos a configurar un proyecto fullstack con Express y React.
+
+## Creación de un proyecto
+
+- Crear un directorio para el proyecto
+
+```bash
+mkdir webpack-project
+```
+
+- Inicializar el proyecto
+
+```bash
+npm init -y
+```
+
+- Instalar webpack
+
+```bash
+npm install webpack webpack-cli --save-dev
+```
+
+- Instalamos babel para poder usar TypeScript
+
+```bash
+npm install @babel/core @babel/preset-env @babel/preset-typescript babel-loader --save-dev
+```
+
+- Instalamos TypeScript
+
+```bash
+npm install typescript ts-loader --save-dev
+```
+
+- Creamos el archivo `tsconfig.json` en la raíz del proyecto
+
+```bash
+npx tsc --init
+```
+
+-- Creamos el archivo `webpack.config.ts` en la raíz del proyecto
+
+```typescript
+import path from "path";
+import webpack from "webpack";
+
+const config: webpack.Configuration = {
+  mode: "development",
+  entry: "./src/index.ts",
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js",
+  },
+  resolve: {
+    extensions: [".ts", ".js"],
+  },
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        use: "ts-loader",
+        exclude: /node_modules/,
+      },
+    ],
+  },
+};
+
+export default config;
+```
+
+## Servidor de express
+
+- Instalamos express
+
+```bash
+npm install express --save
+```
+
+- Instalamos los tipos de express y node
+
+```bash
+npm install @types/express @types/node --save-dev
+```
+
+- Instalamos dotenv para poder usar variables de entorno
+
+```bash
+npm install dotenv --save
+```
+
+- Creamos el archivo `server.ts` en la carpeta `src`
+
+```typescript
+import express from "express";
+
+const app = express();
+const port = 3000;
+
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
+```

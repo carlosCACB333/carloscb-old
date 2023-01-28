@@ -1,0 +1,67 @@
+---
+title: Introducción a expresesiones regulares en Javascript
+description: Las Expresiones Regulares son una herramienta de búsqueda y manipulación de cadenas de caracteres increíblemente potente y están presentes en todos los lenguajes de programación. En este artículo veremos cómo funcionan y cómo podemos utilizarlas en Javascript.
+date: "2023-01-20"
+author: Carlos Antonio Castillo Blas
+tags: ["javascript", "regex", "expresiones regulares"]
+---
+
+## Expresiones básicas
+
+| Regex       | Significado                                                  | Ejemplo                              | Resultado                             |
+| ----------- | ------------------------------------------------------------ | ------------------------------------ | ------------------------------------- |
+| /./g        | El punto representa cualquier caracter                       | `"hola".match(/./g)`                 | `["h", "o", "l", "a"]`                |
+| /\d/g       | El d representa un dígito                                    | `"123hola".match(/\d/g)`             | `["1", "2", "3"]`                     |
+| /\w/g       | El w representa una letra(mayúsculas y minúsculas) y números | `"123hola".match(/\w/g)`             | `["1", "2", "3", "h", "o", "l", "a"]` |
+| /\s/g       | El s representa un espacio en blanco                         | `"hola mundo".match(/\s/g)`          | `[" "]`                               |
+| /[x-z]/g    | Representa un rango de caracteres                            | `"hola mundo feliz".match(/[a-z]/g)` | `["z"]`                               |
+| /[6-9]/g    | Representa un rango de dígitos                               | `"1578".match(/[0-9]/g)`             | `["7", "8"]`                          |
+| /[a-cA-C]/g | mayúsculas y minúsculas entre a-c                            | `"hola Carlos".match(/[a-cA-C]/g)`   | `['a', 'C', 'a']`                     |
+
+## Delimitadores
+
+Estos Delimitadores nos traen el match más grande posible
+
+| Regex    | Significado                                                                          | Ejemplo                         | Resultado      |
+| -------- | ------------------------------------------------------------------------------------ | ------------------------------- | -------------- |
+| /\d\*h/g | El \* representa cero o más repeticiones de dijitos en este caso antes de la letra h | `"123hola hola".match(/\d*h/g)` | `["123h","h"]` |
+| /\d\+h/g | El + representa una o más repeticiones de dijitos en este caso antes de la letra h   | `"123hola hola".match(/\d+h/g)` | `["123h"]`     |
+| /\d\?h/g | El ? representa cero o una repeticiones de dijitos en este caso antes de la letra h  | `"123hola hola".match(/\d?h/g)` | `["3h","h"]`   |
+
+Si queremos que el match sea más pequeño podemos utilizar el caracter `?` después del delimitador
+
+| Regex     | Significado                                                                          | Ejemplo                              | Resultado              |
+| --------- | ------------------------------------------------------------------------------------ | ------------------------------------ | ---------------------- |
+| /\d\*?h/g | El \* representa cero o más repeticiones de dijitos en este caso antes de la letra h | `"carlos,juan,maria".match(/.+?,/g)` | `['carlos,', 'juan,']` |
+
+## Contadores
+
+| Regex         | Significado                                                                                       | Ejemplo                             | Resultado  |
+| ------------- | ------------------------------------------------------------------------------------------------- | ----------------------------------- | ---------- |
+| `/\d{2}h/g`   | El `{2} `representa dos repeticiones de dijitos en este caso antes de la letra h                  | `"123hola hola".match(/\d{2}h/g)`   | `["12h"]`  |
+| ` /\d{2,}h/g` | El `{2,}` representa dos o más repeticiones de dijitos en este caso antes de la letra h           | `"123hola hola".match(/\d{2,}h/g)`  | `["123h"]` |
+| `/\d{2,4}h/g` | El `{2,4}` representa dos, tres o cuatro repeticiones de dijitos en este caso antes de la letra h | `"123hola hola".match(/\d{2,4}h/g)` | `["123h"]` |
+
+## Negación
+
+| Regex    | Significado                                                         | Ejemplo                               | Resultado              |
+| -------- | ------------------------------------------------------------------- | ------------------------------------- | ---------------------- |
+| `/\D/g`  | El D representa cualquier caracter que no sea un dígito             | `"123hola".match(/\D/g)`              | `["h", "o", "l", "a"]` |
+| `/\W/g`  | El W representa cualquier caracter que no sea una letra o un dígito | `"123, hola".match(/\W/g)`            | `[",", " "]`           |
+| `/\S/g`  | El S representa cualquier caracter que no sea un espacio en blanco  | `"hola mundo".match(/\S/g)`           | `["h", "o", "l", "a"]` |
+| `[^x-z]` | Representa cualquier caracter que no esté entre x-z                 | `"hola mundo feliz".match(/[^a-z]/g)` | `[" "," "]`            |
+
+## Inicio y fin de línea
+
+| Regex | Significado                             | Ejemplo                     | Resultado |
+| ----- | --------------------------------------- | --------------------------- | --------- |
+| `^h`  | El `^` representa el inicio de la línea | `"hola mundo".match(/^h/g)` | `["h"]`   |
+| `a$`  | El `$` representa el final de la línea  | `"hola mundo".match(/o$/g)` | `["o"]`   |
+
+## Casos de uso comunes de expresiones regulares
+
+| Caso de uso      | Regex                                 | Ejemplo                                                                 | Resultado                    |
+| ---------------- | ------------------------------------- | ----------------------------------------------------------------------- | ---------------------------- |
+| Validar telefono | `^\+?(\d{2})?\d{9}$`                  | `+56912345678`.match(/^\+?(\d{2})?\d{9}$/)`                             | `["+56912345678"]`           |
+| Validar urls     | `https?:\/\/[\w\-\.]+\.\w{2,5}\/?\S*` | `"https://www.google.com".match(/https?:\/\/[\w\-\.]+\.\w{2,5}\/?\S*/)` | `["https://www.google.com"]` |
+| Validar email    | `^[\w\.\+]{2,}@[\w\.]{3,}\.\w{2,5}$`  | ` "carlos@gmail.com".match(/^[\w\.\+]{2,}@[\w\.]{3,}\.\w{2,5}$/)`       | `['carlos@gmail.com']`       |

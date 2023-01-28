@@ -1,0 +1,145 @@
+---
+title: Funciones
+description: Las funciones son un bloque de código que se ejecuta cuando es llamado. Pueden recibir parámetros y retornar un valor.
+author: Carlos Antonio Castillo Blas
+date: "2023-01-23"
+tags: ["python", "programacion", "funciones", "parametros", "retornar"]
+---
+
+## Parámetros por defecto
+
+En Python, los parámetros de una función pueden tener un valor por defecto. Esto significa que si no se especifica un valor para un parámetro, se usará el valor por defecto.
+
+```python
+
+def saludar(nombre="amigo"):
+    print("Hola", nombre)
+
+saludar() # Hola amigo
+saludar("Carlos") # Hola Carlos
+
+```
+
+## Retornar varios valores
+
+En Python, una función puede retornar varios valores. Para esto, se separan los valores con una coma.
+
+```python
+
+def sumar_restar(a, b):
+    return a + b, a - b
+
+suma, resta = sumar_restar(5, 3)
+print(suma, resta) # 8 2
+
+```
+
+## Parámetros arbitrarios
+
+Si no sabemos cuántos parámetros se van a pasar a una función, podemos usar parámetros arbitrarios. Estos parámetros se definen con un `*` antes del nombre del parámetro.
+
+```python
+
+def sumar(*numeros):
+    total = 0
+    for numero in numeros:
+        total += numero
+    return total
+
+print(sumar(1, 2, 3, 4, 5)) # 15
+
+```
+
+## Parámetros arbitrarios con nombre
+
+Si no sabemos cuántos parámetros con nombre se van a pasar a una función, podemos usar parámetros arbitrarios con nombre. Estos parámetros se definen con un `**` antes del nombre del parámetro.
+
+```python
+
+def saludar(**personas):
+    for nombre, edad in personas.items():
+        print("Hola", nombre, "tienes", edad, "años")
+
+saludar(Carlos=20, Ana=19, Pedro=21) # Hola Carlos tienes 20 años
+                                    # Hola Ana tienes 19 años
+                                    # Hola Pedro tienes 21 años
+```
+
+## Escope de las variables
+
+Las variables definidas dentro de una función no son accesibles desde fuera de la función.
+
+```python
+
+price = 100 # Variable global
+
+def calcular_iva():
+    iva = 0.16 # Variable local
+    return price * iva
+
+print(calcular_iva()) # 16.0
+print(iva) # NameError: name 'iva' is not defined
+
+```
+
+## Funciones lambda
+
+Las funciones lambda son funciones anónimas. Se definen con la palabra reservada `lambda` y se pueden usar en cualquier lugar donde se necesite una función.
+
+```python
+
+sumar = lambda a, b: a + b
+print(sumar(5, 3)) # 8
+
+```
+
+## Higher-order functions
+
+Las funciones de orden superior son funciones que reciben como parámetro otra función o retornan una función.
+
+```python
+
+def saludar(nombre):
+    return "Hola " + nombre
+
+def ejecutar_funcion(funcion):
+    print(funcion("Carlos"))
+
+ejecutar_funcion(saludar) # Hola Carlos
+
+```
+
+## Funciones internas de python
+
+### map
+
+La función `map` aplica una función a cada elemento de una lista.
+
+```python
+numeros = [1, 2, 3, 4, 5]
+squars = list(map(lambda x: x ** 2, numeros))
+print(squars) # [1, 4, 9, 16, 25]
+```
+
+### filter
+
+La función `filter` filtra los elementos de una lista que cumplan con una condición.
+
+```python
+numeros = [1, 2, 3, 4, 5]
+pares = list(filter(lambda x: x % 2 == 0, numeros))
+print(pares) # [2, 4]
+```
+
+### reduce
+
+La función `reduce` aplica una función a dos elementos de una lista y el resultado de la función se aplica a los siguientes elementos.
+
+```python
+from functools import reduce
+
+numeros = [1, 2, 3, 4, 5]
+suma = reduce(lambda x, y: x + y, numeros)
+print(suma) # 15
+
+```

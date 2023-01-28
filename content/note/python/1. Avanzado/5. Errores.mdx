@@ -1,0 +1,49 @@
+---
+title: Errores
+description: El manejo de errores en Python es muy sencillo, pero es importante conocer las diferentes formas de hacerlo. En este artículo veremos las diferentes formas de manejar errores en Python.
+author: Carlos Antonio Castillo Blas
+date: "2023-01-23"
+tags: ["python", "errores", "excepciones"]
+---
+
+## Crear excepciones
+
+### Assert
+
+La palabra reservada `assert` nos permite verificar que una condición se cumpla, de lo contrario se lanza una excepción del tipo `AssertionError`. Por ejemplo, si queremos verificar que una variable sea mayor que 0, podemos hacerlo de la siguiente forma:
+
+```python
+x = 5
+assert x > 0, "x debe ser mayor que 0"
+```
+
+Si la condición se cumple, no pasa nada, pero si no se cumple, se lanza una excepción del tipo `AssertionError` con el mensaje que le pasamos como segundo argumento.
+
+### Raise
+
+La palabra reservada `raise` nos permite lanzar una excepción del tipo que queramos. Por ejemplo, si queremos lanzar una excepción del tipo `ValueError` con el mensaje "x debe ser mayor que 0", podemos hacerlo de la siguiente forma:
+
+```python
+x = 5
+if x <= 0:
+    raise ValueError("x debe ser mayor que 0")
+```
+
+En este caso, si la condición se cumple, se lanza una excepción del tipo `ValueError` con el mensaje que le pasamos como argumento.
+
+## Manejar excepciones
+
+### Try/Except
+
+La palabra reservada `try` nos permite ejecutar un bloque de código y si se produce un error, ejecutar otro bloque de código. Por ejemplo, si queremos abrir un archivo y si no se puede, imprimir un mensaje de error, podemos hacerlo de la siguiente forma:
+
+```python
+try:
+    f = open("archivo.txt")
+except FileNotFoundError:
+    print("No se pudo abrir el archivo")
+except:
+    print("Ocurrió un error")
+```
+
+En este caso, si el archivo no existe, se lanza una excepción del tipo `FileNotFoundError` y se ejecuta el bloque de código del `except`. Si el archivo existe, no se lanza ninguna excepción y no se ejecuta el bloque de código del `except`.

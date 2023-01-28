@@ -1,0 +1,63 @@
+---
+title: Filesystem
+description: Lectura y escritura de archivos en Python
+author: Carlos Antonio Castillo Blas
+date: "2023-01-23"
+tags: ["python", "filesystem"]
+---
+
+## Lectura de archivos
+
+Para leer un archivo en Python, se utiliza la función `open()`. Esta función recibe como parámetro el nombre del archivo a leer, y devuelve un objeto de tipo `file` que permite leer el archivo. Por ejemplo, para leer el archivo `hola.txt`:
+
+```python
+archivo = open("hola.txt")
+print(archivo.readline()) # Lee la primera línea del archivo
+print(archivo.readline()) # Lee la segunda línea del archivo
+print(archivo.read()) # Lee el resto del archivo
+
+archivo.close() # Cierra el archivo
+```
+
+Otra forma de leer un archivo es utilizando el bloque `with`. Este bloque permite abrir un archivo, realizar operaciones sobre él, y luego cerrarlo automáticamente. Por ejemplo:
+
+```python
+with open("hola.txt") as archivo:
+    print(archivo.read())
+```
+
+## Escritura de archivos
+
+Para escribir un archivo en Python, se utiliza la función `open()`. Esta función recibe como parámetro el nombre del archivo a escribir y el modo en el que se va a abrir el archivo.
+
+- `w`: Abre el archivo en modo escritura. Si el archivo no existe, lo crea. Si el archivo existe, lo sobreescribe.
+- `a`: Abre el archivo en modo escritura. Si el archivo no existe, lo crea. Si el archivo existe, escribe al final del archivo.
+- `r+`: Abre el archivo en modo lectura y escritura. Si el archivo no existe, lanza una excepción.
+- `w+`: Abre el archivo en modo lectura y escritura. Si el archivo no existe, lo crea. Si el archivo existe, lo sobreescribe.
+
+```python
+with open("hola.txt", "w") as archivo:
+    archivo.write("Hola mundo!")
+```
+
+## Read csv
+
+```python
+import csv
+
+def read_csv(filename):
+    with open(filename, 'r') as f:
+        reader = csv.reader(f)
+        header = next(reader)
+        data = []
+        for row in reader:
+            pop_dicc = dict(zip(header, row))
+            data.append(pop_dicc)
+    return data
+
+
+if __name__ == "__main__":
+    population = read_csv('population.csv')
+    print(population)
+
+```

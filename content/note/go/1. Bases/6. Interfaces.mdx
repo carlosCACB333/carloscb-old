@@ -1,0 +1,192 @@
+---
+title: Interfaces
+description: Las interfaces son un tipo de dato que define un conjunto de métodos que deben ser implementados por una estructura. Las interfaces nos permiten tener valores de diferentes tipos que implementen los mismos métodos.
+
+date: "2023-01-22"
+author: Carlos Antonio Castillo Blas
+tags:
+  [
+    "go",
+    "interfaces",
+    "programación",
+    "estructuras",
+    "poliformismo",
+    "afirmaciones",
+  ]
+---
+
+## Sintaxis
+
+Las interfaces se definen de la siguiente manera:
+
+```go
+ type NombreInterface interface {
+     Metodo1()
+     Metodo2()
+ }
+
+```
+
+Ejemplo
+
+```go
+
+package main
+
+import "fmt"
+
+type Persona interface {
+    Nombre() string
+    Edad() int
+}
+
+type Alumno struct {
+    nombre string
+    edad   int
+}
+
+func (a Alumno) Nombre() string {
+    return a.nombre
+}
+
+func (a Alumno) Edad() int {
+    return a.edad
+}
+
+func sayHello(p Persona) {
+    fmt.Println("Hola", p.Nombre())
+    fmt.Println("Edad", p.Edad())
+}
+
+func main() {
+    var := Alumno{"Carlos", 25}
+    sayHello(a)
+}
+
+```
+
+## Poliformismo
+
+El poliformismo es la habilidad de un objeto de tomar diferentes formas. En Go, esto se logra a través de las interfaces.
+
+```go
+package main
+
+import "fmt"
+
+type Persona interface {
+    Nombre() string
+    Edad() int
+}
+
+type Alumno struct {
+    nombre string
+    edad   int
+}
+
+func (a Alumno) Nombre() string {
+    return a.nombre
+}
+
+func (a Alumno) Edad() int {
+    return a.edad
+}
+
+
+type Profesor struct {
+    nombre string
+    edad   int
+    salary int
+}
+
+func (p Profesor) Nombre() string {
+    return p.nombre
+}
+
+func (p Profesor) Edad() int {
+    return p.edad
+}
+
+func sayHello(p Persona) {
+    fmt.Println("Hola", p.Nombre())
+    fmt.Println("Edad", p.Edad())
+}
+
+func main() {
+   a:= Alumno{"Carlos", 25}
+   p:= Profesor{"Juan", 30, 1000}
+
+   // Poliformismo
+   sayHello(a)
+   sayHello(p)
+
+}
+
+```
+
+## Afirmaciones
+
+Las afirmaciones son una forma de convertir un tipo de dato en otro. Esto es útil cuando tenemos una interfaz y queremos acceder a los métodos de una estructura.
+
+```go
+package main
+
+import "fmt"
+
+type Persona interface {
+    Nombre() string
+    Edad() int
+}
+
+type Alumno struct {
+    nombre string
+    edad   int
+}
+
+func (a Alumno) Nombre() string {
+    return a.nombre
+}
+
+func (a Alumno) Edad() int {
+    return a.edad
+}
+
+
+type Profesor struct {
+    nombre string
+    edad   int
+    salary int
+}
+
+func (p Profesor) Nombre() string {
+    return p.nombre
+}
+
+func (p Profesor) Edad() int {
+    return p.edad
+}
+
+
+func info(p Persona) {
+    fmt.Println("Hola", p.Nombre())
+    fmt.Println("Edad", p.Edad())
+
+    // Afirmación
+    switch p.(type) {
+    case Alumno:
+        fmt.Println("salario","No tengo salario")
+    case Profesor:
+        fmt.Println("salario", p.(Profesor).salary)
+    }
+
+
+}
+
+func main() {
+    a: = Alumno{"Carlos", 25}
+    p: = Profesor{"Juan", 30, 1000}
+    info(a)
+    info(p)
+}
+
+```

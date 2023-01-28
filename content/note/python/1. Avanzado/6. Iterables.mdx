@@ -1,0 +1,45 @@
+---
+title: Iterables
+description: Los iterables son objetos que pueden ser iterados, es decir, que pueden ser recorridos uno a uno. Los iterables son objetos que implementan el método __iter__ o el método __getitem__.
+author: Carlos Antonio Castillo Blas
+date: "2023-01-23"
+tags: ["python", "iterables", "iteradores"]
+---
+
+- Los iterables son objetos mucho más eficientes que las listas, ya que no almacenan todos los elementos en memoria, sino que los van generando uno a uno.
+
+ejemplo
+
+```python
+
+class MiIterable:
+
+    def __init__(self, maximo):
+
+        self.maximo = maximo
+
+    def __iter__(self):
+
+        self.numero = 0
+
+        return self
+
+    def __next__(self):
+
+        if self.numero < self.maximo:
+
+            resultado = self.numero
+
+            self.numero += 1
+
+            return resultado
+
+        else:
+
+            raise StopIteration
+
+
+for i in MiIterable(5):
+    print(i)
+
+```

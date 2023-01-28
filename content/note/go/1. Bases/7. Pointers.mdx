@@ -1,0 +1,97 @@
+---
+title: Punteros
+description: Los punteros en Go es una dirección de memoria que almacena un valor. Los punteros son muy útiles cuando se trabaja con funciones y estructuras de datos complejas.
+date: "2023-01-22"
+author: Carlos Antonio Castillo Blas
+tags: ["go", "punteros"]
+---
+
+## Simbología
+
+- `&` Operador de dirección
+- `*` Operador de indirección
+
+```go
+
+package main
+
+import "fmt"
+
+func main() {
+    a:= 10
+    b:= &a
+    fmt.Println(a) // 10
+    fmt.Println(b)// 0xc0000140a8
+    fmt.Println(*b)// 10
+
+    fmt.Printf("%T\n", a)// int
+    fmt.Printf("%T\n", b)// *int -> puntero a un entero
+}
+
+```
+
+## Casos de uso
+
+Debemos tener en cuenta que todo en Go es pasado por valor, es decir, que cuando pasamos un valor a una función, se crea una copia del valor y se pasa a la función. Esto es muy útil cuando se trabaja con tipos de datos primitivos, pero cuando se trabaja con tipos de datos complejos, como estructuras, es mejor pasar una referencia a la variable en lugar de copiar el valor de la variable.
+
+- Cuando se quiera modificar el valor en el destino.
+- Cuando el dato es demasiado grande.
+
+```go
+
+package main
+
+import "fmt"
+
+func modify(a *int) {
+    *a = 100
+}
+
+func modifyHugeData(a *[100000]int) {
+    a[0] = 100
+}
+
+func main() {
+    a:= 10
+    modify(&a)
+    fmt.Println(a)// 100
+
+    var b [100000]int
+    modifyHugeData(&b)
+    fmt.Println(b[0])// 100
+}
+
+
+```
+
+## MethodsSets
+
+El **MethodsSets** es el conjunto de tipos de datos a los que se puede aplicar un método. Los métodos pueden ser aplicados a tipos de datos primitivos, a tipos de datos definidos por el usuario y a tipos de datos definidos por el usuario que son punteros.
+
+```go
+
+package main
+
+import "fmt"
+
+type User struct {
+    Name string
+    Age int
+}
+
+func (u User) Print() {
+    fmt.Println(u.Name, u.Age)
+}
+
+func (u *User) SetAge(age int) {
+    u.Age = age
+}
+
+func main() {
+    u := User{"Carlos", 20}
+    u.Print() // Carlos 20
+    u.SetAge(21)
+    u.Print() // Carlos 21
+}
+
+```

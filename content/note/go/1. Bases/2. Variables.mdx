@@ -1,0 +1,112 @@
+---
+title: Variables
+description: Las variables son contenedores para almacenar datos. En este artículo aprenderás a crear variables y a asignarles valores.
+date: "2023-01-21"
+author: Carlos Antonio Castillo Blas
+tags: ["variables", "tipos de datos", "asignación", "operadores"]
+---
+
+Go es un lenguaje de programación que tiene un sistema de tipos estático. Esto significa que las variables deben ser declaradas antes de ser usadas y que el tipo de dato de una variable no puede cambiar durante la ejecución del programa. En este artículo aprenderás a declarar, asignar y los distintos tipos de datos que existen en Go.
+
+## Operador de asignación corta `:=`
+
+El operador de asignación corta `:=` es una forma abreviada de declarar e inicializar una variable. El operador `:=` es equivalente a la declaración `var` seguida de una asignación. Estas tienen ciertas reglas:
+
+- El operador `:=` solo puede ser usado dentro de una función.
+- La variable debe ser nueva, no puede ser una variable ya existente.
+- El tipo de la variable se infiere del valor que se le asigna.
+
+```go
+func main() {
+    a := 10
+    b := "golang"
+    fmt.Println(a, b, c, d)
+}
+```
+
+## Declaración y asignación de variables
+
+Las variables se declaran con la palabra reservada `var` seguida del nombre de la variable y el tipo de dato que contendrá. La declaración de variables se puede hacer de forma individual o en grupo.
+
+- Con `var` podemos tener variables globales o locales.
+- Las variables declaradas sin un valor inicial se inicializan con el valor cero de su tipo de dato.
+
+```go
+var a int
+var b string = "golang"
+var (
+    c int
+    d string
+)
+
+func main() {
+    fmt.Println(a, b, c, d)
+}
+
+```
+
+## constantes
+
+Las constantes son valores que no cambian durante la ejecución del programa. Se declaran con la palabra reservada `const` seguida del nombre de la constante y el valor que contendrá.
+
+```go
+import "fmt"
+const pi = 3.1416
+
+func main() {
+    fmt.Println(pi)
+}
+
+```
+
+## Cero values
+
+Go tiene un valor cero para cada tipo de dato. Este valor se asigna a las variables cuando no se les asigna un valor explícitamente.
+
+| Tipo de dato                                  | Valor cero |
+| --------------------------------------------- | ---------- |
+| bool                                          | false      |
+| int                                           | 0          |
+| float                                         | 0.0        |
+| string                                        | ""         |
+| pointer, func, interface, slice, channel, map | nil        |
+
+## Tipos definidos por el usuario
+
+Los tipos definidos por el usuario son tipos que se crean a partir de otros tipos.
+
+```go
+type Celsius float64
+
+func main() {
+    var c Celsius
+    fmt.Printf("%T\n", c)
+    // Output: main.Celsius
+}
+
+```
+
+## Tipos de datos
+
+Go tiene los siguientes tipos de datos:
+
+| Tipo de dato | Descripción          | Rango de valores                             |
+| ------------ | -------------------- | -------------------------------------------- |
+| bool         | Booleano             | true, false                                  |
+| int8         | Entero               | -128 a 127                                   |
+| int16        | Entero               | -32768 a 32767                               |
+| int32        | Entero               | -2147483648 a 2147483647                     |
+| int64        | Entero               | -9223372036854775808 a 9223372036854775807   |
+| int          | Entero               | de acuerdo al sistema operativo (31 0 64bit) |
+| uint8        | Entero               | 0 a 255                                      |
+| uint16       | Entero               | 0 a 65535                                    |
+| uint32       | Entero               | 0 a 4294967295                               |
+| uint64       | Entero               | 0 a 18446744073709551615                     |
+| uint         | Entero               | de acuerdo al sistema operativo (31 0 64bit) |
+| float32      | Flotante             | 1.18e-38 a 3.4e+38                           |
+| float64      | Flotante             | 2.23e-308 a 1.8e+308                         |
+| complex64    | Complejo             | 1.18e-38 a 3.4e+38                           |
+| complex128   | Complejo             | 2.23e-308 a 1.8e+308                         |
+| byte         | Alias de uint8       |
+| rune         | Alias de int32       |
+| string       | Cadena de caracteres |

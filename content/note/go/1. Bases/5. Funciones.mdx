@@ -1,0 +1,241 @@
+---
+title: Funciones
+description: Las funciones son un tipo de dato que permite agrupar un conjunto de instrucciones que se pueden ejecutar en cualquier momento. En Go, las funciones son un tipo de dato que se puede asignar a una variable, pasar como parámetro a otra función, retornar como resultado de otra función, etc.
+date: "2023-01-22"
+author: Carlos Antonio Castillo Blas
+tags:
+  [
+    "go",
+    "funciones",
+    "variadic parameters",
+    "defer statement",
+    "methods",
+    "funciones anónimas",
+    "expresiones de función",
+    "retornando funciones",
+    "callbacks",
+    "closures",
+    "recursividad",
+  ]
+---
+
+## Estructura de una función
+
+Las funciones en Go se definen de la siguiente manera:
+
+<FormCard>
+  **{`func (r receptor) identificador(parámetros) tipo de retorno {cuerpo}`}**
+</FormCard>
+
+```go
+    package main
+
+    import "fmt"
+
+    func add(x int, y int) int {
+        return x + y
+    }
+
+    func main() {
+        fmt.Println(add(42, 13))
+    }
+```
+
+## Variadic parameters
+
+Las funciones en Go pueden tener un número variable de parámetros. Para indicar que un parámetro es variable, se utiliza el operador `...` antes del tipo de dato. Por ejemplo:
+
+```go
+    package main
+
+    import "fmt"
+
+    func sum(nums ...int) {
+        fmt.Print(nums, " ")
+        total := 0
+        for _, num := range nums {
+            total += num
+        }
+        fmt.Println(total)
+    }
+
+    func main() {
+        sum(1, 2)
+        sum(1, 2, 3)
+
+        nums := []int{1, 2, 3, 4}
+        sum(nums...) // desplegando el slice
+    }
+```
+
+## Defer statement
+
+La sentencia `defer` se utiliza para retrasar la ejecución de una función hasta que la función que la contiene finalice. Por ejemplo:
+
+```go
+    package main
+
+    import "fmt"
+
+    func sayHello() {
+        fmt.Println("Hello")
+    }
+
+    func main() {
+        defer sayHello()
+        fmt.Println("World")
+
+        // Output:
+        // World
+        // Hello
+    }
+```
+
+## Methods
+
+Los métodos son funciones que se le adjunta a un tipo de dato. Por ejemplo:
+
+```go
+    package main
+
+    import "fmt"
+
+    type rect struct {
+        width, height int
+    }
+
+    // el método `perim` tiene un receptor de tipo `rect`.
+    func (r rect) perim() int {
+        return 2*r.width + 2*r.height
+    }
+
+    func main() {
+        r := rect{width: 10, height: 5}
+        fmt.Println("perim:", r.perim()) // perim: 30
+    }
+```
+
+## Funciones anónimas
+
+Las funciones anónimas son funciones que no tienen un nombre. Por ejemplo:
+
+```go
+    package main
+
+    import "fmt"
+
+    func main() {
+       func () {
+           fmt.Println("Hello World")
+       }() // se invoca la función anónima
+    }
+```
+
+## expresiones de función
+
+Las expresiones de función son funciones que se pueden asignar a una variable. Por ejemplo:
+
+```go
+    package main
+
+    import "fmt"
+
+    func main() {
+        // una función anónima asignada a una variable
+        add := func(x, y int) int {
+            return x + y
+        }
+        fmt.Println(add(1, 1)) // 2
+    }
+```
+
+## retornando funciones
+
+Las funciones en Go pueden retornar otras funciones. Por ejemplo:
+
+```go
+    package main
+
+    import "fmt"
+
+    func wrapper() func() int {
+        x := 0
+        return func() int {
+            x++
+            return x
+        }
+    }
+
+    func main() {
+        increment := wrapper() // increment es una función
+        fmt.Println(increment()) // 1
+        fmt.Println(increment()) // 2
+    }
+```
+
+## Callbacks
+
+Las funciones en Go pueden ser pasadas como parámetros a otras funciones. Por ejemplo:
+
+```go
+    package main
+
+    import "fmt"
+
+    func visit(numbers []int, callback func(int)) {
+        for _, n := range numbers {
+            callback(n)
+        }
+    }
+
+    func main() {
+        visit([]int{1, 2, 3, 4}, func(n int) {
+            fmt.Println(n)
+        })
+    }
+```
+
+## Cloures
+
+Los Cloures son funciones que se devuelven con una copia del enterno de la función que la contiene. Por ejemplo:
+
+```go
+    package main
+
+    import "fmt"
+
+    func wrapper() func() int {
+        x := 0 // x es una variable que se encuentra fuera del alcance de la función
+        return func() int {
+            x++
+            return x
+        }
+    }
+
+    func main() {
+        increment := wrapper()
+        fmt.Println(increment()) // 1
+        fmt.Println(increment()) // 2
+    }
+```
+
+## Recursividad
+
+Las funciones en Go pueden ser recursivas. Por ejemplo:
+
+```go
+    package main
+
+    import "fmt"
+
+    func factorial(x uint) uint {
+        if x == 0 {
+            return 1
+        }
+        return x * factorial(x-1)
+    }
+
+    func main() {
+        fmt.Println(factorial(5)) // 120
+    }
+```

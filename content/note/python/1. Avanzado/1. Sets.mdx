@@ -1,0 +1,38 @@
+---
+title: Sets
+description: Los sets en python son colecciones de elementos únicos, es decir, no se pueden repetir elementos en un set.
+author: Carlos Antonio Castillo Blas
+date: "2023-01-23"
+tags: ["python", "programacion", "lenguaje"]
+---
+
+- Son colecciones de elementos únicos.
+- No están ordenados.
+- Se pueden modificar.
+
+## Creación de sets
+
+Los sets se pueden crear de las siguientes formas:
+
+```python
+a={1,2,3,4,5}
+b=set([1,2,3,4,5])
+c=set("Hola")
+```
+
+## Operaciones con sets
+
+```python
+a={1,2,3,4,5}
+a.add(6) # añade un elemento al set
+a.remove(6) # elimina un elemento del set
+a.pop() # elimina un elemento del set
+a.clear() # elimina todos los elementos del set
+a.union(b) # devuelve la unión de los sets
+a.intersection(b) # devuelve la intersección de los sets
+a.difference(b) # devuelve la diferencia de los sets
+a.symmetric_difference(b) # devuelve la diferencia simétrica de los sets
+a.issubset(b) # devuelve True si a es un subconjunto de b
+a.issuperset(b) # devuelve True si a es un superconjunto de b
+a.isdisjoint(b) # devuelve True si a y b no tienen elementos en común
+```
