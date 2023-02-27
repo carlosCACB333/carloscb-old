@@ -1,0 +1,104 @@
+---
+title: Auto Escaling
+description: El auto escaling es la capacidad de monitorizar las aplicaciones y ajustar automáticamente la capacidad para mantener un desempeño predecible y escalable al menor costo.
+date: "2021-02-02"
+tags:
+  [
+    "Amazon Web Services",
+    "AWS",
+    "Auto Escaling",
+    "Auto Scaling",
+    "AWS Auto Scaling",
+  ]
+---
+
+- Monitora aplicaciones
+- Ajusta capacidad.
+- Ajusta costos.
+- De uso gratuito.
+- Los resultados son los que pagas.
+
+  - Más instancias
+  - CloudWatch
+  - ELB load balancer
+
+- **scaling out** - Aumentar la capacidad de la aplicación.
+- **scaling in** - Disminuir la capacidad de la aplicación.
+
+##### Recursos escalables en AWS
+
+- Instancias EC2
+- Clústeres de AuroraDB
+- DynamoDB
+- Spot Fleets
+
+##### Grupo de Auto Escalado
+
+Son grupos de instancias EC2 que se pueden escalar automáticamente. Se pueden crear grupos de auto escalado para diferentes tipos de aplicaciones.
+
+### Load Balancer
+
+Es un servicio que distribuye el tráfico de entrada entre las instancias de EC2 en un grupo de auto escalado. El balanceo de carga se puede configurar para que se distribuya el tráfico de entrada entre las instancias de EC2 en un grupo de auto escalado.
+
+- Las categorias de balanceo de carga son:
+
+  - **Con el remitente iniciado** - El remitente localiza el mejor objetivo.
+  - **Con el destino iniciado** - El balanceador de carga localiza el mejor objetivo.
+
+#### Load balancer estático
+
+- Aplicación de varios niveles.
+- Las acciones específicos se asignan a servidores y recursos específicos.
+- no escalable
+- acciones siempre procesadas en el objectivo asignado.
+
+#### Load balancer dinámico
+
+- Las acciones se asignan dinámicamente a los servidores disponibles.
+- Proporciona escalabilidad
+- usado por **Elastic Load Balancing**
+- Algoritmos:
+  - Round Robin : Primera petición a la primera instancia, segunda petición a la segunda instancia, etc.
+  - Randomized : Selecciona una instancia al azar.
+  - Gestión centralizada : Selecciona la instancia con menor carga de trabajo.
+  - Basado en umbral : Selecciona la cierta instancia si la carga de trabajo es menor que un umbral luego le pasa la petición a la siguiente instancia.
+
+## Elastic Load Balancing (ELB)
+
+ELB distribuye automáticamente el tráfico de las aplicaciones entrantes a través de varios destinos (ec2, contenedores, direcciones IP, funciones lambda, etc.) y monitorea la salud de los destinos.
+
+### Beneficios
+
+- Alta disponibilidad
+- seguro
+- flexible
+- Monitoreo y auditoría
+- Elastico
+- Híbrido
+
+### Servicios soportados
+
+- Elastic Cloud Compute (EC2)
+- Elastic Container Service (ECS)
+- Auto Scaling
+- CloudWatch
+- Route 53
+
+### Tipos de Load Balancer
+
+#### Balanceador de carga clásica
+
+Proporciona equilibrio de carga básica en ec2 y funcionan en el nivel de solicitud y conexión. **No usar para nuevas impplementaciones**.
+
+#### Balanceador de carga de aplicación
+
+- Es adecuado para carga de tráfico HTTP y HTTPS.
+- Arquitecturas modernas de microservicios y contenedores
+- Balanceo de carga de nivel 7
+
+#### Balanceador de carga de red
+
+- Nivel de conexiones TCP
+- Balanceo de carga de nivel 4
+- Alta velocidad de transferencia
+- millones de solicitudes por segundo

@@ -1,0 +1,128 @@
+---
+title: Introducción a docker
+description: Docker es una plataforma de código abierto para desarrollar, empaquetar y ejecutar aplicaciones. Docker facilita la creación de contenedores de software que se pueden ejecutar en cualquier máquina con Docker instalado. En este artículo, aprenderá qué es Docker y cómo funciona.
+date: "2021-02-04"
+tags:
+  [
+    "docker",
+    "contenedores",
+    "contenedores de software",
+    "contenedores de docker",
+  ]
+---
+
+### Beneficios
+
+- Cada contenedor está aislado.
+- Es posible ejecutar varias instancias de la misma o diferente versión sin configuración adicionales.
+- Con un solo comando se puede crear, iniciar y detener un contenedor.
+- Cada contenedor contiene todo lo necesario para ejecutar la aplicación.
+- Es indiferente el sistema operativo del host.
+
+| Concepto      | Descripción                                                                                              |
+| ------------- | -------------------------------------------------------------------------------------------------------- |
+| Docker Host   | El servidor donde se ejecutan los contenedores de Docker.                                                |
+| Docker Daemon | El demonio de Docker que se ejecuta en el host.                                                          |
+| Rest API      | La API REST que se utiliza para comunicarse con el daemon y la CLI                                       |
+| CLI           | El cliente de línea de comandos que se utiliza para comunicarse con el demonio.                          |
+| Image         | Una plantilla de solo lectura construido por capas y que contiene todas las dependencias para ejecutarse |
+| Container     | Una instancia de una imagen que se ejecuta como un proceso autónomo.                                     |
+| Volume        | Un directorio que se puede montar en un contenedor para persistir datos.                                 |
+
+#### contenedor vs máquina virtual
+
+| Contenedor de Docker                     | Máquina virtual                |
+| ---------------------------------------- | ------------------------------ |
+| Menor tamaño                             | Mayor tamaño                   |
+| proceso aislado                          | proceso aislado                |
+| Menor tiempo de arranque                 | Tiempo de arranque más largo   |
+| Menor consumo de recursos                | Mayor consumo de recursos      |
+| Instala solo las dependencias necesarias | Instala todas las dependencias |
+
+## imagenes
+
+Si hacemos una analogía con la programación orientada a objetos (POO), las imágenes son como las clases y los contenedores son como los objetos. Las imágenes son plantillas de solo lectura que contienen un conjunto de instrucciones para crear un contenedor de Docker. Las imágenes se almacenan en un registro de imágenes, que es un repositorio central de imágenes llamado **Docker Hub**.
+
+| Comando                         | Descripción                                  |
+| ------------------------------- | -------------------------------------------- |
+| docker images ls                | Lista las imágenes disponibles               |
+| docker pull [name]              | Descarga una imagen                          |
+| docker rmi [name]               | Elimina una imagen                           |
+| docker build --tag [name:tag] . | Crea una imagen a partir de un Dockerfile    |
+| docker run -d -p 80:80 [name]   | Ejecuta un contenedor a partir de una imagen |
+| docker image prune              | Elimina las imágenes no utilizadas           |
+| docker image prune -a           | Elimina todas las imágenes                   |
+| docker image rm [name-or-id]    | Elimina una imagen                           |
+
+### Dockerfile
+
+Dockerfile es un archivo de texto que contiene una serie de instrucciones que se utilizan para crear una imagen de Docker. Cada instrucción en el Dockerfile crea una capa en la imagen. Las capas se utilizan para optimizar la construcción de imágenes. Las capas se almacenan en caché y se reutilizan si no se modifican. Las capas se pueden compartir entre imágenes.
+
+### Estructura de un Dockerfile
+
+- **FROM**: Especifica la imagen base que se utilizará para crear la imagen.
+- **RUN**: Ejecuta un comando en el contenedor.
+- **COPY**: Copia archivos o directorios del host al contenedor.
+- **ADD**: Similar a COPY, pero también puede descargar archivos de Internet.
+- **CMD**: Ejecuta un comando en el contenedor cuando se inicia el contenedor.
+- **EXPOSE**: Expone un puerto para que pueda ser accedido desde el exterior.
+- **ENV**: Establece una variable de entorno.
+- **WORKDIR**: Establece el directorio de trabajo.
+- **VOLUME**: Crea un volumen para que pueda ser accedido desde el exterior.
+- **USER**: Establece el usuario que se utilizará para ejecutar los comandos.
+- **ARG**: Define un argumento que se puede utilizar en el Dockerfile.
+- **ENTRYPOINT**: Establece el comando que se ejecutará cuando se inicie el contenedor.
+- **ONBUILD**: Ejecuta un comando cuando se crea una imagen a partir de esta imagen.
+- **LABEL**: Agrega metadatos a la imagen.
+- **USER**: Establece el usuario que se utilizará para ejecutar los comandos.
+
+### Ejemplo
+
+```dockerfile
+# Dockerfile
+FROM nginx:latest
+RUN apt-get update && apt-get install -y curl
+WORKDIR /usr/share/nginx/html
+COPY index.html .
+EXPOSE 80
+LABEL version="1.0"
+LABEL description="This is a custom image"
+VOLUME /var/log/nginx
+CMD ["nginx", "-g", "daemon off;"]
+
+```
+
+## contenedores
+
+Los contenedores son instancias de imágenes que se ejecutan como procesos autónomos. Los contenedores se pueden iniciar, detener, mover y eliminar. Los contenedores se pueden conectar entre sí y a redes, y se pueden almacenar datos en volúmenes.
+
+| Comando                    | Descripción                               |
+| -------------------------- | ----------------------------------------- |
+| docker ps                  | Lista los contenedores en ejecución       |
+| docker ps -a               | Lista todos los contenedores              |
+| docker run [name]          | Ejecuta un contenedor                     |
+| docker start [id]          | Inicia un contenedor                      |
+| docker stop [id]           | Detiene un contenedor                     |
+| docker rm [id]             | Elimina un contenedor                     |
+| docker rm -f [id]          | Elimina un contenedor en ejecución        |
+| docker run -it [name] bash | Ejecuta un contenedor en modo interactivo |
+| docker logs [id]           | Muestra los registros de un contenedor    |
+| docker inspect [id]        | Muestra la configuración de un contenedor |
+
+### Ejemplo
+
+```bash
+docker run -d -p 80:80 nginx:latest
+```
+
+## redes
+
+Las redes permiten que los contenedores se comuniquen entre sí y con el exterior. Las redes se pueden conectar entre sí y a contenedores. Las redes se pueden crear, eliminar, conectar y desconectar contenedores.
+
+| Comando                                            | Descripción                     |
+| -------------------------------------------------- | ------------------------------- |
+| docker network ls                                  | Lista las redes disponibles     |
+| docker network create [name]                       | Crea una red                    |
+| docker network connect [net-name] [container-name] | Conecta un contenedor a una red |
+| docker network disconnect [net-name] [container]   | Desconecta un contenedor        |
+| docker network rm [name]                           | Elimina una red                 |

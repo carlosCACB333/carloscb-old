@@ -22,12 +22,24 @@ import { Blockquote } from "../common";
 type MDXC = ComponentProps<typeof mdx.MDXProvider>["components"];
 
 export const MDXComponents: MDXC = {
-  h1: (props: any) => <Typography variant="h1" component="h1" {...props} />,
-  h2: (props: any) => <Typography variant="h2" component="h2" {...props} />,
-  h3: (props: any) => <Typography variant="h3" component="h3" {...props} />,
-  h4: (props: any) => <Typography variant="h4" component="h4" {...props} />,
-  h5: (props: any) => <Typography variant="h5" component="h5" {...props} />,
-  h6: (props: any) => <Typography variant="h6" component="h6" {...props} />,
+  h1: (props: any) => (
+    <Typography variant="h1" component="h1" {...props} sx={{ mt: 2 }} />
+  ),
+  h2: (props: any) => (
+    <Typography variant="h2" component="h2" {...props} sx={{ mt: 2 }} />
+  ),
+  h3: (props: any) => (
+    <Typography variant="h4" component="h3" {...props} sx={{ mt: 2 }} />
+  ),
+  h4: (props: any) => (
+    <Typography variant="h6" component="h4" {...props} sx={{ mt: 2 }} />
+  ),
+  h5: (props: any) => (
+    <Typography variant="subtitle1" component="h5" {...props} sx={{ mt: 2 }} />
+  ),
+  h6: (props: any) => (
+    <Typography variant="subtitle2" component="h6" {...props} sx={{ mt: 2 }} />
+  ),
   p: (props: any) => <Typography variant="body1" component="p" {...props} />,
   a: (props: any) =>
     props.href.startsWith("http") ? (
@@ -53,7 +65,7 @@ export const MDXComponents: MDXC = {
 
   table: (props: any) => (
     <TableContainer className="scroll">
-      <Table {...props} />
+      <Table {...props} size="small" />
     </TableContainer>
   ),
 

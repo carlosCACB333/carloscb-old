@@ -1,0 +1,51 @@
+---
+title: Docker compose
+description: Docker compose es una herramienta que nos permite definir y ejecutar aplicaciones Docker de forma sencilla. En este artículo veremos cómo instalarlo y cómo usarlo.
+date: "2021-02-10"
+tags:
+  [
+    "docker",
+    "contenedores",
+    "docker-compose",
+    "docker-compose.yml",
+    "docker-compose up",
+    "docker-compose down",
+  ]
+---
+
+Esta definición son declaradas en un archivo llamado `docker-compose.yml` y se pueden ejecutar con el comando `docker-compose up` o en las versiones más recientes de Docker con el comando `docker compose up`.
+
+### Conceptos
+
+- **Servicio:** Un servicio se entiende como una parte de nuestra aplicación que se ejecuta en uno o mas contenedores de la misma imagen. Por ejemplo, una aplicación web puede tener un servicio para la base de datos, otro para el servidor web y otro para el servidor de aplicaciones.
+
+- **Red:** Una red es un espacio lógico que permite que los contenedores se comuniquen entre sí. Cada servicio tiene su propia red, a menos que se especifique lo contrario.
+
+### Estructura del archivo docker-compose.yml
+
+El archivo `docker-compose.yml` es un archivo de texto que contiene la definición de los servicios que se ejecutarán en el entorno de desarrollo. La estructura del archivo es la siguiente:
+
+```yaml
+version: "3.9" # Versión de docker-compose
+services: # Sección de servicios
+  nombre_servicio: # Nombre del servicio
+    image: # utilizar una imagen existente
+    build: # construir una imagen nueva a partir de un Dockerfile
+    container_name: # Nombre del contenedor
+    ports: # Puertos
+    volumes: # Volumenes
+    networks: # Redes
+    environment: # Variables de entorno
+    depends_on: # Dependencias
+    command: # Comando
+```
+
+### comandos
+
+| Comando                                                | Descripción                                                                                                          |
+| ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------- |
+| `docker compose up`                                    | Levanta los servicios definidos en el archivo `docker-compose.yml`                                                   |
+| `docker compose ps`                                    | Muestra los servicios que se están ejecutando                                                                        |
+| `docker compose down`                                  | Detiene y elimina los servicios                                                                                      |
+| `docker compose logs`                                  | Muestra los logs de los servicios                                                                                    |
+| `docker compose up -d --scale [name-service]=[number]` | Levanta los servicios definidos en el archivo `docker-compose.yml` y escala el servicio `[name-service]` a `[number] |

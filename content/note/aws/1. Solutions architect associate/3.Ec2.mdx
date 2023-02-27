@@ -1,0 +1,278 @@
+---
+title: Elastic Compute Cloud (EC2)
+description: Elastic Compute Cloud (EC2) es un servicio de Amazon Web Services (AWS) que permite a los usuarios rentar servidores virtuales en la nube. se resume a capacidad informática en la nube y de tamaño modificable.
+date: "2021-01-28"
+tags:
+  [
+    "Amazon Web Services",
+    "AWS",
+    "S3",
+    "Amazon Simple Storage Service",
+    "Almacenamiento",
+    "Cloud",
+    "Nube",
+    "Objetos",
+    "Storage",
+  ]
+---
+
+- Máquinas virtuales en la nube
+- Se paga por el tiempo que se usa
+- Integra almacenamiento, red y seguridad.
+- Increiblemente rápido y flexible
+
+Nomenclatura
+
+<FormCard>
+  $$ 
+  c_{(familia)}3{(generación)}.large_{(tamaño)}
+  $$
+  Ejemplo
+  c1.large
+
+</FormCard>
+
+### Sistemas operativos compatibles
+
+- Windows server
+- Amazon Linux
+- Ubuntu
+- Debian
+- SUSE
+- Red Hat Enterprise Linux
+- CentOS
+- Linux
+
+### Benerficios de EC2
+
+- Escalabilidad
+- Seguridad
+- Flexibilidad
+- Rentabilidad
+- Confiabilidad
+- Integración
+- Control
+
+### Amazon Machine Image (AMI)
+
+AMI es una plantilla de sistema operativo que contiene el software necesario para ejecutar una instancia de EC2. Puede crear una AMI a partir de una instancia existente o importar una AMI de otro proveedor.
+
+### Pasos para implementar
+
+1. Seleccionar AMI
+2. Configurar red y seguridad
+3. Seleccionar tipo de instancia
+4. Seleccionar zona de disponibilidad
+5. Configurar almacenamiento (EBS)
+6. Empesar instancia
+
+### Key Pairs
+
+- Es un par de claves que se utiliza para autenticar el acceso a una instancia de EC2.
+- Se genera una clave pública y una clave privada.
+- La clave pública se almacena en AWS y la clave privada se almacena en el usuario.
+- Se puede usar para iniciar una instancia de EC2.
+- Se puede usar para conectarse a una instancia de EC2.
+
+## Tipos de instancias
+
+### Propósito general
+
+Permite un balance entre el rendimiento, la capacidad y el precio.No está optimizado para ningún tipo de carga de trabajo en particular.
+
+#### Instancias A1
+
+- Ahorra en costos de computación
+- Ideal para cargas de trabajo estable.
+- Optimizado para EBS de inicio
+
+#### Instancias T2
+
+- Rendimiento de ráfaga
+- Se acumular créditos durante tiempo de inactividad
+- Los créditos se utilizan para aumentar rendimiento
+
+#### Instancias T3
+
+- Acumula créditos de cpu cuando se opera por debajo del umbral
+- Se puede ampliar en cualquier momento para aumentar el rendimiento.
+- Es ideal para cargas de trabajo variantes durante el día.
+
+#### Instancias M5, M5a, M5n , M4
+
+- Sin ráfaga
+- Ideal para desarrollo y puesta en escena de aplicaciones
+
+#### M6g
+
+- Ofrecen precio/rendimiento hasta un 40% con M5
+
+### Computación optimizada
+
+Son instancias diseñadas para cargas de trabajo que requieren un alto rendimiento de CPU.
+
+#### Instancias C5, C5a, C5n, C4,C6g,
+
+- Ideal para aplicaciones que requieren un alto rendimiento de CPU
+- Bueno para codificar o transcodificar video
+- Trabajo por lotes intensivo.
+- Usuarios concurrentes.
+- Servidores de juegos.
+- Cualquier cosa que requiera alta computación.
+
+### Memoria optimizada
+
+#### Instancias R5, R5a, R5n, R4, R6g, X1e, X1, memoria elevada y Z1d
+
+- Útil para alto requerimientos en memoria
+- Procesamiento de grandes cantidades de datos
+- Bases de datos en memoria
+- Big Data
+
+### Informática acelelada
+
+#### Instancias de P3,P2,Inf1,G4,G3,F1
+
+- Aceleradores de Hardware o coprocesadores
+- Cálculo de número con punto flotante
+- Búsqueda de coincidencias de patrones de datos
+
+### Almacenamiento optimizado
+
+#### Instancias I3, I3en, H1
+
+- Lectura y escritura secuencial alta en almacenamiento local
+- Bases de detos relacionales
+- Almacenamiento de datos
+- Procesamiento de imágenes
+
+## Precios de EC2
+
+### Bajo demanda
+
+- Se paga por hora o segundo según la instancia que se use.
+- Se puede aumentar o disminuir el tamaño de la instancia según sea necesario.
+- Cobrado por tiempo de uso
+- Facturado en incrementos de 60 segundos redondeado al alza
+- Para aplicaciones que se están desarollondo o probando.
+
+### Reservado
+
+- Te permite reservar una instancia por un año o tres años.
+- Se paga por hora
+- Menos costoso que bajo demanda
+
+### Spot
+
+- Permite solicitar capacidad de computación **sobrante** en el mercado de AWS.
+- Se ejecuta procesos con computación intensiva en momentos donde no hay demanda.
+- Descuento de hasta el 90% en comparación con el precio de la instancia de bajo demanda.
+- Se puede interrumpir en cualquier momento.
+
+## EC2 Placement Groups
+
+Permite colocar instancias de EC2 en un grupo lógico dentro de una zona de disponibilidad.
+
+### Cluster
+
+Agrupa instancias unas cercas de otras dentro de una sola zona de disponibilidad. Es ideal para aplicaciones que requieren baja latenciac como las HPC (High Performance Computing).
+
+### Partición
+
+Distribuyen instancias a través de particiones lógicas de modo que los grupos de instancias no comparten Hardware con otros grupos de instancias. Es ideal para grandes cargas de trabajo distribuido y replicado. Pueden estar en diferentes zonas de disponibilidad.
+
+### distribuidas
+
+Coloca estrictamente un pequeño grupo de instancias en distintos equipos de Hardware para reducir fallos correlacionados. Pueden estar en distintas zonas de disponibilidad.
+
+## Tipos de tenencia
+
+### Tenencia Compartida (Shared Tenancy)
+
+Varios clientes comparten el mismo hardware físico(tiempo y espacio). Es el tipo de tenencia por defecto.
+
+- Pros
+
+  - Menor costo
+
+- Menor complejidad
+
+- Contras
+- Bajo rendimiento
+- Menor control
+
+### Host Dedicado (Dedicated Host)
+
+Un cliente tiene un host dedicado para su uso exclusivo. Es ideal para aplicaciones que requieren licencias de software que no permiten la virtualización o para aplicaciones con requisitos de control de software muy estrictos.
+
+- Máquinas físicas las cuales ejecutan la virtualización
+- Utilizado por un cliente
+- Configuracion explicita
+- No disponible para la capa gratuita
+- Props
+
+  - Administración de licencias
+
+- Reporte más detallado
+- Gestión de Cumplimiento
+- Se puede determinar la ubicacion del host durante el reinicio
+
+- Contras
+- Mayor costo
+- Mayor complejidad
+
+### Instancia dedicada (Dedicated Instance)
+
+son intancias de EC2 que se ejecutan en una VPC que se encuentra en un hardware dedicado a un solo cliente.
+
+- se ejecutan en una máquina físicas
+
+  - solo una instancia por máquina física
+
+- al reiniciar se puede cambiar de maquina
+
+- utilizado por un cliente
+- Debe configurarse explícitamente
+
+- Pros
+
+  - Hardware dedicado
+
+- Rendimiento de un host dedicado
+
+- Contras
+
+  - Mayor costo
+
+- Gestion de licencias menos presisas
+
+## Amazon Machine Image (AMI)
+
+Es una plantilla que contiene la configuración de software necesaria para iniciar una instancia de EC2. Puede incluir el sistema operativo, aplicaciones, utilidades y configuraciones.
+
+- Instancia alude a uso de AMI
+- Todas las instancias se crean a partir de una AMI
+- Fuentes de AMI
+- AMI de AWS (gratis)
+- AMI de AWS Marketplace (pago / gratis)
+- AMI de la comunidad (gratis)
+
+### Pemisos de AMI
+
+- Público
+
+  - Cualquiera puede usarlo
+
+- Explícito
+
+  - Se especifica la cuenta de AWS que puede usarlo
+
+- Implícito
+- Solo el autor
+
+## Amazon Comand Line Interface (CLI)
+
+Es una herramienta de línea de comandos que permite interactuar con AWS. Se puede instalar en cualquier sistema operativo o de manera web.
+
+$$
+$$

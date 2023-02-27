@@ -1,0 +1,121 @@
+---
+title: Identity and Access Management (IAM)
+description: Identity and Access Management (IAM) es un servicio web que ayuda a la seguridad de la nube de Amazon Web Services (AWS). Proporciona control de acceso a AWS recursos. Puede crear usuarios y grupos, y asignarles permisos para acceder a los recursos. Puede crear roles y asignarlos a AWS recursos. Puede usar IAM para permitir que los usuarios de su cuenta accedan a recursos de AWS de forma segura.
+date: "2021-02-02"
+tags:
+  [
+    "Amazon Web Services",
+    "AWS",
+    "Identity and Access Management",
+    "IAM",
+    "Seguridad",
+    "Security",
+    "Cloud",
+    "Nube",
+  ]
+---
+
+- Administración del acceso a AWS.
+- Es compatible con usuarios, grupos y roles.
+- Es gratis.
+- Los servicios implementados por los usuarios incurren en costos.
+
+### recursos
+
+Los recursos son los servicios de AWS que se pueden administrar con IAM. Por ejemplo, puede crear un usuario y asignarle permisos para acceder a los recursos de EC2, S3, RDS, etc.
+
+### Principal
+
+el Principal es una persona o aplicacción que puede generar acciones en los recursos. Por ejemplo, un usuario puede iniciar sesión en la consola de administración de AWS, un rol puede ser asignado a un recurso de AWS, etc.
+
+- **Usuario root** es el usuario principal de la cuenta de AWS. Tiene permisos para todo. No se recomienda usarlo.
+
+  - modificar el usuario root
+  - cambiar el plan de cuenta
+  - eliminar la cuenta
+  - crear **key pairs** para cloudfront
+  - habilitar el MFA para el usuario root
+  - Restaurar permisos para otras cuentas.
+
+- **Usuarios**: son personas físicas que pueden iniciar sesión en la consola de administración de AWS.
+
+  - Acceso a la consola de administración de AWS.
+  - Acceso a la API / CLI.
+  - Con crendeciales de nombre y contraseña.
+  - Las claves de acceso son para la API / CLI.
+  - Los usuarios pueden pertener a los grupos
+
+- **Grupos**: son una colección de usuarios.
+
+  - Permisos a nivel de grupo.
+  - Los usuarios son agregados o eliminados.
+  - No se usan para inicio de sesión.
+  - Usar cuando necesita:
+    - permiso permanente
+    - acceso a la CLI
+
+- **Roles**: son una colección de permisos que se pueden asignar a recursos de AWS.
+
+  - No son permanentes
+  - Asumible por cualquier entidad.
+  - Compatible con usuarios federados.
+
+    - usuarios de otro sistema de identidad
+    - Permiso SSO (Single Sign On)
+
+  - usar cuando necesita:
+    - acceso a recursos de AWS
+
+### Políticas
+
+<FormCard>
+
+    Carlos -> puede -> crear -> bockets
+
+    principal -> Effect -> Action -> Resource
+
+</FormCard>
+
+Las políticas son los permisos que se asignan a los Principals. Por ejemplo, un usuario puede tener permisos para iniciar sesión en la consola de administración de AWS, un rol puede tener permisos para acceder a los recursos de EC2, S3, RDS, etc.
+
+- Los permisos son acumulativos.
+- Reglas de determinan las acciones que se pueden realizar en los recursos.
+- Usado en todo AWS
+- Usa json
+- Varía por Objetos
+
+#### Autorización
+
+La autorización es el proceso de determinar si un usuario tiene permiso para realizar una acción en un recurso. La autorización se realiza mediante la evaluación de las políticas que se aplican al usuario y al recurso.
+
+- Políticas basadas en identidad
+  - usado con usuarios, roles, grupos
+- Políticas basadas en recursos
+  - usado con recursos de AWS
+
+##### Multifactor de autenticación (MFA)
+
+El MFA es un proceso de autenticación que requiere más de una forma de identificación para acceder a una cuenta.
+
+- Mejor práctica
+- Se un usuario raiz o normales.
+- formas en AWS
+  - MFA de hardware
+    - Yubikey
+  - MFA de software
+    - MFA de SMS (SMS)
+    - MFA de aplicaciones (Google Authenticator)
+
+##### Rotación de claves
+
+La rotación de claves es un proceso que cambia las claves de acceso de un usuario. Las claves de acceso son las claves que se usan para iniciar sesión en la consola de administración de AWS o para acceder a la API / CLI.
+
+- Rotar Access key ID
+- Rotar Secret access key
+
+Pasos para rotar las claves de acceso:
+
+1. Crear una nueva clave de acceso
+2. Asignar la nueva clave de acceso al usuario
+3. Revocar la clave de acceso anterior
+4. Validar que la nueva clave de acceso funciona

@@ -1,0 +1,239 @@
+---
+title: Bases de datos
+description: Las bases de datos en AWS ofrecen una amplia gama de opciones para almacenar y consultar datos, incluidos Amazon Aurora, Amazon DynamoDB, Amazon ElastiCache, Amazon RDS, Amazon Redshift y Amazon Timestream.
+date: "2021-02-03"
+tags:
+  [
+    "Amazon Web Services",
+    "AWS",
+    "Amazon Aurora",
+    "Amazon DynamoDB",
+    "Amazon ElastiCache",
+    "Amazon RDS",
+    "Amazon Redshift",
+    "Amazon Timestream",
+  ]
+---
+
+### Tipos de bases de datos
+
+#### Archivo plano
+
+No tienen relaciones ni esquemas. Los datos se almacenan en archivos de texto sin formato. Las bases.
+
+#### Relacionales
+
+Almacenan datos en tablas relacionadas entre sí. Las bases de datos relacionales son las más comunes y se utilizan en la mayoría de las aplicaciones empresariales.
+
+#### NoSQL (Not Only SQL)
+
+Almacenan datos en documentos, tablas, grafos, columnas y claves. Las bases de datos NoSQL son más flexibles que las bases de datos relacionales y se utilizan en aplicaciones que requieren escalabilidad y rendimiento.
+
+### Tipos de servicios
+
+#### Servicios alojados
+
+Estos sistemas estan administrados por AWS, y no requieren que el usuario tenga que preocuparse por la administración de la infraestructura subyacente. Los servicios alojados incluyen:
+
+- Relacionales: Amazon Aurora, Amazon RDS
+- NoSQL: Amazon DynamoDB, Amazon ElastiCache
+
+#### Instancias personalizadas
+
+Estos sistemas son administrados por el usuario, y requieren que el usuario tenga que preocuparse por la administración de la infraestructura subyacente.
+
+- BYOL (Bring Your Own License)(trae tu propia licencia)
+
+### Data Warehouse
+
+Un data warehouse es un sistema de almacenamiento de datos diseñado para analizar grandes cantidades de datos relacionados entre sí. Los data warehouses se utilizan para analizar datos históricos y predecir tendencias futuras.
+
+- Depóstito de datos
+- Muchas fuentes
+- usado para **Only Analytics Processing (OAP)**
+
+## Relational Database Service (RDS)
+
+Amazon Relational Database Service (Amazon RDS) es un servicio web que facilita la configuración, operación y escalado de una base de datos relacional en la nube. Amazon RDS le permite ejecutar bases de datos relacionales en Amazon Web Services (AWS) utilizando modelos de implementación de base de datos populares como Oracle, Microsoft SQL Server, MySQL, PostgreSQL, MariaDB, Amazon Aurora y Amazon Redshift. Amazon RDS le permite ejecutar aplicaciones en la nube utilizando las bases de datos que ya conoce y utiliza.
+
+### Servicios soprtados
+
+- Aurora MySQL
+- Aurora PostgreSQL
+- Oracle
+- SQL Server
+- MySQL
+- PostgreSQL
+- MariaDB
+
+## Métodos de alojamiento en AWS
+
+### Basados en Instancias EC2
+
+##### ventajas
+
+- control total
+- personalización
+- manual configuración e instalaciones
+- manual actualizaciones
+
+##### proceso de lanzado
+
+- lanzar una instancia EC2
+- instalar el software de base de datos
+- abrir puetos de red.
+- configurar la base de datos
+- administrar la base de datos
+- conectarse a la base de datos
+
+### Basado en servicios de AWS
+
+##### ventajas
+
+- control limitado
+- no personalización
+- configuración e instalaciones automáticas
+- actualizaciones automáticas
+
+##### proceso de lanzado
+
+- seleccionar el tipo de base de datos
+- especificar la configuración
+- conectarse a la base de datos
+
+## Soluciones de alta disponibilidad
+
+### Clúsering
+
+- Múltiples sevidores (intancias)
+- Una base de datos con replicación
+- aumenta la disponibilidad
+- conmutación por error automáticas
+- incrementa el costo
+
+### Servidores en espera (standby instance)
+
+- multiples servidores (instancias)
+- una base de datos sin replicación
+- aumenta la recuperación
+- no automatic failover
+- reduce el costo
+
+### Zona de disponibilidad (AZ)
+
+- una instancia
+- una AZ
+- una region
+
+### implementación múltiple AZ
+
+- multiples instancias
+- multiples AZ
+- una region
+- aumenta la disponibilidad
+- aumenta el rendimiento
+- aumenta el costo
+
+## Soluciones de escalabilidad
+
+alude al aumento de :
+
+- almacenamiento
+- procesamiento
+- operaciones de red
+- rendimiento
+
+### Escalar instancias
+
+- aumentar el tamaño de la instancia
+- aumentar el número de instancias
+- RDS no es compatible con auto scaling
+
+### Replicas de lectura
+
+- copia de solo lectura de la base de datos
+- aumenta el rendimiento
+- multiples instancias pueden estar en distintas regiones
+
+## Seguridad en RDS
+
+##### cifrado
+
+las RDS soportan cifrado en reposo (en disco). debe habilidarse al crearse.
+
+##### Permiso
+
+- administración basados en IAM
+- Administrador de base de datos
+
+## Aurora
+
+Amazon Aurora es un motor de base de datos relacional de código abierto compatible con MySQL y PostgreSQL. Amazon Aurora es compatible con las aplicaciones y herramientas existentes y ofrece hasta un 5 veces mejor rendimiento que las bases de datos relacionales y hasta un 3 veces mejor rendimiento que las bases de datos de código abierto, a un precio de hasta un 1/10 del de las bases de datos comerciales.
+
+- relacional
+- optimizado para el procesamiento de transacciones (escrituras muy rapidas)
+- compatible con MySQL y PostgreSQL
+- 5 veces mejor rendimiento que MySQL y PostgreSQL
+
+##### escalado
+
+- comienza con 10 GB, escalando en incrementos de 10 GB hasta 64 TB
+- maximo de 32 vCPU y 244 GB de memoria ram
+
+##### disponibilidad
+
+- 2 copias de datos en cada AZ
+- minimo de 3 AZ
+- capaciddad de lectura y escritura
+
+##### Replicas
+
+- puede tener hasta 15 replicas de lectura
+- puede tener hasta 5 replicas de escritura
+
+## Redshift
+
+Amazon Redshift es un servicio de análisis de datos de columnas de código abierto, totalmente administrado, que hace que sea fácil y económico analizar todos sus datos de forma rápida y escalable. Amazon Redshift utiliza el mismo procesamiento de columnas que los principales proveedores de bases de datos comerciales, pero a un precio de hasta un 75% más bajo. Amazon Redshift puede analizar miles de gigabytes de datos en minutos y ofrece un rendimiento de hasta 10 veces más rápido que las bases de datos relacionales tradicionales.
+
+- warehouse
+- optimizado para el procesamiento analítico en línea (OLAP)
+- administrada por AWS
+- un solo nodo de 160 GB de memoria
+- multiples nodos
+  - nodo líder : conexiones y queries
+  - nodos de computo : procesamiento de datos
+
+##### Velocidad
+
+- almacenes de datos en columnas(lecturas muy rapidas)
+- compression de datos
+- procesamiento masivo paralelo (MPP)
+
+##### cifrado
+
+- cifrado de transito (SSL/TLS)
+- Encriptacion de almacenamiento (AES-256)
+- administración de claves de AWS
+
+##### disponibilidad
+
+- opera en una AZ
+- snapshots de la base de datos
+
+## DynamoDB
+
+Amazon DynamoDB es un servicio de base de datos NoSQL totalmente administrado que ofrece un rendimiento y escalabilidad excepcionales. Amazon DynamoDB elimina la necesidad de administrar servidores y simplifica la configuración, la escalabilidad y la disponibilidad de la base de datos. Amazon DynamoDB es compatible con aplicaciones móviles, web y de escritorio, y puede manejar miles de millones de peticiones por segundo y soporta una latencia de lectura de menos de 10 ms.
+
+- clave valor
+- latencia de milésimas de segundo a cualquer escala
+- almacenamiento en SSD
+- Repartidos en 3 AZ distintas
+- consistencia:
+  - eventual
+  - muy consistente
+
+##### Facturación
+
+- Escritura : por hora por cada 10 unidades
+- Lectura : por hora por cada 50 unidades
+- 1 unidad equivale a 1 escritura por segundo.

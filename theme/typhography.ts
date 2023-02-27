@@ -62,20 +62,20 @@ export const themeTypography = (options: PaletteOptions): TypographyOptions => {
 
     body1: {
       fontSize: "1rem",
-      fontWeight: 300,
+      fontWeight: 400,
       color: options.text?.secondary,
       letterSpacing: 0,
     },
     body2: {
       fontSize: "0.875rem",
-      fontWeight: 300,
+      fontWeight: 400,
       color: options.text?.secondary,
       letterSpacing: 0,
     },
 
     caption: {
       fontSize: "0.75rem",
-      fontWeight: 300,
+      fontWeight: 400,
       color: options.text?.secondary,
       letterSpacing: 0,
     },

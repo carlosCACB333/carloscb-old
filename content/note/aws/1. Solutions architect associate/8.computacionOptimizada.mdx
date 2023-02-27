@@ -1,0 +1,96 @@
+---
+title: Diseño de computación optimizada para costos
+description: En este artículo se explica cómo diseñar una arquitectura de computación optimizada para costos en AWS.
+date: "2021-02-02"
+tags: ["Amazon Web Services", "AWS", "lambda", "serverless", "cloud"]
+---
+
+## Serverless Architecture
+
+Es una arquitectura de software que no requiere la administración de servidores. **Se utiliza para crear aplicaciones y servicios web y móviles**.
+
+- Mover datos dentro y fuera de la nube sin tener instancias.
+- Procesar funciones sin instancias.
+- se puede lograr con :
+  - Lambda
+  - Api Gateway
+
+#### Cors
+
+Cross Origin Resource Sharing (CORS) es un mecanismo que utiliza cabeceras HTTP adicionales para permitir que un user agent obtenga permiso para acceder a recursos seleccionados desde un servidor, en un origen distinto (dominio) al que pertenece.
+
+### Lambda
+
+Lambda es un servicio de AWS que permite ejecutar código en una Infraestructura informática de alta disponibilidad y se encarga de la administración de los recursos, mantenimiento del servidor, sistema operativo, aprovisionamiento de de capacidad, escalado automático, implementación de parches de seguridad, monitoreo del código y registros. **lo único que se debe hacer es escribir el código y subirlo a Lambda**.
+
+- **Sin servidor** : No requiere la administración de servidores.
+- Sólo ejecuta el código cuando es necesario.
+- Escalado automático.
+- Pago por tiempo de procesamiento.
+
+##### administración automatizada
+
+- mantenimiento de servidores
+- mantenimiento sistema operativo
+- Capacidad de escalar
+- Monitoreo de código
+- registro de eventos
+
+##### Lenguajes soportados
+
+- Node.js
+- Java
+- Python
+- C#
+- Go
+- .NET
+- Ruby
+
+##### Proceso de uso
+
+1. Crear el código
+2. Lanzar el código como una función
+3. aws selecciona el servidor
+4. El cliente hace llamado a la función
+
+### Api Gateway
+
+Api Gateway es un servicio de AWS que permite crear, publicar, mantener, monitorear y proteger APIs REST y WebSocket. **Permite que las aplicaciones se comuniquen con los datos y servicios de AWS o de terceros**.
+
+- API gestionadas en la nube ( crear, publicar, mantener, monitorear y proteger )
+- Puede interactuar con distintos servicios de AWS
+- Otros servicios Web
+- Datos Almacenamiento en AWS
+
+## Amazon kinesis
+
+Amazon Kinesis facilita la recopilación, el procesamiento y el análisis de datos de streaming en tiempo real para obtener datos de manera oportuna y reaccionar rápidamente ante información nueva
+
+- Procesamiento de transmisión de datos
+- Analítica en tiempo real
+- Habilitador de varios niveles.
+- Muy centrado en DevOps
+
+##### Ventajas
+
+- arquitectura totalmente administrada
+- no se requiere de codificación personalizada
+  - se configuran productores.
+  - se configuran consumidores.
+  - el foco está en la analítica.
+
+### Amazon kinesis Video Streams
+
+Amazon Kinesis Video Streams es un servicio de AWS que permite registrar y transmitir video desde dispositivos a AWS para su análisis usando herramientas de inteligencia empresarial existentes.
+
+### Amazon kinesis Data Streams
+
+Amazon Kinesis Data Streams es un servicio de AWS que permite registrar de manera continua gigabytes de datos por segundo de miles de orígenes.
+
+### Amazon kinesis Data Firehose
+
+Amazon Kinesis Data Firehose es la manera más fácil de registrar, transformar y cargar transmisiones de datos en almacenes de datos de AWS para realizar análisis casi en tiempo real con herramientas de inteligencia empresarial existentes
+
+### Amazon kinesis Data Analytics
+
+Amazon Kinesis Data Analytics ofrece la manera más sencilla de procesar transmisiones de datos en tiempo real con SQL o Apache Flink sin tener que aprender a usar lenguajes de programación ni marcos de procesamiento nuevos.

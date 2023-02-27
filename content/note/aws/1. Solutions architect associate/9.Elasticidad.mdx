@@ -1,0 +1,82 @@
+---
+title: Diseño para lograr elasticidad
+description: Aprende a diseñar tu arquitectura para lograr elasticidad en AWS
+date: "2021-02-02"
+tags: ["Amazon Web Services", "AWS", "cloudfront"]
+---
+
+## CloudFront
+
+Es un servicio rápido de entrega de contenido (CDN) que permite a los desarrolladores y empresas entregar contenido a los usuarios con baja latencia, alta seguridad y bajo costo. CloudFront puede ser utilizado para entregar contenido estático (imágenes, archivos, etc.) y contenido dinámico (APIs, aplicaciones, etc.).
+
+- Entrega de sitio web estático con baja latencia.
+- Servir video en vivo y video bajo demanda.
+- Reduce la latencia.
+- Proporciona velocidades de transferencia de datos más rápidas.
+
+##### Fuentes de contenido
+
+- S3
+- MediaPackage Channel : Entrega de contenido de acuerdo al dispositivo
+- HTTP Server
+
+##### Acceso a contenido
+
+- Pública
+- Privado
+
+##### Restricciones de contenido
+
+- Restricción geográfica
+- Requerir HTTPS
+
+## Web Application Firewall (WAF)
+
+![WAF](/note/waf.png)
+
+Es un servicio de seguridad que permite proteger las aplicaciones web de ataques comunes como SQL Injection, Cross-Site Scripting (XSS) y otros ataques web comunes. El WAF puede proteger aplicaciones web alojadas en Amazon EC2, en un balanceador de carga de Amazon Elastic Load Balancing o en Amazon CloudFront.
+
+- Control de acceso segun la solicitud o la IP de origin
+- Funciona con CloudFront, Elastic Load Balancing y EC2
+- Comportamiento del WAF
+  - permitir todas excepto las que se especifican
+  - bloquear todas excepto las que se especifican
+  - Monitoreo si cumplen con ciertas reglas
+
+## Simple Queue Service (SQS)
+
+Es un servicio de mensajería completamente administrado que le permite desacoplar y ajustar la escala de microservicios, componentes de aplicaciones y sistemas de procesamiento de datos.
+
+- sirve para desacoplar aplicaciones en tareas de procesamiento separado y que muchas soluciones pequeñas formen una solución.
+- los SQS
+  - son salidas de un proceso
+  - son entradas de un proceso
+  - son asyncronos
+  - puden incluir hasta 256kb de datos
+
+## Simple Notification Service (SNS)
+
+Es un servicio de mensajería completamente administrado que le permite enviar mensajes a aplicaciones, dispositivos móviles y usuarios en una forma confiable y escalable.
+
+- Hasta 256kb de datos
+-
+
+##### Publicadores
+
+**Publicadores** envian mensajes a un **Tópico o temas**
+
+- Los temas pueden ser alertas admin, alertas de rendimiento, etc.
+- Los publicadores puden ser cloudwatch, exploradores de costos.
+
+##### Suscriptores
+
+**Suscriptores** reciben mensajes de un **Tópico o temas**
+
+- Clientes que reciben las notificaciones
+- Reciben el mensaje que se transmite a un **tema**
+- Pueden ser:
+  - Correo electrónico
+  - SMS
+  - HTTP / HTTPS
+  - SQS
+  - Lambda

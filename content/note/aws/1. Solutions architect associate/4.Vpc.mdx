@@ -1,0 +1,100 @@
+---
+title: Virtual Private Cloud (VPC)
+description: Este servicio de AWS permite aprovicionar una sección de la nube de AWS aislada de manera lógica, en la que se pueden crear subredes y otros recursos de red.
+date: "2022-02-01"
+tags:
+  [
+    "AWS",
+    "Amazon Web Services",
+    "Amazon",
+    "Amazon VPC",
+    "Amazon Virtual Private Cloud",
+    "Amazon Virtual Private Cloud (VPC)",
+    "Amazon Virtual Private Cloud (VPC) - AWS",
+    "Amazon Virtual Private Cloud (VPC) - Amazon Web Services",
+    "Amazon Virtual Private Cloud (VPC) - Amazon",
+  ]
+---
+
+- **Virtualmente** privada
+- Un centro de datos en la nube
+- Con conexiones VPN a la VPC
+- Las aplicaciones se ejecutan en el VPC o en las instalaciones
+- Se puede crear subredes
+  - Públicas : acceso a internet
+  - Privadas : interno a la VPC
+- con **Direct Connect** se puede conectar la VPC a la red de la empresa
+- Múltiples VPCs pueden ser interconectadas
+- Se puede crear endopoints para acceder a los servicios de AWS
+
+- VPC predeterminada
+  - Una VPC en la región de AWS
+  - No se debe eliminar
+  - IP privada dinámica
+  - IP pública
+  - DNS provisto por AWS
+  - Nombres DNS Privadas
+  - Nombres DNS públicas
+
+### Elastic IP
+
+Son direcciones IPv4 diseñadas públicas que se pueden acceder desde internet. Al adquirir una IP elástica, ésta se asocia a su cuenta de aws y nadie más puede usarla porque se pagan por ellas. Las direcciones IP elásticas son estáticas y no cambian a menos que se libere y se vuelva a asignar.
+
+- Es una IP pública
+- No cambia.
+- La interfaz de red consume la IP elástica
+- Se utiliza solo en una región y no se pude mover a otra.
+
+### Elastic Network Interface (ENI)
+
+Es un componente de red lógico en VPC que representa un automóvil de red. Los atributos de la interfaz de red le siguen cuando se desconecta y se vuelve a conectar a otra instancia.
+
+- Se puede adjuntar a una instancia
+- Solo es disponible dentro de la VPC
+- Permite dual-homing (dos direcciones IP)
+- Se puede mover de una instancia a otra
+
+### Endopoint
+
+- Los endpoints se pueden utilizar para acceder a los servicios de AWS.
+- Las políticas de seguridad de la VPC se aplican a los endpoints.
+- Se escalan horizontalmente.
+- Comunicación entre instances de la VPC y el endpoint
+- Tipos de endpoints
+  - Interface : Conexión privada y segura a traves de la VPC, servicios AWS y aplicaciones locales
+  - Gateway :
+  - Gateway Load Balancer
+
+### VPC Peering
+
+La interconexion de VPCs permite que las instancias de una VPC se comuniquen con las instancias de otra VPC usando direcciones privadas IPv4 o IPv6. Las instancias de una VPC pueden acceder a los recursos de otra VPC, como instancias, almacenamiento y bases de datos, sin necesidad de una conexión de red pública o de internet.
+
+- Conecta a varios VPCs
+- El enlace no es transitivo (si la VPCa se conecta con la VPCb, la VPCb se coneca con la VPCc, la VPCa no se conecta con la VPCc)
+- El enlace no es automático (se debe aceptar la conexión)
+- Se necesita una ruta definida hacia la otra VPC
+- Reglas de seguridad de la VPC
+
+## Seguridad
+
+### Grupos de seguridad
+
+Los grupos de seguridad actuan como firewall virtual para controlar el tráfico entrante y saliente.
+
+- Se aplica a instancias
+- Define el flujo de tráfico entrante y saliente
+- Soporta solo reglas habilitadas
+- procesamiento con estado
+
+### Network Access Control List (ACL)
+
+Las listas de control de acceso de red (ACL) son una colección de reglas que controlan el tráfico de red entrante y saliente. Las ACL se aplican a una subred.
+
+- Se aplica a subredes
+- Processo sin estado
+- Admite reglas de permitir y denegar
+- El número de regla define la precedencia (Se aplica la primera coincidencia)
+
+### Network Address Translation (NAT)
+
+Es un método de traducción de direcciones de red que permite a los dispositivos de red privados acceder a internet a la vez impide a internet iniciar conexiones. El NAT traduce la dirección IP privada de la red privada a una dirección IP pública de la red pública.
